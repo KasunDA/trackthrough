@@ -1,0 +1,38 @@
+<div class="project_nav_link">
+	<img src="{project_icon}" width="16" height="18" title="{project_record.getName()} - {project_record.getDescription()}" onclick="window.location='{aurl(#/project/view#):h}/id/{project_record.getId()}'" class="project_icon" alt="project_icon" /> 
+	<a href="{aurl(#/project/view#):h}/id/{project_record.getId()}" title="{project_record.getName()} - {project_record.getDescription()}">{project_record.getName():h}</a>
+</div>	
+<div class="task_name">
+{if:issue_record.isOpen()}
+			<img src="{iurl(#open_status.png#)}" width="12" height="12" title="Open" alt="task_open_status_icon" />
+		{end:}
+		{if:issue_record.isClosed()}
+			<img src="{iurl(#closed_status.png#)}" width="12" height="12" title="Closed" alt="task_closed_status_icon" />
+		{end:}
+		{if:isPromoted}
+            <div class="issue_promo_icon ie11-copy-issue-promo-icon" style="border:1px solid red;" style="margin-top:-14px; width:12px; height:12px;"></div> <!--  Abhilash 29.4.15 -->
+		{end:}
+	<a href="{aurl(#/issue/view#):h}/id/{issue_record.getId()}" title="{issue_record.getTitle()} - {issue_record.getDescription()}"> {issue_record.getTitle():h}  </a>
+</div>
+<div class="page_title">Copy Issue</div>
+<div class="copy_form_block">
+	<form enctype="multipart/form-data" method="post" id="project_form" action="{aurl(#/issue/cloneIssue#):h}" onsubmit="return tt.util.validateAndSubmitCopyIssue(this);" flexy:ignore>
+		<div class="form_item">
+			<label for=""><span>*</span> Select Destination Project :</label>
+			<select name="new_project_id" class="new_project_id">
+				<option value="">Select destination project</option>
+				{foreach:lead_project_records,cnt,project_record}	
+					<option value="{project_record.getId()}">{project_record.getName()}</option>
+				{end:} <!-- end of foreach -->	
+			</select>
+			<div class="form_info_text">Select the project to which the task is to be copied.</div>
+		</div>
+		<div class="form_item"><br />
+			<label for="">&nbsp;</label>
+			<input type="hidden" name="issue_id" id="issue_id" value ="{issue_record.getId()}" />	
+			<input type="submit" name="submit" value="Submit" class="blue_btn"/> &nbsp; <!-- megha 5.2.15 -->
+			<input type="button" value="Cancel" onclick="window.location = '{aurl(#/issue/view#):h}/id/{issue_record.getId()}'" class="blue_btn" /> <!-- megha 5.2.15 -->
+			<div style="clear:both;"></div>			 
+		</div>
+	</form>
+</div><!-- end of copy_form_block  --> 

@@ -1,0 +1,96 @@
+			<div class="project_nav_link">
+			 	<img src="{aurl(#/project/icon#):h}/id/{project_record.getId()}" width="16" height="18" class="project_icon" title="{project_record.getName()} - {project_record.getDescription()}" onclick="window.location='{aurl(#/project/view#):h}/id/{project_record.getId()}'" alt="project_icon" /> <!-- megha 5.1.15 --> 
+			 	<a href="{aurl(#/project/view#):h}/id/{project_record.getId()}" title="{project_record.getName()} - {project_record.getDescription()}">{project_record.getName():h}</a>
+			</div>		
+	<div class="page_title">{title:h}</div>
+	<div class="tasks">
+	<div class="form_block">
+		<div id="task_upload_message" class="upload_message"><p id="message"> Please do not  close the browser until the attachment is completely uploaded</p><p>Loading, please wait...</p> <img src="{iurl(#rel_interstitial_loading.gif#):h}" alt="progressbar" /></div>
+		<form enctype="multipart/form-data" method="post" id="task_form" action="{aurl(#/task/update#):h}" onsubmit="return tt.util.validateAndSubmitTask(this);" flexy:ignore>
+			<div class="form_item">
+				<label for="name"><span>*</span> Task Title:</label><br/>
+				<input type="text" name="name" id="name" maxlength="200" value="{task_record.getName():h}" class="text_field" />
+				<div class="form_info_text">Max. 200 characters.</div>
+			</div>
+			<div class="form_item">
+				<label for="priority"> Priority:</label>
+				<select name="priority" >
+					 {if:task_record.getIsLowPriority()}
+                        <option value="110" selected>Low</option>
+                      {else:}								
+                        <option value="110">Low</option>
+                     {end:}	
+                      {if:task_record.getIsNormalPriority()}
+                        <option value="113" selected>Medium</option>
+                      {else:}								
+                        <option value="113">Medium</option>
+                     {end:}	
+                      {if:task_record.getIsHighPriority()}
+                        <option value="115" selected>High</option>
+                      {else:}								
+                        <option value="115">High</option>
+                     {end:}	
+					
+				</select>
+			</div>
+			{if:!edit_action}
+			<div id="upload" class="form_item">
+				<label for="uploadedfile"> Attachments:</label><span class="form_info_text">Allowed file types: {allowed_attachments:h}</span><br/>
+				<div class="file" id="upload_block_1">
+						<span id="upload_input_1"><input type="file" id="uploadedfile_1" size="20" name="uploadedfile_1" onchange="return tt.util.showDeleteIcon('1');"/></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_1" onclick="return tt.util.deleteUpload('1')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>						
+					<div class="file2" id="upload_block_2">
+						<span id="upload_input_2"><input type="file" size="20" id="uploadedfile_2" name="uploadedfile_2" onchange="return tt.util.showDeleteIcon('2');" /></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_2" onclick="return tt.util.deleteUpload('2')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>						
+					<div class="file" id="upload_block_3">
+						<span id="upload_input_3"><input type="file" size="20" id="uploadedfile_3" name="uploadedfile_3" onchange="return tt.util.showDeleteIcon('3');"/></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_3" onclick="return tt.util.deleteUpload('3')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>						
+					<div class="file2" id="upload_block_4">
+						<span id="upload_input_4"><input type="file" size="20" id="uploadedfile_4" name="uploadedfile_4" onchange="return tt.util.showDeleteIcon('4');"/></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon"  title="Delete Attachment" class="upload_delete_icon" id="delete_icon_4" onclick="return tt.util.deleteUpload('4')" />
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>										
+					<div class="file" id="upload_block_5">
+						<span id="upload_input_5"><input type="file" size="20" id="uploadedfile_5" name="uploadedfile_5" onchange="return tt.util.showDeleteIcon('5');"/></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_5" onclick="return tt.util.deleteUpload('5')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>						
+					<div class="file2" id="upload_block_6">
+						<span id="upload_input_6"><input type="file" size="20" id="uploadedfile_6" name="uploadedfile_6" onchange="return tt.util.showDeleteIcon('6');" /></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_6" onclick="return tt.util.deleteUpload('6')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>						
+				<div class="upload_more_link" id="add_more" onclick="tt.util.showUploadBlock('add_more');" >Add more</div>
+			</div>
+			{end:} <!-- end of if edit action -->
+			<div style="clear:both;"></div>
+			<div class="form_item">
+				<label for="task_description"><span>*</span> Task Description:</label><br/>
+				<textarea cols="101" rows="10" name="task_description" id="task_description" >{task_record.getDescription():h}</textarea>
+			</div>			
+			<div class="form_item" align="center">
+				<input type="hidden" name="project_id" value="{project_id}" />
+				{if:edit_action}
+				<input type="hidden" name="task_id" value="{task_record.getId()}" />
+				{end:}
+				{if:from}
+				<input type="hidden" name="from" value="{from}" />
+				{end:}
+				<input type="hidden" name="from_page" value="{from_page:h}" />
+				{if:page_index}
+				<input type="hidden" name="page_index" value="{page_index}" />
+				{end:}
+				<input type="submit" name="submit" value="Post" class="blue_btn"/> &nbsp; <!-- megha 5.1.15 -->
+				<input type="reset" value="Reset" class="blue_btn" /> &nbsp; <!-- megha 5.1.15 -->
+				<input type="button" value="Cancel" class="blue_btn" onclick = "{window.location = '{aurl(#/project/index#):h}'}" /> <!-- megha 5.1.15 -->
+			</div>
+			<div style="clear:both;"></div>
+		</form>
+	</div>
+</div>	

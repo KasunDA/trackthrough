@@ -1,0 +1,105 @@
+
+.black_bold_text{ margin-top:12px; }
+.admin_message_block .black_bold_text{ margin-top:12px;}
+.dashboard .count_unread_msg{ margin-left:260px; }
+.admin_message_block .count_unread_msg{ margin-left:729px;  }
+.header_search_field {   line-height:2.2;}
+.dashboard .task_desc{  float:none; }/*megha 31.10.14*/
+.dashboard .promo_icon{ left:28px; margin-top:12px; filter:alpha(opacity=23); }/*megha 7.11.14*/
+.promo_icon{ margin-left:-684px/* megha 8.12.14*/; filter:alpha(opacity=23); }
+.pi_promo_icon{ margin-left:-431px; filter:alpha(opacity=23);}
+
+/*megha 23.12.14*/
+.project_view_header{ float:none; padding-top:10px; padding-bottom:10px;}
+.project_header{  margin-bottom:20px; margin-top:0px; float:none; } 
+.project_nav_link{ padding-bottom:0px;}
+.projects .promo_icon{ margin-left:-417px;}
+.tasks .promo_icon{ margin-left:-21px;}
+.issue_list .promo_icon{ margin-left:-691px; }
+.project_view_header .promo_icon{ margin-left:-21px; }
+.dashboard .promo_icon{ margin-top:13px;}
+.issues .proj_title{  float:none;}
+.header_block .project_bottom_left_corner{ margin-top:19px; margin-left:-33px;}
+.header_block .project_bottom_right_corner{ margin-top:19px; margin-left:436px; position:absolute;}
+
+/*reshma 24.12.14 */
+.msg_inbox .delete_check_item { float:left; margin-top:0px; margin-left:-3px; }
+.msg_inbox .delete_check { margin-top:-5px; margin-left:-50px; position:relative;  /* reshma 23.12.14 */ }
+.button { margin-left: 4px;}
+.message_record_block {  float:left; margin-left:-3px; padding-bottom:0px; }
+.msg_rcd_from_blk { margin-top:2px;}
+.msg_header_from { margin-left:5px; }
+.msg_header { padding-top:10px;}
+
+/*reshma 24.12.14 Fav page */
+.delete_check_item {float:left; margin-top:0px; }
+.total_bookmarks { margin-top:-25px;  }
+.bookmark_list { margin-left:-4px; }
+.bmsg_icon {  margin-top:7px; margin-left:-2px; }
+.bookmark_link { margin-top:5px;  }
+.bookmark_delete_check { margin-left:0px; }
+
+/* megha 27.12.14*/
+.total_rec{ float:left; margin-left:783px; margin-top:5px; }
+.attachment_list .attached_docs{}
+
+/*megha 29.12.14*/
+
+.task_report .promo_icon{ margin-left:-21px;}
+
+/*megha 31.12.14*/
+.content_admin .p_right_corner{ margin-left:950px;} /*30.1.15*/
+
+/*megha 1.1.15*/
+.content_admin .taskbar_top_lt_corner2 {  margin-left:-4px;}
+.content_admin .project_top_right_corner{ position:reltive;}
+.edit_project_header{ float:none;}
+.export_issues .total_rec {  margin-left:778px;}
+
+/*megha 2.1.15*/
+
+.content_admin .dashboard .project_top_right_corner{ margin-left:962px/*10.1.15*/;}
+.content_admin .project_cont_block{ margin-right:10px; width:947px;}/* megha 19.1.15*/
+
+/*megha 30.1.15*/
+.fav_page .pi_icon{ margin-top:8px;}
+
+
+
+/* megha 4.2.15*/
+.content_body{ border:1px solid white;} 
+.registration_block .form_item { border:1px solid white;}
+.column_two .form_item .checkbox_two { margin-top:45px;}
+
+/* megha 5.2.15*/
+.report_filter_block .open_tab .priority_filter{  margin-top:-20px;}
+
+/*megha 13.2.15*/
+.priority{ margin-right:0px; border:1px solid white;}
+
+/*megha 27.2.15*/
+.dashboard .message_display_block{ margin-left:18px;}
+
+/* megha 2.3.15*/
+.search_title_block{ border:1px solid white;}
+.check_item{ width:270px; }
+
+/* megha 10.3.15*/
+.task_report .reports .total_rec{ float:right; margin-right:5px; margin-top:0px; margin-left:100px;}/*megha 10.3.15*/
+.task_report .reports .black_button{ margin-right:3px; float:right;}
+.export_issues .black_button{  float:right;}
+.task_report .reports_block{ padding:0px; padding-top:10px;  }
+.task_report .reports_block .project_link{ float:left; margin-top:0px; padding:0px;}
+
+
+.project_cont_block .d_promo_icon{ float:none; margin-left:-436px;}
+
+.task_details .bookmark{ margin-right:8px;}
+.task_details .bookmark1{ margin-right:8px;}
+
+/* geeta 6.4.15*/
+.search_btn{ margin-top:-47px; }
+
+/* megha 6.4.15*/
+.login_block p{ float:left; margin-top:10px;}
+.hide_projects .check_item{ width:330px;}/*7.4.15*/

@@ -1,0 +1,368 @@
+<div class="dashboard">  
+    <div class="dashboard_page_title">Dashboard</div>
+    <div class="clear_fix"></div>  
+    {if:!isAdmin}
+        <!-- Pie chart block -->
+        <div class="task_display_block">	
+            <div class="taskbar_top_lt_corner"></div>
+            <div class="taskbar_top_rt_corner"></div>
+            <div class="pie_block_title">		
+                <div class="pie_block_title_left">Stats</div>
+		<!-- megha 3.12.14 <span> Projects: {tot_projects} </span>-->
+            </div> <!-- end of pie_block title -->
+            <div class="project_cont_block">	
+                <div class="clear_fix"></div>				
+		<div class="pie_black_bold_text" >
+                    <img src="{iurl(#book_edit.png#)}" width="16" height="16" />
+                    <span> Tasks ({n_total_tasks}) </span>
+                    {if:taskpie}
+                    <img src="{aurl(#/dashboard/chart_image#):h}/file/pie1" width="120" height="120" class="pie1" />
+                    {else:}
+                    <img src="{iurl(#no_pie.png#)}" width="120" height="120" class="pie1" />
+                    {end:}
+                    <div class="clear_fix"></div>	
+                    <div class="icons" >
+                    	<div class="rows">
+                            <img src="{iurl(#open_status.png#)}" width="12" height="12" class="icon1"/>
+                            <div class="Status"> Open ({n_open_tasks}) </div> 
+                             <!-- <span>  </span>--><!--megha 4.12.14-->
+                            <div class="clear_fix"></div>
+			</div>
+			<div class="rows">
+                            <img src="{iurl(#inprogress_status.png#)}" width="12" height="12" class="icon2"/>
+                            <div class="Status"> Inprogress ({n_wip_tasks}) </div> 
+                            <!-- <span>  </span>--><!--megha 4.12.14--> 
+                            <div class="clear_fix"></div>
+			</div>
+			<div class="rows">
+                            <img src="{iurl(#pending_status.png#)}" width="12" height="12" class="icon3"/>
+                            <div class="Status" > Review Pending ({n_review_pending_tasks})</div>
+                            <!-- <span>  </span>--><!--megha 4.12.14-->
+			</div>
+			<div class="rows"> 
+                            <img src="{iurl(#closed_status.png#)}" width="12" height="12" class="icon4"/>
+                            <div class="Status"> Closed ({n_closed_tasks})</div>
+                            <!-- <span>  </span>--><!--megha 4.12.14--> 
+                            <div class="clear_fix"></div>
+			</div>
+                    </div><!--end of icons -->
+		</div> <!--end of pie_black_bold_text-->	
+                <div class="pie_black_bold_text1">
+                    <img src="{iurl(#bug.png#)}" width="16" height="16" />
+                    <span> Issues ({n_total_issues}) </span>
+                    {if:issuepie}
+                    <img src="{aurl(#/dashboard/chart_image#):h}/file/pie2" width="120" height="120" class="pie2"/>
+                    {else:}
+                    <img src="{iurl(#no_pie.png#)}" width="120" height="120" class="pie2"/>
+                    {end:}
+                    <div class="clear_fix"></div>
+                    <div class="icons">
+                        <div class="rows" > 
+                            <img src="{iurl(#open_status.png#)}" width="12" height="12" class="icon1"/> 
+                            <div class="Status"> Open ({n_open_issues})  </div>
+                            <!-- <span>  </span>--><!--megha 4.12.14-->
+                            <div class="clear_fix"></div>
+			</div>
+			<div class="rows"> 
+                            <img src="{iurl(#closed_status.png#)}" width="12" height="12" class="icon4"/>
+                            <div class="Status"> Closed ({n_closed_issues})</div>
+                            <!-- <span>  </span>--><!--megha 4.12.14--> 
+                            <div class="clear_fix"></div>
+			</div>
+                    </div><!--end of icons -->
+		</div><!--end of pie_black_bold_text1-->
+		<div class="clear_fix"></div>						
+            </div> <!-- end of project_cont_block -->	
+            <div class="taskbar_btm_lt_corner"></div>
+            <div class="taskbar_btm_rt_corner"></div>	
+	</div> <!-- end of task_display_blk -->	
+	<!-- Here closes pie chart block -->
+    {end:}
+
+    {if:isAdmin}
+        <div class="admin_msg_count"> {total_unread_message_cnt} </div>
+	<div class="admin_message_block">
+            <div class="taskbar_top_lt_corner2"></div>
+            <div class="project_top_right_corner"></div>	
+            <div class="block_title">		
+		<div class="block_title_left">Latest unread messages</div>
+		<div class="unread_msg"></div>
+            </div> <!-- end of block title -->	
+            <div class="project_cont_block">
+		{if:no_message_records}
+                    <div class="black_bold_text">No messages found</div>
+		{else:}
+                    {foreach:message_records,cnt,message_record}
+			{if:message_record.getIsProjctMessage()}
+                            <div class="msg" title="New Message" onclick="window.location = '{aurl(#/project/view#):h}/id/{message_record.getTypeId():h}/#message'"></div>
+			{end:}
+			{if:message_record.getIsTaskMessage()}
+                            <div class="msg" title="New Message" onclick="window.location = '{aurl(#/task/view#):h}/id/{message_record.getTypeId():h}/#message'"></div>
+			{end:}	
+			{if:message_record.getIsIssueMessage()}
+                            <div class="msg" title="New Message" onclick="window.location = '{aurl(#/issue/view#):h}/id/{message_record.getTypeId():h}/#message'"></div>
+			{end:}
+                        <div class="block">
+                            {if:message_record.getIsProjctMessage()}
+                                <div class="msg_title_block" title="{message_record.short_description}" onClick="window.location = '{aurl(#/project/view#):h}/id/{message_record.getTypeId():h}/#message'">{message_record.short_description}</div>
+                            {end:}
+                            {if:message_record.getIsTaskMessage()}
+                                <div class="msg_title_block" title="{message_record.short_description}" onClick="window.location = '{aurl(#/task/view#):h}/id/{message_record.getTypeId():h}/#message'">{message_record.short_description}</div>
+                            {end:}
+                            {if:message_record.getIsIssueMessage()}
+                                <div class="msg_title_block" title="{message_record.short_description}" onClick="window.location = '{aurl(#/issue/view#):h}/id/{message_record.getTypeId():h}/#message'">{message_record.short_description}</div>
+                            {end:}
+                            {if:message_record.isBookmarked}
+                                <div class="bookmark"></div>
+                            {else:}
+                                <div class="bookmark1" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/message#)}/id/{message_record.getId()}/from_page/dashboard'"></div>
+                            {end:}
+                            <div class="clear_fix"></div>
+                            <div class="black_bold_text1">
+                            	<img src="{aurl(#/user/icon#):h}/id/{message_record.getFromId():h}"  alt="profile_pic" width="41" height="41" class="profile_img" /> <!-- admin message  Abhilash 24.4.2015 -->
+                                <div class="msg_sender">
+                                    <span class="text"> By:</span> {message_record.getFromName():h}
+                                    <div class="msg_date" >
+                                    	<span class="text2"> Date: </span> {message_record.getDateFormatted():h}
+                               		 </div>
+                                </div> 
+                                
+                                <div class="clear_fix"></div>
+                            </div>
+                            <img src="{aurl(#/project/icon#):h}/id/{message_record.project_link.project_id}" class="project_logo" title="{message_record.project_link.getName()} - {message_record.project_link.getDescription()}" onclick="window.location='{aurl(#/project/view#):h}/id/{message_record.project_link.project_id}'"/>
+                            <div class="text1" onclick="window.location='{aurl(#/project/view#):h}/id/{message_record.project_link.project_id}'" title="{message_record.project_link.getName()} - {message_record.project_link.getDescription()}"><b> {message_record.project_link.project_short_name:h} </b></div>
+                        </div>
+                    {end:}
+                    <div align="right" class="more_button" >
+			<a href="{aurl(#/message/index#):h}">See more</a><!-- megha 6.1.15 -->
+                    </div>	
+		{end:}	
+		<div class="clear_fix"></div>
+		<div class="admin_msg_btm_lt_corner"></div>
+		<div class="admin_msg_btm_rt_corner"></div>					
+            </div> <!-- end of project_cont_block -->
+	</div> <!-- end of admin_message_block -->
+			
+	{else:}	
+            {if:show_dashboard_unread_messages}
+                <div class="message_display_block">
+                    <div class="taskbar_top_lt_corner2"></div>
+                    <div class="taskbar_top_rt_corner2"></div>
+                    <div class="count_unread_msg">{total_unread_message_cnt}</div>
+                    <div class="block_title">		
+                        <div class="block_title_left">Latest unread messages</div>
+			<div class="unread_msg"></div>
+                    </div> <!-- end of block title -->	
+                    <div class="project_cont_block">
+                        {if:no_message_records}
+                            <div class="black_bold_text">No messages found</div>
+			{else:}
+                            {foreach:message_records,cnt,message_record}
+                                {if:message_record.getIsProjctMessage()}
+                                    <div class="msg" title="New Message" onclick="window.location = '{aurl(#/project/view#):h}/id/{message_record.getTypeId():h}/#message'"></div>
+				{end:}
+				{if:message_record.getIsTaskMessage()}
+                                    <div class="msg" title="New Message" onclick="window.location = '{aurl(#/task/view#):h}/id/{message_record.getTypeId():h}/#message'"></div>
+				{end:}	
+				{if:message_record.getIsIssueMessage()}
+                                    <div class="msg"  title="New Message" onclick="window.location = '{aurl(#/issue/view#):h}/id/{message_record.getTypeId():h}/#message'"></div>
+				{end:}
+				<div class="block">
+                                    {if:message_record.getIsProjctMessage()}
+					<div class="msg_title_block" title="{message_record.short_description}" onClick="window.location = '{aurl(#/project/view#):h}/id/{message_record.getTypeId():h}/#message'">{message_record.short_description}</div>
+                                    {end:}
+                                    {if:message_record.getIsTaskMessage()}
+                                        <div class="msg_title_block" title="{message_record.short_description}" onClick="window.location = '{aurl(#/task/view#):h}/id/{message_record.getTypeId():h}/#message'">{message_record.short_description}</div>
+                                    {end:}
+                                    {if:message_record.getIsIssueMessage()}
+                                        <div class="msg_title_block" title="{message_record.short_description}" onClick="window.location = '{aurl(#/issue/view#):h}/id/{message_record.getTypeId():h}/#message'">{message_record.short_description}</div>
+                                    {end:}
+                                    {if:message_record.isBookmarked}
+                                        <div class="bookmark"></div>
+                                    {else:}
+                                        <div class="bookmark1" title="Bookmark" onClick="window.location = '{aurl(#/bookmark/message#)}/id/{message_record.getId()}/from_page/dashboard'"></div>
+                                    {end:}
+                                    <div class="clear_fix"></div>
+                                    <div class="black_bold_text1">
+                                        <img src="{aurl(#/user/icon#):h}/id/{message_record.getFromId():h}" alt="profile_pic" width="41" height="41" class="profile_img" /> <!--  Abhilash 24.4.2015 -->
+		                                <div class="msg_sender">
+		                                    <span class="text"> By:</span> {message_record.getFromName():h}
+		                                    <div class="msg_date">
+		                                    	<span class="text2"> Date: </span> {message_record.getDateFormatted():h}
+		                               		 </div>
+		                                </div> 
+                                        <div class="clear_fix"></div>
+                                    </div>
+                                    <img src="{aurl(#/project/icon#):h}/id/{message_record.project_link.project_id}" class="project_logo" title="{message_record.project_link.getName()} - {message_record.project_link.getDescription()}" onclick="window.location='{aurl(#/project/view#):h}/id/{message_record.project_link.project_id}'"/> <!-- megha 5.1.15 --> 
+                                    <div class="text1" onclick="window.location='{aurl(#/project/view#):h}/id/{message_record.project_link.project_id}'" title="{message_record.project_link.getName()} - {message_record.project_link.getDescription()}"><b> {message_record.project_link.project_short_name:h} </b></div>
+				</div>
+                            {end:}
+                            <div align="right" class="more_button">
+                                <a href="{aurl(#/message/index#):h}">See more</a> <!-- megha 6.1.15 -->
+                            </div>		
+			{end:}	
+			<div class="clear_fix"></div>					
+                    </div> <!-- end of project_cont_block -->
+                    <div class="taskbar_btm_lt_corner2"></div>
+                    <div class="taskbar_btm_rt_corner2"></div>
+		</div> <!-- end of message_display_block -->
+            {end:}	
+	{end:}
+        <!-- here closes message block -->	
+    {if:!isAdmin}		
+        {if:show_tasks_for_me}
+            <div class="task_display_block">	
+                <div class="taskbar_top_lt_corner"></div>
+		<div class="taskbar_top_rt_corner"></div>
+                <div class="block_title">		
+                    <div class="block_title_left">Tasks for me</div>
+		</div> <!-- end of block title -->	
+		<div class="project_cont_block">			
+                    {if:no_tasks_me}
+                        <div class="black_bold_text">There are no tasks assigned to you</div> 
+                    {else:}
+			{foreach:trecords_me,cnt1,trecord_me}		
+                            {if:trecord_me.getIsViewOnly()}
+				<img src="{iurl(#viewonly_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" title="View Only" class="status_icon" alt="task_viewonly_status_icon" flexy:ignore/> <!-- megha 2.2.15 -->
+                            {else:}					
+				{if:trecord_me.getIsOpen()}
+                                    <img src="{iurl(#open_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{trecord_me.getId():h}'" title="Open" class="status_icon" alt="task_open_status_icon" flexy:ignore/>
+				{end:}
+				{if:trecord_me.getIsInProgress()}
+                                    <img src="{iurl(#inprogress_status.png#)}" width="12" height="12" title="In progress" alt="task_inprogress_status_icon" onclick="window.location='{aurl(#/task/view#):h}/id/{trecord_me.getId():h}'" class="status_icon"  />
+				{end:}
+				{if:trecord_me.getIsInReviewStatus()}
+                                    <img src="{iurl(#pending_status.png#)}" width="12" height="12" title="Review Pending" alt="task_pending_status_icon" onclick="window.location='{aurl(#/task/view#):h}/id/{trecord_me.getId():h}'" class="status_icon"/>
+				{end:}
+				{if:trecord_me.getIsClosed()}
+                                    <img src="{iurl(#closed_status.png#)}" width="12" height="12" title="Closed" class="status_icon" alt="task_closed_status_icon" onclick="window.location='{aurl(#/task/view#):h}/id/{trecord_me.getId():h}'"  />
+				{end:}
+                            {end:} <!--  end of else view only -->										
+                            {if:trecord_me.isPromoted}
+                                <div class="d_promo_icon"></div>
+                            {end:}
+                            {if:trecord_me.getIsViewOnly()} <!--  Abhilash 22.4.15 -->
+                                <div class="task_title view_only">	
+                                    <a href="{aurl(#/task/view#):h}/id/{trecord_me.getId()}" class="view_only" title="{trecord_me.getName()}">{trecord_me.short_name:h}</a> <!--  Abhilash 22.4.15 -->
+				</div>
+                            {else:}
+                                <div class="task_title">
+                                    <a href="{aurl(#/task/view#):h}/id/{trecord_me.getId()}" title="{trecord_me.getName()}"> {trecord_me.short_name:h} </a><!-- megha 6.4.15 -->
+				</div> <!-- end of task_title -->	
+                            {end:}
+                            <div class="task_priority"> <!-- megha 9.1.15 -->
+				<span class="{trecord_me.getPriorityLabel():h}_priority"></span> <!-- megha 6.1.15 -->
+                            </div><!--end of task_priority--> <!--end--><!-- megha 9.1.15 -->
+                            <div class="task_details">	
+                                {if:trecord_me.isBookmarked}
+                                    <div class="bookmark"></div>
+                                {else:}
+                                    <div class="bookmark1" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/task#)}/id/{trecord_me.getId()}/from_page/dashboard'"></div>		
+                                {end:}
+                                <div class="progress_bar">{trecord_me.getProgress()}%</div>	
+                                <div class="info_text" title="{trecord_me.getTeamSigninId()}">
+                                    <img src="{iurl(#user.png#)}" width="23" height="22" align="absmiddle" class="user_icon" alt="{trecord_me.getTeamSigninId()}">&nbsp; {trecord_me.getSingleTeamName():h} {if:trecord_me.hasMultipleTeam()} ...{end:} <!-- megha 6.4.15 -->							
+                                </div>
+                                <div class="task_desc">
+                                    <a href="{aurl(#/task/view#):h}/id/{trecord_me.getId()}" title="{trecord_me.getDescription()}"> {trecord_me.short_desc:h}</a>
+                                </div>
+                                <div class="d_project_link">						
+                                    <img src="{aurl(#/project/icon#):h}/id/{trecord_me.project_id}" width="17" height="15" class="project_icon" title="{trecord_me.project_name} - {trecord_me.project_description}" onclick="window.location='{aurl(#/project/view#):h}/id/{trecord_me.project_id}'" alt="project_icon"> <!-- megha 5.1.15 -->
+                                    <a href="{aurl(#/project/view#):h}/id/{trecord_me.project_id}" title="{trecord_me.project_name} - {trecord_me.project_description}"> {trecord_me.project_short_name:h} </a> <!-- megha 6.4.15 -->
+                                    <div class="clear_fix"></div>
+                                </div> <!-- end of project_link -->	
+                                <div class="clear_fix"></div>
+                            </div>
+                            <div class="clear_fix"></div>
+			{end:} <!-- end of foreach trecords_others -->
+			<div align="right" class="more_button">
+                            <a href="{aurl(#/report/task#):h}/report_type/my_report/task_status/all/">See more</a> <!-- megha 6.1.15 -->
+			</div>	
+                    {end:}<!-- end of if -->	
+                    <div class="clear_fix"></div>						
+		</div> <!-- end of project_cont_block -->	
+		<div class="taskbar_btm_lt_corner"></div>
+		<div class="taskbar_btm_rt_corner"></div>
+            </div> <!-- end of task_display_blk -->	
+	{end:}	 <!--  end of show_tasks_for_me -->
+        <!-- here closes tasks for me -->
+        {if:show_tasks_for_others}
+            <div class="task_display_block">	
+                <div class="taskbar_top_lt_corner"></div>
+		<div class="taskbar_top_rt_corner"></div>
+		<div class="block_title">		
+                    <div class="block_title_left">Tasks for others</div>
+		</div> <!-- end of block title -->	
+		<div class="project_cont_block">			
+                    {if:no_tasks_others}
+                        <div class="black_bold_text">You may not have any tasks assigned to others</div> 
+                    {else:}
+			{foreach:trecords_others,cnt,trecord_others}
+                            {if:trecord_others.getIsViewOnly()}
+				<img src="{iurl(#viewonly_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" title="View Only" class="status_icon" alt="task_viewonly_status_icon" flexy:ignore/> <!-- megha 2.2.15 -->
+                            {else:}					
+                                {if:trecord_others.getIsOpen()}
+                                    <img src="{iurl(#open_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{trecord_others.getId():h}'" title="Open" class="status_icon" alt="task_open_status_icon" flexy:ignore/>
+                                {end:}
+                                {if:trecord_others.getIsInProgress()}
+                                    <img src="{iurl(#inprogress_status.png#)}" width="12" height="12" title="In progress" onclick="window.location='{aurl(#/task/view#):h}/id/{trecord_others.getId():h}'" class="status_icon" alt="task_inprogress_status_icon"  />
+                                {end:}
+                                {if:trecord_others.getIsInReviewStatus()}
+                                    <img src="{iurl(#pending_status.png#)}" width="12" height="12" title="Review Pending" alt="task_pending_status_icon" onclick="window.location='{aurl(#/task/view#):h}/id/{trecord_others.getId():h}'" class="status_icon"/>
+                                {end:}
+                                {if:trecord_others.getIsClosed()}
+                                    <img src="{iurl(#closed_status.png#)}" width="12" height="12" title="Closed" class="status_icon" alt="task_closed_status_icon" onclick="window.location='{aurl(#/task/view#):h}/id/{trecord_others.getId():h}'"  />
+                                {end:}
+                            {end:} <!--  end of else view only -->
+                            {if:trecord_others.isPromoted}
+                                <div class="d_promo_icon"></div> 
+                            {end:}
+                            {if:trecord_others.getIsViewOnly()} <!--  Abhilash 22.4.15 -->
+                            <div class="task_title view_only">
+								<a href="{aurl(#/task/view#):h}/id/{trecord_others.getId()}" class="view_only" title="{trecord_others.getName()}"> {trecord_others.short_name:h} </a> <!-- abhilash 22.4.15 -->
+                            </div> <!-- end of task_title -->	
+                            {else:}
+                            <div class="task_title">
+								<a href="{aurl(#/task/view#):h}/id/{trecord_others.getId()}" title="{trecord_others.getName()}"> {trecord_others.short_name:h} </a> <!-- megha 6.4.15 -->
+                            </div> <!-- end of task_title -->	
+                            {end:}
+                            <div class="task_priority"> <!-- megha 9.1.15 -->
+                                <span class="{trecord_others.getPriorityLabel():h}_priority"></span> <!-- megha 6.1.15 -->
+                            </div><!--end of task_priority--> <!--end--> <!-- megha 9.1.15 -->
+                            <div class="task_details">
+                                {if:trecord_others.isBookmarked}
+                                    <div class="bookmark"></div>
+				{else:}
+                                    <div class="bookmark1" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/task#)}/id/{trecord_others.getId()}/from_page/dashboard'"></div>		
+				{end:}
+				<div class="progress_bar">{trecord_others.getProgress()}%</div>	
+                                <div class="info_text" title="{trecord_others.getTeamSigninId()}">
+                                    <img src="{iurl(#user.png#)}" width="23" height="22" align="absmiddle" class="user_icon" alt="{trecord_others.getTeamSigninId()}">&nbsp; {trecord_others.getSingleTeamName():h} {if:trecord_others.hasMultipleTeam()} ...{end:} <!-- 6.4.15-->							
+                                </div>
+                                <div class="task_desc" >
+                                    <a href="{aurl(#/task/view#):h}/id/{trecord_others.getId()}" title="{trecord_others.getDescription()}"> {trecord_others.short_desc:h} </a>
+                                </div>
+                                <div class="d_project_link">						
+                                    <img src="{aurl(#/project/icon#):h}/id/{trecord_others.project_id}" width="17" height="15" class="project_icon" title="{trecord_others.project_name} - {trecord_others.project_description}" onclick="window.location='{aurl(#/project/view#):h}/id/{trecord_others.project_id}'" alt="project_icon"> <!-- megha 5.1.15 -->
+                                    <a href="{aurl(#/project/view#):h}/id/{trecord_others.project_id}" title="{trecord_others.project_name} - {trecord_others.project_description}"> {trecord_others.project_short_name:h} </a> <!-- megha 6.4.15 -->
+                                </div> <!-- end of project_link -->
+                                <div class="clear_fix"></div>
+                            </div>
+			{end:} <!-- end of foreach trecords_others -->
+			<!--<div class="underline"></div>	-->		
+			<div align="right" class="more_button">
+                            <a href="{aurl(#/report/task#):h}/report_type/others_report/task_status/all/">See more</a> <!-- megha 6.1.15 -->
+			</div>	
+                    {end:}<!-- end of if -->		
+                    <div class="clear_fix"></div>					
+		</div> <!-- end of project_cont_block -->	
+		<div class="taskbar_btm_lt_corner"></div>
+		<div class="taskbar_btm_rt_corner"></div>
+            </div> <!-- end of task_display_blk -->	
+	{end:}	 <!--  end of show_tasks_for_others -->
+        <!-- here closes tasks for others -->
+    {end:}	
+    <div class="clear_fix"></div>
+</div><!-- end of dashboard-->
+<div class="clear_fix"></div>			
+	

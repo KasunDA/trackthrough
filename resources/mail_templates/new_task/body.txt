@@ -1,0 +1,16 @@
+Hi [[to_user.first_name]],
+
+
+New task added:
+
+Task Name: [[task_name]]
+Posted by: [[lead.first_name]]
+
+
+To view the task please visit [[message_url]] 
+
+Administrator
+[[website_name]]
+
+
+

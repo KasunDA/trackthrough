@@ -1,0 +1,96 @@
+<div class="page_title">Favorites</div>
+{if:no_records}
+ 	<div class="error_text">No favorites found</div>
+{else:}
+	<div class="fav_page">	 <!--reshma 24.12.14  class declared -->
+	<form method="post" id="bookmark_form" action="{aurl(#/bookmark/delete#):h}" onsubmit="return tt.util.confirmDelete('bookmarks', true) ? true : false;" flexy:ignore>
+		<div>
+			<span class="delete_check_item">
+				<input type="checkbox" name="select_all" id="select_all" onclick="tt.util.toggleCbxes(this)" />
+			</span>
+			<input type="submit" value="Delete" class="button" name="delete_selected" id="delete_selected"/>			
+			<span class="total_bookmarks">Total: #{total_records:h}</span> <!-- megha 24.12.14 --> 
+		</div>
+		<div style="clear:both;">&nbsp;</div>
+		{foreach:bookmark_records,cnt,bookmark}
+			<div class="bookmark_list">
+				<input type="checkbox" name="selected_id[]" class="bookmark_delete_check" value="{bookmark.getId():h}>" flexy:ignore/>
+					<div>
+					{if:bookmark.getIsProjectBookmark()}						
+						<img src="{bookmark.getBookmarkIcon()}" width="12" height="14" class="bmsg_icon" onclick="window.location='{aurl(#/project/view#):h}/id/{bookmark.getCategoryId():h}'" title="{bookmark.getBookmarkDescription()}" alt="project_icon"/>
+					{else:}					
+						{if:bookmark.getIsProjectMessageBookmark()}	
+							<img src="{iurl(#message.png#)}" width="12" height="11" class="bmsg_icon" title="Project description" onclick="window.location='{aurl(#/project/view#):h}/id/{bookmark.getMessageProjectId():h}/#{bookmark.getCategoryId():h}'" alt="project_message_icon"/>
+						{else:}	
+							{if:bookmark.getIsTaskBookmark()}	
+								<img src="{bookmark.getBookmarkIcon()}" width="12" class="bmsg_icon" title="{bookmark.task_status}" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{bookmark.getCategoryId():h}'" alt="task_status_icon"/>
+							{end:}							
+							{if:bookmark.getIsTaskMessageBookmark()}
+								<img src="{iurl(#message.png#)}" width="12" height="11" class="bmsg_icon" title="Task message" onclick="window.location='{aurl(#/task/view#):h}/id/{bookmark.getMessageTaskId():h}/#{bookmark.getCategoryId():h}'" alt="task_message_icon"/>
+							{end:}
+							{if:bookmark.getIsIssueBookmark()}
+								<img src="{bookmark.getBookmarkIcon()}" width="12" class="bmsg_icon" title="{bookmark.issue_status}" height="12" onclick="window.location='{aurl(#/issue/view#):h}/id/{bookmark.getCategoryId():h}'" alt="issue_status_icon"/>
+							{end:}	
+							{if:bookmark.getIsIssueMessageBookmark()}
+								<img src="{iurl(#message.png#)}" width="12" height="11" class="bmsg_icon" title="Issue message" onclick="window.location='{aurl(#/issue/view#):h}/id/{bookmark.getMessageIssueId():h}/#{bookmark.getCategoryId():h}'" alt="issue_message_icon"  />
+							{end:}
+						{end:}
+					{end:}
+					{if:bookmark.isPromoted}
+						<img src="{iurl(#promoted.png#)}" width="12" class="pi_icon" title="{bookmark.task_status}" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{bookmark.getCategoryId():h}'" alt="task_promoted_status_icon"/>
+					{end:}
+					</div>
+				<div class="bookmark_link">					
+					{if:bookmark.getIsProjectBookmark()}	
+						<a href="{aurl(#/project/view#):h}/id/{bookmark.getCategoryId():h}" title="{bookmark.getBookmarkCategoryLabel()} #{bookmark.getCategoryId()} : {bookmark.getBookmarkDescription()}">{bookmark.short_description}</a>
+  					{end:}
+		 			{if:bookmark.getIsTaskBookmark()}
+		 				{if:bookmark.view_only_for_self}
+		 				<span class="view_only">
+		 					<a href="{aurl(#/task/view#):h}/id/{bookmark.getCategoryId():h}" title="{bookmark.getBookmarkCategoryLabel()} #{bookmark.getCategoryId()} : {bookmark.getBookmarkDescription()}">{bookmark.short_description}</a>
+		 				</span>
+		 				{else:}	
+		 				<a href="{aurl(#/task/view#):h}/id/{bookmark.getCategoryId():h}" title="{bookmark.getBookmarkCategoryLabel()} #{bookmark.getCategoryId()} : {bookmark.getBookmarkDescription()}">{bookmark.short_description}</a>
+		 				{end:}
+		 				<div class="project_link">
+							<img src="{aurl(#/project/icon#):h}/id/{bookmark.project_id}" width="12" height="14" class="project_icon" title="{bookmark.project_name}" onclick="window.location='{aurl(#/project/view#):h}/id/{bookmark.project_id}'" alt="project_icon"/>
+							<a href="{aurl(#/project/view#):h}/id/{bookmark.project_id}" title="{bookmark.project_name}">{bookmark.project_short_name:h}</a>
+						</div>
+ 					{end:}
+ 			{if:bookmark.getIsIssueBookmark()}	
+ 				<a href="{aurl(#/issue/view#):h}/id/{bookmark.getCategoryId():h}" title="{bookmark.getBookmarkCategoryLabel()} #{bookmark.getCategoryId()} : {bookmark.getBookmarkDescription()}" class="red_text">{bookmark.short_description}</a>
+ 				<div class="project_link">
+							<img src="{aurl(#/project/icon#):h}/id/{bookmark.project_id}" width="12" height="14" class="project_icon" title="{bookmark.project_name}" onclick="window.location='{aurl(#/project/view#):h}/id/{bookmark.project_id}'" alt="project_icon"/>
+							<a href="{aurl(#/project/view#):h}/id/{bookmark.project_id}" title="{bookmark.project_name}">{bookmark.project_short_name:h}</a>
+						</div>
+ 			{end:}
+ 			{if:bookmark.getIsProjectMessageBookmark()}	
+ 				<a href="{aurl(#/project/view#):h}/id/{bookmark.getMessageProjectId():h}/#{bookmark.getCategoryId():h}" title="{bookmark.getBookmarkCategoryLabel()} #{bookmark.getCategoryId()} : {bookmark.getBookmarkDescription()}">{bookmark.short_description}</a>
+ 				<div class="project_link">
+						<img src="{aurl(#/project/icon#):h}/id/{bookmark.project_id}" width="12" height="14" class="project_icon" title="{bookmark.project_name}ssss" onclick="window.location='{aurl(#/project/view#):h}/id/{bookmark.project_id}'" alt="project_icon"/>
+							<a href="{aurl(#/project/view#):h}/id/{bookmark.project_id}" title="{bookmark.project_name}">{bookmark.project_short_name:h}</a>
+						</div>
+ 			{end:}
+					{if:bookmark.getIsTaskMessageBookmark()}	
+						<a href="{aurl(#/task/view#):h}/id/{bookmark.getMessageTaskId():h}/#{bookmark.getCategoryId()}" title="{bookmark.getBookmarkCategoryLabel()} #{bookmark.getCategoryId()} : {bookmark.getBookmarkDescription()}">{bookmark.short_description}</a>
+						<div class="project_link">
+							<img src="{aurl(#/project/icon#):h}/id/{bookmark.project_id}" width="12" height="14" class="project_icon" title="{bookmark.project_name}tttt" onclick="window.location='{aurl(#/project/view#):h}/id/{bookmark.project_id}'" alt="project_icon"/>
+							<a href="{aurl(#/project/view#):h}/id/{bookmark.project_id}" title="{bookmark.project_name}">{bookmark.project_short_name:h}</a>
+						</div>
+		 			{end:}		 			
+ 			{if:bookmark.getIsIssueMessageBookmark()}
+ 				<a href="{aurl(#/issue/view#):h}/id/{bookmark.getMessageIssueId():h}/#{bookmark.getCategoryId():h}" title="{bookmark.getBookmarkCategoryLabel()} #{bookmark.getCategoryId()} : {bookmark.getBookmarkDescription()}" class="red_text">{bookmark.short_description}</a>
+ 				<div class="project_link">
+							<img src="{aurl(#/project/icon#):h}/id/{bookmark.project_id}" width="12" height="14" title="{bookmark.project_name}jjjj" class="project_icon" onclick="window.location='{aurl(#/project/view#):h}/id/{bookmark.project_id}'" alt="project_icon"/>
+							<a href="{aurl(#/project/view#):h}/id/{bookmark.project_id}" title="{bookmark.project_name}">{bookmark.project_short_name:h}</a>
+						</div>
+ 			{end:}
+		 	</div> <!-- end of bookmark_link -->
+				<img alt="Delete" class="bdel_icon" title="Delete" src="{iurl(#delete_icon.png#):h}" width="10" height="10" align="right" onclick="if(tt.util.confirmDelete('bookmark')) {window.location = '{aurl(#/bookmark/delete#):h}/id/{bookmark.getId():h}'}" />
+				<div style="clear:both;"></div>				
+		</div> <!-- end of bookmark_list -->
+		{end:}
+		<br />
+		</form>
+	</div>	
+{end:}

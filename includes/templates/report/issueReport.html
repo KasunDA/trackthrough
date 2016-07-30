@@ -1,0 +1,132 @@
+<div class="export_issues">	
+		<div class="page_title">Issue Report</div>		
+		<div class="report_filter_block">	
+			<form method="post" name="report_filter" action="{aurl(#/report/setIssueReportSettings/#)}" flexy:ignore>	
+			<div class="filter_item">
+				<label>Project: </label>
+				<select name="project_id"  flexy:ignore>				
+							{foreach:project_filter_records,cnt,project_record}
+								{if:project_record.isSelectedProject(project_record,selected_project_id)}
+									<option value="{project_record.getId()}" selected>{project_record.getName()}</option>
+								{else:}
+									<option value="{project_record.getId()}">{project_record.getName()}</option>
+								{end:}					
+							{end:}						
+				</select>
+			</div> <!-- End of filter item -->			
+			<div class="filter_item" style="">
+				<label>Status: </label>
+				<select name="issue_status" flexy:ignore>
+					<option value="" Selected>All</option>
+					{if:is_open_selected}
+						<option value="{open_status}" Selected>Open</option>
+						<option value="{closed_status}">Closed</option>
+					{else:}
+						{if:is_closed_selected}
+							<option value="{open_status}" >Open</option>
+							<option value="{closed_status}" Selected>Closed</option>
+						{else:}
+							<option value="{open_status}" >Open</option>
+							<option value="{closed_status}">Closed</option>
+						{end:}
+					{end:}	
+				</select>
+			</div> <!-- End of filter item -->	
+			<!-- ************ megha 4.2.15 ********** -->
+			<div class="filter_item priority"> <!-- megha 13.2.15 -->
+			<div class="priority_filter">											
+					<label>Priority: </label>
+					<select name="issue_priority" >
+							{if:issue_priority_all}
+								<option value="0" selected="selected">All</option>
+							{else:}
+								<option value="0">All</option>	
+							{end:}
+							
+							
+							{if:issue_priority_low}
+								<option value="{low_priority}" selected="selected">Low</option>															
+							{else:}
+								<option value="{low_priority}">Low</option>
+							{end:}
+							{if:issue_priority_medium}
+								<option value="{normal_priority}" selected="selected">Medium</option>
+							{else:}
+								<option value="{normal_priority}" >Medium</option>
+							{end:}
+							{if:issue_priority_high}
+								<option value="{high_priority}" selected="selected">High</option>
+							{else:}
+								<option value="{high_priority}" >High</option>
+							{end:}
+					</select> 																																											
+			</div> <!-- priority_filter -->
+			</div>
+			
+			<!--  Abhilash 17-4-15 -->
+				<div class="filter_item">															
+					<label>From Date:</label>
+					<input type="text" style="width:140px;" maxlength="10" name="from_date" id="from_date" value="{from_date:h}" />																																									
+					<div class="help_text">(dd-mm-yy)</div>										
+				</div>
+				
+				<div class="filter_item">									
+					<label>To Date:</label>
+					<input type="text" style="width:140px;" maxlength="10"  name="to_date" id="to_date" value="{to_date:h}" />
+					<div class="help_text">(dd-mm-yy)</div>																																									
+				</div>
+				<!--  Abhilash 11-2-15 -->
+				
+			<!-- *********** end of priority filter *****************-->				
+			<input type="submit" class="blue_go_btn" value="Go" />
+			</form>
+		</div>	 <!-- End of report block -->
+	<div style="clear:both;"><span>&nbsp;</span></div>
+	{if:no_records}
+  		<div class="error_text">No issues found</div>			
+	{else:}		
+		<div align="right">
+			<span class="total_rec">Total: #{total_issues:h}</span>	
+			<!--  Abhilash 17-4-15 -->
+			{if:is_open_selected}
+				<input type="button" class="black_button" value="Export (PDF)" onclick=" {window.location = '{aurl(#/report/exportIssue#):h}/project_id/{selected_project_id}/status/{open_status}/priority/{export_arg_priority}/from_date/{export_from_date}/to_date/{export_to_date}'}" />
+			{else:}
+				{if:is_closed_selected}
+					<input type="button" class="black_button" value="Export (PDF)" onclick=" {window.location = '{aurl(#/report/exportIssue#):h}/project_id/{selected_project_id}/status/{closed_status}/priority/{export_arg_priority}/from_date/{export_from_date}/to_date/{export_to_date}'}" />
+				{else:}
+					<input type="button" class="black_button" value="Export (PDF)" onclick=" {window.location = '{aurl(#/report/exportIssue#):h}/project_id/{selected_project_id}/priority/{export_arg_priority}/from_date/{export_from_date}/to_date/{export_to_date}'}" />
+				{end:}
+			{end:}
+		</div>	
+		<div>
+			{foreach:issue_records,cnt1,issue_record} 
+				<div class="issue_list"> 
+					{if:issue_record.isOpen()}
+						<img src="{iurl(#open_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/issue/view#):h}/id/{issue_record.getId()}'" title="Open" class="status_icon" alt="issue_list_open_icon"  />
+					{end:}
+					{if:issue_record.isClosed()}
+						<img src="{iurl(#closed_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/issue/view#):h}/id/{issue_record.getId()}'" title="Closed" class="status_icon" alt="issue_list_closed_icon"/>
+					{end:}
+					{if:issue_record.isPromoted}
+						<div class="promo_icon"></div>
+					{end:}
+					<div class="issue_title">
+						<a href="{aurl(#/issue/view#):h}/id/{issue_record.getId()}" title="{issue_record.getTitle()} - {issue_record.getDescription()}">{issue_record.short_name:h}</a>
+					</div>
+					<div class="issue_priority"> <!-- megha 8.1.15 -->
+						<span class="{issue_record.getPriorityLabel():h}_priority"></span> <!-- megha 8.1.15 -->
+						<div class="clear_fix"></div>
+					</div><!-- megha 8.1.15 -->	
+					{if:issue_record.isBookmarked}
+						<div class="bookmarked"></div>
+		 			{else:}
+		 				<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/issue#)}/id/{issue_record.getId()}/from_page/report'"></div>	
+					{end:}					
+					<div class="issue_date">{issue_record.getStatusDateFormatted():h}</div>
+					<div class="issue_user"> By:&nbsp;{issue_record.getUserSigninId():h} </div><!-- megha 19.1.15-->
+					<div style="clear:both;"></div>
+				</div> <!-- end of task_list -->
+			{end:} <!-- end of forech issue_records -->
+		</div>
+	{end:}
+</div> <!-- end of export_issues -->

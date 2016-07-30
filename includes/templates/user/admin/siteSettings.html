@@ -1,0 +1,42 @@
+<div class="page_title">Site Configurations </div>
+<div class="configuration_block">
+	<form name="configuration_form" method="POST" action="{aurl(#/user/updateSiteSettings#)}" onsubmit="return tt.util.validateSettingsValues(this)" flexy:ignore>
+	`	<div class="column_one">
+			<div class="form_item">
+				<label for="from_email_address"><span>* </span>From Email Address:</label>
+				<input type="text" class="text_field" name="from_email_address"  id="from_email_address" maxlength="100" value="{from_email_id:h}"/>
+				 <div class="form_info_text">This must be a valid email address. Max. 100 characters.</div> 
+			</div>
+			<div class="form_item">
+			<label for="company_name"><span>* </span>Company Name:</label>
+			<input type="text" class="text_field" name="company_name"  maxlength="50" size="30" id="company_name"  value="{company_name:h}"/>
+			 <div class="form_info_text">Max. of 50 characters in length.</div> 
+			</div>			
+			<div class="form_item">
+			<label>&nbsp;</label>
+ 			<input type="submit" name="submit" value="Submit" class="blue_btn"/> &nbsp; <!-- megha 3.2.15 -->
+			<input type="reset" value="Reset" class="blue_btn" /><!-- megha 3.2.15 -->
+			</div>
+		</div> <!-- End of column one -->		
+		<div class="column_two admin_settings">
+			<div class="form_item">
+			<label for="attachment_types">Attachment File Types (extensions):</label>
+			<textarea cols="50" rows="4" name="attachment_types" id="attachment_types">{attachment_types:h} </textarea><!-- megha 1.1.15 -->
+			 <div class="form_info_text">Allowed upload file extensions; e.g. png,gif,xls,xlsx,csv,doc,pdf,docx. Leave it empty to allow only .PNG and .ZIP files.</div> 
+			</div>		
+			<div class="form_item">
+				<div class="checkbox">
+				{if:copy_mails_of_messages_to_administrator}
+					<input type="checkbox" name="copy_mails_of_messages_to_administrator" id="copy_mails_of_messages_to_administrator" checked="checked" class="copy_mail_check" />
+					Copy mails of project/task messages to Administrator
+				{else:}
+					<input type="checkbox" name="copy_mails_of_messages_to_administrator" id="copy_mails_of_messages_to_administrator" class="copy_mail_check" />
+					Copy mails of project/task messages to Administrator
+				{end:}
+				</div>
+				<div class="form_info_text"></div>
+			</div>		
+		</div>		
+		<div style="clear:both;">&nbsp;</div>	
+	</form>	
+</div> <!-- end of configuration_block -->

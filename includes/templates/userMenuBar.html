@@ -1,0 +1,70 @@
+<div class="menubar">
+		
+		
+		{if:dashboard}
+			<div class="menuSelected" title="Dashboard">
+				<div class="top_lt_corner"></div>
+				<div class="btm_lt_corner"> </div>
+				<a href="{aurl(#/dashboard/index#)}">Dashboard</a>
+			</div>
+		{else:}
+			<div class="dashboard_menu" title="Dashboard">
+			<div class="top_lt_corner"></div>
+			<div class="btm_lt_corner"> </div>
+				<a href="{aurl(#/dashboard/index#)}">Dashboard</a>
+			</div>
+		{end:}		
+		{if:projects}
+			<div class="menuSelected" title="Assigned Projects">
+				<a href="{aurl(#/project/index#)}">Projects</a>
+			</div>			
+		{else:}
+			<div class="menu" title="Assigned Projects">
+				<a href="{aurl(#/project/index#)}">Projects</a>
+			</div>
+		{end:}
+		{if:task_reports}
+			<div class="menuSelected" title="Task Reports">
+				<a href="{aurl(#/report/task#)}">Tasks</a>
+			</div>
+		{else:}
+			<div class="menu" title="Task Reports">
+				<a href="{aurl(#/report/task#)}">Tasks</a>
+			</div>
+		{end:}		
+		{if:issue_reports}
+			<div class="menuSelected" title="Issue Reports">
+				<a href="{aurl(#/report/issue#)}">Issues</a>
+			</div>
+		{else:}
+			<div class="menu" title="Issue Reports">
+				<a href="{aurl(#/report/issue#)}">Issues</a>
+			</div>
+		{end:}
+		{if:messages}
+			<div class="menuSelected" title="Messages">
+				<a href="{aurl(#/message/index#)}">Messages</a>
+			</div>
+		{else:}
+			<div class="menu" title="Messages">
+				<a href="{aurl(#/message/index#)}">Messages</a>
+			</div>
+		{end:}			
+		{if:bookmarks}
+			<div class="menuSelected_fav" title="Favorites">
+				<div class="top_rt_corner"></div>
+				<div class="btm_rt_corner"> </div>
+				<a href="{aurl(#/bookmark/index#)}">Favorites</a>
+			</div>
+						
+		{else:}
+			<div class="menu_fav" title="Favorites">
+				<div class="top_rt_corner"></div>
+				<div class="btm_rt_corner"> </div>
+				<a href="{aurl(#/bookmark/index#)}">Favorites</a>
+			</div>
+						
+		{end:}
+		
+			
+</div>	<!-- end of menubar -->

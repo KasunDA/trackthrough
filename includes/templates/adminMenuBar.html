@@ -1,0 +1,77 @@
+<div class="menubar" id="admin_menubar">
+	
+	{if:dashboard}
+			<div class="menuSelected" title="Dashboard">
+				<div class="admin_top_lt_corner"></div>
+				<div class="admin_btm_lt_corner"> </div>
+				
+				<a href="{aurl(#/dashboard/index#)}">Dashboard</a>
+			</div>
+		{else:}
+			<div class="dashboard_menu" title="Dashboard">
+				<div class="admin_top_lt_corner"></div>
+				<div class="admin_btm_lt_corner"> </div>
+				
+				<a href="{aurl(#/dashboard/index#)}">Dashboard</a>
+			</div>
+		{end:}				
+		{if:projects}
+			<div class="menuSelected" title="Manage Projects">
+				<a href="{aurl(#/project/index#)}">Projects</a>
+			</div>			
+		{else:}
+			<div class="menu" title="Manage Projects">
+				<a href="{aurl(#/project/index#)}">Projects</a>
+			</div>
+		{end:}
+		{if:task_reports}
+			<div class="menuSelected" title="Task Reports">
+				<a href="{aurl(#/report/task#)}">Tasks</a>
+			</div>
+		{else:}
+			<div class="menu" title="Task Reports">
+				<a href="{aurl(#/report/task#)}">Tasks</a>
+			</div>
+		{end:}		
+		{if:issue_reports}
+			<div class="menuSelected" title="Issue Reports">
+				<a href="{aurl(#/report/issue#)}">Issues</a>
+			</div>
+		{else:}
+			<div class="menu" title="Issue Reports">
+				<a href="{aurl(#/report/issue#)}">Issues</a>
+			</div>
+		{end:}
+			{if:messages}
+			<div class="menuSelected" title="Messages">
+				<a href="{aurl(#/message/index#)}">Messages</a>
+			</div>
+		{else:}
+			<div class="menu" title="Messages">
+				<a href="{aurl(#/message/index#)}">Messages</a>
+			</div>
+		{end:}				
+		
+			
+		
+		<div class="more_menus_block" onmouseover="tt.util.moremenus('more_menus','right_arrow','{iurl(##)}');" onmouseout="tt.util.hidemoremenus('more_menus','right_arrow','{iurl(##)}');">
+					<span id="more_menu">More</span>
+					<span id="arrow_img2"> 
+								<img src="{iurl(#right_arrow1.png#)}" width="12" height="11" alt="" title="More">
+					</span>
+					<span id="more_menus" style="padding-top:3px;">
+							
+							<a href="{aurl(#/bookmark/index#)}" title="Favorites">Favorites</a>
+							<a href="{aurl(#/user/indexUsers#)}" title="Users">Users</a>
+							<div class="last_menu" onclick="window.location='{aurl(#/user/indexSiteSettings#)}'" title="Site Settings">Site Settings</div>
+							<div class="clear_fix"></div>
+							
+					</span>
+					
+					
+			</div>	
+	
+			<div class="top_rt_corner"> </div>
+			<div class="btm_rt_corner"> </div>						
+		
+</div>	<!-- end of menubar -->

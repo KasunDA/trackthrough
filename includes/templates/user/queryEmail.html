@@ -1,0 +1,19 @@
+	<div class="cont_info_block">Please input the email address provided during registration.</div>	
+		<div class="forgot_password_blk">
+			<div class="taskbar_top_lt_corner"></div>
+			<div class="taskbar_top_rt_corner"></div>
+			<div class="pie_block_title"><div class="pie_block_title_left"> Retrieve Password</div></div>	
+			
+		   	<form name="password_retrieval_form" class="fp_blk" action="{aurl(#/user/retrievePassword#)}" method="POST" onsubmit="return tt.util.validateEmailInputs(this)" flexy:ignore>
+					<div class="form_item">
+						<label for="email"><span>*</span> Email Address:</label> <br />
+						<input type="text" id="email" name="email" class="text_field" value="{user.getEmail():h}" />
+					</div>
+					<div class="form_item">
+						
+						<input type="submit" value="Submit" class="fbutton"/>
+						<input type="reset" value="Reset" class="fbutton" />			
+				 	</div>	
+			
+			 </form>
+	  </div>

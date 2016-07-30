@@ -1,0 +1,97 @@
+	<div class="tab_block">		
+		<div class="tab_button_selected" id='profile_tab' onclick="tt.util.showProfileDetails('user_profile');">User Profile</div>
+		<div class="tab_button" id='password_tab' onclick="tt.util.showProfileDetails('change_password');">Change Password</div>
+		<div style="clear:both;"></div>
+	</div>	
+<div class="configuration_block">	
+	<div id="user_profile">
+		<form enctype="multipart/form-data" name="profile_form" action="{aurl(#/user/updateProfile#)}/type/{type:h}" method="POST" onsubmit="return tt.util.validateProfileInputs(this)" flexy:ignore>
+				<div class="column_one">
+					<div class="form_item">
+						<label for="first_name"><span>*</span> First Name:</label>
+						<input type="text" class="text_field_med" maxlength="16" tabindex="1" name="first_name" id="first_name"  value="{user.getFirstName():h}" />
+						<div class="form_info_text">Max. 16 characters.</div>
+					</div>	
+					<br />
+					<div class="form_item">
+						<label for="signin_id"><span>*</span> Login Name:</label>
+						<input type="text" class="text_field_small" maxlength="8" tabindex="3"  name="signin_id" id="signin_id" value="{user.getSigninId():h}"/>
+						<div class="form_info_text">Login Name must be at least 3 characters in length. Max. 8 characters.</div>
+					</div>
+					
+					<br/><br/><br/><br/><br/><br/> <!-- to move buttons down. megha 5.1.15 --> 
+					<div class="form_item">
+						<label for="">&nbsp;</label>
+						<input type="submit" tabindex="5" value="Submit" class="blue_btn"/> &nbsp; <!-- megha 5.1.15 -->
+						<input type="reset" value="Reset" tabindex="6" class="blue_btn" /> <!-- megha 5.1.15 -->
+					</div>
+				
+				</div> <!-- End of column one -->
+				
+				<div class="column_two">
+					<div class="form_item">
+						<label for="last_name"> Last Name:</label>
+						<input type="text" class="text_field_med" maxlength="16" tabindex="2" name="last_name" id="last_name"  value="{user.getLastName():h}" />
+						<div class="form_info_text">Max. 16 characters.</div>
+					</div>
+					<div class="form_item">
+						<label for="email"><span>*</span> Email Address:</label>
+						<input type="text" class="text_field" maxlength="100" name="email" tabindex="4" id="email" size="30" value="{user.getEmail():h}" />
+						<div class="form_info_text">This must be a valid email address. Max. 100 characters.</div>
+					</div>
+					
+					
+					
+					<div class="form_item">
+						<label>Avatar:</label>
+						<img src="{aurl(#/user/icon#):h}/id/{user.getId():h}" width="41" height="41" alt="profile_avatar" class="msg_sender_icon" />
+						<br/>
+						<input type="file" id="upload_icon" size="20" name="uploaded_icon" />
+						<div class="form_info_text">Max. Upload size 1M; Recommended dimensions (41px X 41px); Allowed formats (png,jpg,gif).</div>
+					</div>	
+					
+				</div> <!-- End of column two -->
+				<div style="clear:both;"></div> 			 			
+										
+									
+			
+				
+			
+		</form>
+	</div> <!-- end of user_profile -->						
+	<div id="change_password">
+		<form name="profile_form" action="{aurl(#/user/updatePassword#)}/type/{type:h}" method="POST" onsubmit="return tt.util.validatePasswordInputs(this)" flexy:ignore> 
+			<div class="form_item">
+				<label for="password_old"><span>*</span> Old Password:</label>
+				<input type="password" class="text_field" maxlength="15" name="password_old" id="password_old" size="35" />
+				<div class="form_info_text">Type your current password.</div>
+			</div>
+			<div class="form_item">
+				<label for="password_new"><span>*</span> New Password:</label>
+				<input type="password" class="text_field" maxlength="15" name="password_new" id="password_new" size="35" />
+				<div class="form_info_text">New password must be at least 5 characters in length.</div>
+			</div>
+			<div class="form_item">
+				<label for="password_new_repeat"><span>*</span> Retype New Password:</label>
+				<input type="password" class="text_field" name="password_new_repeat" id="password_new_repeat" size="35" />
+				<div class="form_info_text">Re-enter the new password.</div>
+			</div>
+			<div class="form_item">
+				<label for="">&nbsp;</label>
+				<input type="submit" value="Submit" class="blue_btn"/> &nbsp; <!-- megha 5.1.15 -->
+				<input type="reset" value="Reset" class="blue_btn" /> <!-- megha 5.1.15 -->		
+			 </div>	
+		</form>			
+	</div> <!-- end of change_password -->
+	<div style="clear:both;"></div>
+</div>
+{if:is_profile_tab} 
+	{java_script_start:h}
+		tt.util.showProfileDetails('profile_tab')
+	{java_script_end:h}
+{end:} 
+{if:is_password_tab} 
+	{java_script_start:h}
+		tt.util.showProfileDetails('password_tab')
+	{java_script_end:h}
+{end:}

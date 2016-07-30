@@ -1,0 +1,131 @@
+/**************************** Common ********************************/
+
+table th{background:#8a8a8a;}
+table td{background:#ECECEC;}
+.theme_color_block{border:1px solid #c0c0c0; }
+
+
+
+
+.user_settings_block{/*border:1px solid #c0c0c0; */ /* reshma 17.1.15 */ background:url(profile_drop_menu.png) no-repeat; height:38px;  width:162px;  }
+
+ 
+
+
+/**************************** Header Part ***************************/
+.header{background:#EBE7FF; border:1px solid #DFDFDF; width:989px; margin-left:-1px; /*reshma 19.1.15*/}
+
+/* reshma 19.1.15 */
+.header_logo{ background:url(logo.png) no-repeat; width:30px; height:30px;}
+.last_menu { background:url(block7.gif) no-repeat; /*width:91px; height:33px;*/ /*margin-left:-2px; */ width:83px; height:33px; position:absolute; top:68px; left:0px; cursor:pointer;  line-height:2.6; text-align:left; padding-left:8px; margin-left:-1px; border-top:1px solid #FFFFFF;  border-bottom:none; }
+.last_menu:hover{  background:url('block7_hover.png') no-repeat; }
+.last_menu:hover { color:#000000;}
+.blue_go_btn { border:none; background:url('go_btn.png') no-repeat;   }/* megha 27.2.15*/
+.search_btn { background:url(search_go_btn.png) no-repeat; width:49px; height:36px; border:none; color:#FFFFFF; }/* megha 6.4.15*/
+
+/************************** Menubar Part ****************************/
+.menu a{background:#C25BE3;}
+.menu a:hover , .dashboard_menu a:hover {background:#6DD9FF; color:#000000; /* reshma 19.1.15*/}
+
+/* reshma 17.1.15 */
+.admin_top_lt_corner { background:url(dash_menu_top_lt.gif) no-repeat; width:13px; height:13px; margin-top:1px; margin-left:-2px;}
+.admin_btm_lt_corner { background:url(dash_menu_btm_lt.gif) no-repeat; width:13px; height:13px; margin-left:-1px;}
+.menu a { color:#FFFFFF;}
+.btm_rt_corner{background:url(menubar_btm_rt.gif) no-repeat; width:13px; height:13px; margin-left:-2px; }
+.top_rt_corner{background:url(menubar_top_rt.gif) no-repeat; width:13px; height:13px; margin-left:-2px;  }
+#admin_menubar { background:#C25BE3;}
+#more_menu { color:#FFFFFF; }
+#more_menus { background:#C25BE3; color:#FFFFFF; margin-left:-2px;   }
+#more_menus a { background:#C25BE3; color:#FFFFFF;  }
+#more_menus a:hover { background:#6DD9FF; color:#000000;   }
+.dashboard_menu a { background:#C25BE3; color:#FFFFFF;   }
+.dashboard_menu .admin_top_lt_corner , .dashboard_menu .top_lt_corner { background:url(admin_menubar_top_lt1.gif) no-repeat; width:13px; height:13px; margin-left:-1px; margin-top:0px;  }
+.dashboard_menu .admin_btm_lt_corner , .dashboard_menu .btm_lt_corner { background:url(admin_menubar_btm_lt1.gif) no-repeat; width:13px; height:13px; margin-left:-1px; margin-top:-1px; }
+.dashboard_menu:hover .admin_top_lt_corner , .dashboard_menu:hover .top_lt_corner { background:url(dash_menu_top_lt.gif) no-repeat; width:13px; height:13px; margin-top:2px; margin-left:-2px; }
+.dashboard_menu:hover .admin_btm_lt_corner , .dashboard_menu:hover .btm_lt_corner  {background:url(dash_menu_btm_lt.gif) no-repeat; width:13px; height:13px; margin-top:0px;}
+
+.theme_color_block { background:url(theme_color_block.png) no-repeat; width:68px; height:26px; border:none; /* theme block*/} 
+
+
+
+/* for dashboard corner hover 29.1.15  */
+.dashboard_menu .admin_top_lt_corner:hover , .dashboard_menu .top_lt_corner:hover { background:url(dashboard_hover_block_none.png) no-repeat; width:81px; height:38px; margin-left:3px; margin-top:6px;   }
+.dashboard_menu .admin_btm_lt_corner:hover , .dashboard_menu .btm_lt_corner:hover { background:url(dashboard_hover_block_none.png) no-repeat; width:81px; height:38px; margin-left:3px; margin-top:-30px; }
+
+/* .dashboard_menu_hover a { background:url(dashboard_hover_block.png) no-repeat; width:81px; height:38px;  color:#000000; text-align:center; vertical-align:middle; z-index:500; margin-top:-38px;}*/
+
+
+/*.dashboard_menu .top_lt_corner:hover  {background:url(admin_menubar_top_lt1.png) no-repeat; width:13px; height:13px; margin-left:-1px; margin-top:2px;}
+.dashboard_menu .btm_lt_corner:hover { background:url(admin_menubar_btm_lt1.png) no-repeat; width:13px; height:13px; margin-left:-1px; margin-top:-1px; }*/
+
+.menu_fav , .menu_fav a{ background:#C25BE3; color:#FFFFFF; border:none;  }
+.menu_fav a:hover {background:#6DD9FF; color:#000000; border-right:#6DD9FF; }
+.menu_fav:hover .top_rt_corner { background:url(top_rt_corner.gif) no-repeat; width:13px; height:13px; margin-top:2px; margin-left:-6px; }
+.menu_fav:hover .btm_rt_corner { background:url(btm_rt_corner.gif) no-repeat; width:13px; height:13px; margin-top:-3px; margin-left:-4px; }
+.menu_fav .top_rt_corner, .menu_fav .btm_rt_corner { margin-left:-3px;}
+
+.menu_fav .top_rt_corner:hover { background:url(fav_hover_block_none_new.png) no-repeat; width:81px; height:38px; margin-left:-77px; margin-top:5px;}
+.menu_fav .btm_rt_corner:hover { background:url(fav_hover_block_none_new.png) no-repeat; width:81px; height:38px; margin-left:-76px; margin-top:-31px;}
+
+.menuSelected .btm_lt_corner { background:url(dash_menu_btm_lt.gif) no-repeat; width:13px; height:13px; margin-left:-1px;}
+.menuSelected .top_lt_corner { background:url(dash_menu_top_lt.gif) no-repeat; width:13px; height:13px; margin-left:-2px; margin-top:1px;}
+.menuSelected_fav a { background:#6DD9FF; color:#000000; }
+.menuSelected_fav .top_rt_corner{ background:url(fav_top_rt1.gif) no-repeat; width:13px; height:13px; margin-top:1px; margin-left:-5px; }
+.menuSelected_fav .btm_rt_corner{ background:url(fav_btm_rt.gif) no-repeat; width:13px; height:13px; margin-top:-1px; margin-left:-4px;}
+.dd_last_mnu:hover { background:url('dd_mnu_l_hover.png') no-repeat;}  /* Abhilash 7.11.14 */
+.dd_last_mnu { background:url('dd_mnu_l1.png') no-repeat; width:160px; cursor:pointer; height:33px; float:left; z-index:10000; text-align:left; padding-left:10px; border-top:1px solid #C25BE3; line-height:2.2;} /* megha 6.1.15 */
+.menuSelected a {background:#6DD9FF; color:#000000; }
+#more_theme_colors{  border:1px solid #C25BE3; border-top:none; }
+.user_settings_block a{ border:1px solid #C25BE3; border-top:1px solid #C25BE3;  border-bottom:none; text-align:left; float:left; width:160px; padding:3px 0px 3px 8px;}
+#more_user_settings { position:absolute; margin-top:-3px;  width:168px; border-top:none; top:35px; left:0px;}
+#more_menus { background:#C25BE3;  border:1px solid #C25BE3;border-top:none;  }
+#more_menus a { border-top:1px solid #FFFFFF;}
+#more_menus a:hover { background:#6DD9FF; }
+
+/*************************** Content Part ***************************/
+.content_header_block{background:#EFEFEF;}
+
+
+/************************ Registration Block ************************/
+.registration_block{background:#FAFAFA; border:1px solid #EFEFEF;}
+
+
+/************************** Footer Part *****************************/
+.footer{background:#8F7CE1;}
+
+
+/*************************** Views Page *****************************/
+.project_desc_block .message_block{border:1px solid #f0f0f0; border-bottom-color:#a1a1a1;}
+
+
+/************************* Settings Block ***************************/
+.configuration_block{background:#FAFAFA; border:1px solid #EFEFEF;}
+
+
+/************************ Profile Block *****************************/
+.profile_cont{background:#FAFAFA; border:1px solid #EFEFEF;}
+
+
+/************************** Task copy page ****************************/
+.copy_form_block{background:#FAFAFA; border:1px solid #EFEFEF;}
+
+
+/************************** Dashboard ********************************/
+.dashboard .block_title {background:#F7F1FE;}
+.taskbar_top_lt_corner, .taskbar_top_lt_corner2 { background: url("dash_top_lt_cnr.png") no-repeat scroll 0% 0% transparent; }
+.taskbar_top_rt_corner, .taskbar_top_rt_corner2 { background: url("dash_top_rt_cnr.png") no-repeat scroll 0% 0% transparent; }
+/* reshma 21.1.15 */
+.pie_block_title { background:#F7F1FE;}
+.more_button a { background:url(see_more1.png) no-repeat; width:66px; height:28px;}
+.new_project{  background:url(new_proj.png) no-repeat; width:76px; height:31px;}
+.blue_btn , .review_blue_btn , .close_blue_btn , .fbutton , .button{ background:url(submit_button.png) no-repeat; width:73px; height:31px; color:#FFFFFF; }
+.review_blue_btn{ background:url(review_submit_button.png) no-repeat; width:120px; }
+.close_blue_btn{ background:url(close_button.png) no-repeat; width:90px; }
+
+.dashboard .project_top_right_corner { background: url("project_top_right_corner.png") ; }
+
+/***************************** Users page ************************************************/
+
+table th {
+    background: none repeat scroll 0% 0% #000000;
+}

@@ -1,0 +1,87 @@
+<div class="export_issues">	
+		<div class="page_title">Issue Report</div>		
+		<div class="report_filter_block">	
+			<form method="post" name="report_filter" action="{aurl(#/report/setIssueReportSettings/#)}" flexy:ignore>	
+			<div class="filter_item">
+				<label> Select project</label>
+				<select name="project_id" class="pro_sel" flexy:ignore>				
+							{foreach:project_filter_records,cnt,project_record}
+								{if:project_record.isSelectedProject(project_record,selected_project_id)}
+									<option value="{project_record.getId()}" selected>{project_record.getName()}</option>
+								{else:}
+									<option value="{project_record.getId()}">{project_record.getName()}</option>
+								{end:}					
+							{end:}						
+				</select>
+			</div> <!-- End of filter item -->			
+			<div class="filter_item" style="margin-right:0px;">
+				<label>Select status: </label>
+				<select name="issue_status" flexy:ignore>
+					<option value="" Selected>All</option>
+					{if:is_open_selected}
+						<option value="{open_status}" Selected>Open</option>
+						<option value="{closed_status}">Closed</option>
+					{else:}
+						{if:is_closed_selected}
+							<option value="{open_status}" >Open</option>
+							<option value="{closed_status}" Selected>Closed</option>
+						{else:}
+							<option value="{open_status}" >Open</option>
+							<option value="{closed_status}">Closed</option>
+						{end:}
+					{end:}	
+				</select>
+			</div> <!-- End of filter item -->					
+			<input type="submit" class="blue_go_btn" value="Go" />
+			</form>
+		</div>	 <!-- End of report block -->
+	<div style="clear:both;"><span>&nbsp;</span></div>
+	{if:no_records}
+  		<div class="error_text">No issues found</div>			
+	{else:}		
+		<div align="right">
+			<span class="total_rec">Total: #{total_issues:h}</span>	
+			{if:is_open_selected}
+				<input type="button" class="black_button" value="Export (PDF)" onclick=" {window.location = '{aurl(#/report/exportIssue#):h}/project_id/{selected_project_id}/status/{open_status}'}" />
+			{else:}
+				{if:is_closed_selected}
+					<input type="button" class="black_button" value="Export (PDF)" onclick=" {window.location = '{aurl(#/report/exportIssue#):h}/project_id/{selected_project_id}/status/{closed_status}'}" />
+				{else:}
+					<input type="button" class="black_button" value="Export (PDF)" onclick=" {window.location = '{aurl(#/report/exportIssue#):h}/project_id/{selected_project_id}'}" />
+				{end:}
+			{end:}
+		</div>	
+		<div>
+			{foreach:issue_records,cnt1,issue_record} 
+				<div class="issue_list"> 
+					{if:issue_record.isOpen()}
+						<img src="{iurl(#open_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/issue/view#):h}/id/{issue_record.getId()}'" title="Open" class="status_icon" alt="issue_list_open_icon"  />
+					{end:}
+					{if:issue_record.isClosed()}
+						<img src="{iurl(#closed_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/issue/view#):h}/id/{issue_record.getId()}'" title="Closed" class="status_icon" alt="issue_list_closed_icon"/>
+					{end:}
+					{if:issue_record.isPromoted}
+						<div class="promo_icon"></div>
+					{end:}
+					<div class="issue_title">
+						<a href="{aurl(#/issue/view#):h}/id/{issue_record.getId()}" title="{issue_record.getTitle()} - {issue_record.getDescription()}">{issue_record.short_name:h}</a>
+					</div>
+					<div class="issue_priority"> <!-- megha 8.1.15 -->
+						<span class="{issue_record.getPriorityLabel():h}_priority"></span> <!-- megha 8.1.15 -->
+						<div class="clear_fix"></div>
+					</div><!-- megha 8.1.15 -->	
+					{if:issue_record.isBookmarked}
+						<div class="bookmarked"></div>
+		 			{else:}
+		 				<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/issue#)}/id/{issue_record.getId()}/from_page/report'"></div>	
+					{end:}					
+					<div class="issue_date">{issue_record.getStatusDateFormatted():h}</div>
+					<div class="issue_user">
+						<img src="{iurl(#report.png#)}" align="absmiddle" width="16" height="16" alt="{issue_record.getUserSigninId():h}" title="{issue_record.getUserSigninId():h}"/> &nbsp;{issue_record.getUserSigninId():h} <!-- megha 27.12.14-->
+					</div>						
+					<div style="clear:both;"></div>
+				</div> <!-- end of task_list -->
+			{end:} <!-- end of forech issue_records -->
+		</div>
+	{end:}
+</div> <!-- end of export_issues -->

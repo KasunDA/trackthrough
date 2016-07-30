@@ -1,0 +1,276 @@
+<div class="task_report"> <!-- added new class megha - 29.12.14 -->
+	<div class="page_title">Task Report</div>	
+	{if:!isAdmin}
+	<div style="clear:both;"></div>
+		<div class="tab_block">	
+			{if:my_report}	
+				<a class="tab_button_selected">Assigned to me</a>
+			{else:}	
+				<a href="{aurl(#/report/task#)}/report_type/my_report" class="tab_button">Assigned to me</a>
+			{end:}
+			{if:others_report}
+				<a class="tab_button_selected">Assigned to others</a>
+			{else:}
+				<a href="{aurl(#/report/task#)}/report_type/others_report" class="tab_button">Assigned to others</a>
+			{end:}	
+			{if:open_report}
+				<a class="tab_button_selected">Open tasks</a>
+			{else:}	
+				<a href="{aurl(#/report/task#)}/report_type/open_report" class="tab_button">Open tasks</a>
+			{end:}
+			<div style="clear:both;"></div>
+		</div>
+	{end:}
+	<div class="report_filter_block">		
+	   	<form method="post" name="report_filter" action="{aurl(#/report/setTaskReportSettings/#)}" style="visibility:{hide_others_report:h};" flexy:ignore>	
+	   			{if:show_user_filter}				
+					<div class="filter_item">
+						<label>User:</label>	<!-- megha 4.2.15 -->									
+						<select name="user_filter_id" id="user_filter_id">
+							{if:!isAdmin}					
+								<option value="0">Any</option>
+							{end:}
+							{foreach:filter_users,cnt,filter_user}
+								{if:filter_user.isSelectedTeam(filter_user,selected_user_filter)}
+									<option value="{filter_user.getId()}" selected>{filter_user.getSigninId()}</option>
+								{else:}
+									<option value="{filter_user.getId()}">{filter_user.getSigninId()}</option>
+								{end:}
+							{end:}
+						</select>	
+						<div class="help_text">Select the assignee - the user to whom the task has been assigned</div>					
+					</div>										
+				{end:}
+				{if:!open_report}
+				<div class="filter_item"> 
+					<label>Project:</label>  <!-- megha 4.2.15 -->					
+					<select name="project_id" class="pro_sel" flexy:ignore>
+						{if:is_project_all}				
+							<option value="0" selected="selected">{all_type_label:h}</option>
+						{else:}
+							<option value="0" >{all_type_label:h}</option>
+						{end:}						
+						{foreach:project_records,cnt,project_record}
+							{if:project_record.isSelectedProject(project_record,selected_project_id)}
+								<option value="{project_record.getId()}" selected>{project_record.getName()}</option>
+							{else:}
+								<option value="{project_record.getId()}">{project_record.getName()}</option>
+							{end:}					
+						{end:}						
+					</select>
+					
+				</div>
+					
+				{else:}
+					<div class="open_tab">
+						<label>Project:</label> <!-- megha 4.2.15 -->
+						<select name="project_id" class="pro_sel" flexy:ignore>
+						{if:is_project_all}				
+							<option value="0" selected="selected">{all_type_label:h}</option>
+						{else:}
+							<option value="0" >{all_type_label:h}</option>
+						{end:}						
+						{foreach:project_records,cnt,project_record}
+							{if:project_record.isSelectedProject(project_record,selected_project_id)}
+								<option value="{project_record.getId()}" selected>{project_record.getName()}</option>
+							{else:}
+								<option value="{project_record.getId()}">{project_record.getName()}</option>
+							{end:}					
+						{end:}						
+					</select>
+					
+					<!-- ************ megha 4.2.15 ********** -->
+				
+				
+				</div>
+				<!-- *********** end of priority filter *****************-->
+				{end:}		
+			{if:!open_report}
+				<div class="filter_item" style="margin-right:0px;">
+		 			<label>Status:</label> <!-- megha 4.2.15 -->
+					<select name="task_status">					
+						{if:is_task_all}				
+							<option value="0" selected="selected">{all_type_label:h}</option>
+						{else:}
+							<option value="0" >{all_type_label:h}</option>
+						{end:}
+						{if:isAdmin}
+							{if:is_task_open}
+								<option value="{task_open}" selected="selected">Open</option>
+							{else:}
+								<option value="{task_open}">Open</option>
+							{end:}
+						{end:}	
+						{if:is_task_inprogress}				
+							<option value="{task_inprogress}" selected="selected">In progress</option>
+						{else:}
+							<option value="{task_inprogress}">In progress</option>
+						{end:}
+						{if:is_task_review}				
+							<option value="{task_review}" selected="selected">Review Pending</option>
+						{else:}
+							<option value="{task_review}">Review Pending</option>
+						{end:}
+						{if:is_task_closed}				
+							<option value="{task_closed}" selected="selected">Closed</option>
+						{else:}
+							<option value="{task_closed}">Closed</option>
+						{end:}		
+					</select>
+					
+				</div>	
+				
+				<!-- *********** end of priority filter *****************-->
+			{end:}
+			<!-- ************ megha 4.2.15 ********** -->
+				<div class="filter_item">
+				<div class="priority_filter"> 										
+					<label>Priority:</label>
+						<select name="task_priority" >
+							{if:task_priority_all}
+								<option value="0" selected="selected">All</option>
+							{else:}
+								<option value="0">All</option>	
+							{end:}
+							{if:task_priority_low}
+								<option value="{low_priority}" selected="selected">Low</option>															
+							{else:}
+								<option value="{low_priority}">Low</option>
+							{end:}
+							{if:task_priority_medium}
+								<option value="{normal_priority}" selected="selected">Medium</option>
+							{else:}
+								<option value="{normal_priority}" >Medium</option>
+							{end:}
+							{if:task_priority_high}
+								<option value="{high_priority}" selected="selected">High</option>
+							{else:}
+								<option value="{high_priority}" >High</option>
+							{end:}
+							
+							
+						</select> 																																											
+															
+				</div> <!-- priority_filter -->
+				</div>
+				
+				<!--  Abhilash 11-2-15 -->
+				<div class="filter_item">															
+					<label>From Date:</label>
+					<input type="text" style="width:140px;" name="from_date" maxlength="10" id="from_date" value="{from_date:h}" />																																								
+					<div class="help_text">(dd-mm-yy)</div>										
+				</div>
+				
+				<div class="filter_item">									
+					<label>To Date:</label>
+					<input type="text" style="width:140px;"  name="to_date" maxlength="10" id="to_date" value="{to_date:h}" />
+					<div class="help_text">(dd-mm-yy)</div>																																									
+				</div>
+				<!--  Abhilash 11-2-15 -->
+				
+				
+			<input type="hidden" name="report_type" value="{report_type:h}" />					
+			<input type="submit" class="blue_go_btn" value="Go" />		
+		</form> 
+	</div> <!-- end of report_filter_block -->
+	
+	<span>&nbsp;</span>
+<div class="reports">
+	{if:no_task_records}		
+		<div class="error_text">No task records found</div>	
+	{else:}
+		<form name="report_form" method="post" action="{aurl(#/report/exportTask/#):h}project_id/{selected_project_id}" flexy:ignore>
+		<div align="right">
+			
+			{if:selected_project_id}
+			
+				<input type="submit" class="black_button" value="Export (PDF)" onclick="" />
+			
+			{end:}
+			<span class="total_rec">Total:&nbsp;#{total_tasks:h}</span><!-- megha 9.3.15 -->
+			<div class="clear_fix"></div><!-- megha 9.3.15 -->
+		</div>	
+		
+		{foreach:task_records,cnt,task_record}
+			<div class="reports_block">
+				{if:task_record.view_only_for_self}
+				<div class="task_title view_only">
+					{if:task_record.getIsViewOnly()}
+					<img src="{iurl(#viewonly_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" title="View Only" alt="task_viewonly_status_icon" class="status_icon" flexy:ignore/> <!-- megha 2.2.15 -->
+				{else:}
+					{if:task_record.getIsOpen()}
+						<img src="{iurl(#open_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" title="Open" class="status_icon" alt="task_open_status_icon" flexy:ignore/>
+					{end:}
+					{if:task_record.getIsInProgress()}
+						<img src="{iurl(#inprogress_status.png#)}" width="12" height="12" title="In progress" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" class="status_icon" alt="task_inprogress_status_icon"  />
+					{end:}
+					{if:task_record.getIsInReviewStatus()}
+						<img src="{iurl(#pending_status.png#)}" width="12" height="12" title="Review Pending" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" class="status_icon" alt="task_pending_status_icon"/>
+					{end:}
+					{if:task_record.getIsClosed()}
+						<img src="{iurl(#closed_status.png#)}" width="12" height="12" title="Closed" class="status_icon" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" alt="task_closed_status_icon"  />
+					{end:}
+				{end:} <!--  end of else view only -->
+				{if:task_record.isPromoted}
+					<div class="promo_icon"></div>
+				{end:}				
+				<a href="{aurl(#/task/view#):h}/id/{task_record.getId()}" title="{task_record.getName()} - {task_record.getDescription()}">{task_record.short_name:h}</a>
+				</div>
+				<div class="task_priority"> <!-- megha 8.1.15 -->
+					<span class="{task_record.getPriorityLabel():h}_priority"></span> <!-- megha 8.1.15 -->
+				</div><!-- megha 24.1.15 -->
+			<div class="task_date">
+				{task_record.getStatusDateFormatted():h}			</div>
+			{else:}
+				<div class="task_title">
+				{if:task_record.getIsViewOnly()}
+					<img src="{iurl(#viewonly_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" title="View Only" class="status_icon" alt="task_title_icon" flexy:ignore/> <!-- megha 2.2.15 -->
+				{else:}
+					{if:task_record.getIsOpen()}
+						<img src="{iurl(#open_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" title="Open" class="status_icon" alt="task_title_icon" flexy:ignore/>
+					{end:}
+					{if:task_record.getIsInProgress()}
+						<img src="{iurl(#inprogress_status.png#)}" width="12" height="12" title="In progress" alt="task_title_icon" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" class="status_icon"  />
+					{end:}
+					{if:task_record.getIsInReviewStatus()}
+						<img src="{iurl(#pending_status.png#)}" width="12" height="12" title="Review Pending" alt="task_title_icon" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" class="status_icon"/>
+					{end:}
+					{if:task_record.getIsClosed()}
+						<img src="{iurl(#closed_status.png#)}" width="12" height="12" title="Closed" class="status_icon" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" alt="task_title_icon"  />
+					{end:}
+				{end:} <!--  end of else view only -->
+				{if:task_record.isPromoted}
+					<div class="promo_icon"></div>
+				{end:}	
+				<input type="hidden" name="exportable_tasks[]" value="{task_record.getId()}" flexy:ignore/>			
+				<a href="{aurl(#/task/view#):h}/id/{task_record.getId()}" title="{task_record.getName()} - {task_record.getDescription()}">{task_record.short_name:h}</a>
+			</div>
+			<div class="task_priority"> <!-- megha 8.1.15 -->
+				<span class="{task_record.getPriorityLabel():h}_priority"></span> <!-- megha 8.1.15 -->
+			</div><!-- megha 8.1.15 -->
+			<div class="task_date">
+				{task_record.getStatusDateFormatted():h}
+				
+			</div>
+				{end:}
+				{if:task_record.isBookmarked}
+					<div class="bookmarked"></div>
+			 	{else:}
+			 		<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/task#)}/id/{task_record.getId()}/from_page/report'"></div>	
+				{end:} 				
+				<div class="progress_bar" title="{task_record.getProgress()}%"><div class="progress_line" style="width:{task_record.getProgress()}%;"> </div></div>
+				<div class="info_text" title="{task_record.getTeamSigninId()}">
+				<img src ="{iurl(#user.png#)}" width="18" height="15" title="{task_record.getTeamSigninId()}" align="absmiddle" alt="info_text_icon" />&nbsp; {task_record.getSingleTeamName():h} {if:task_record.hasMultipleTeam()} ...{end:}</div>
+				<div style="clear:both;"></div>				
+				<div class="project_link">
+					<img src="{aurl(#/project/icon#):h}/id/{task_record.project_id}" width="12" height="14" title="{task_record.project_name} - {task_record.project_desc}" class="project_icon" onclick="window.location='{aurl(#/project/view#):h}/id/{task_record.project_id}'" alt="project_link_icon" /> <!-- megha 5.1.15 -->
+					<a href="{aurl(#/project/view#):h}/id/{task_record.project_id}" title="{task_record.project_name} - {task_record.project_desc}">{task_record.project_short_name:h}</a>
+				</div> <!-- end of project_link -->
+				<div style="clear:both;"></div>				
+			</div> <!-- end of reports block -->
+		{end:}
+		</form>	
+	{end:}
+</div>	
+<div style="clear:both;"></div>		
+</div>							

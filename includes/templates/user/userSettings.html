@@ -1,0 +1,281 @@
+<div class="page_title">My Preferences</div>
+<div class="configuration_block user_settings_blk">
+	<form name="user_configuration_form" method="POST" action="{aurl(#/user/updateUserSettings#)}" onsubmit="return tt.util.validateUserSettingsValues(this)" flexy:ignore  > 
+		<div class="form_item">
+			<label>&nbsp;</label>
+			<div class="page_title">General:</div>	
+		</div>
+	<div class="settings_top_block">		
+		<div class="form_item small_form_item">
+			<label for="ppp"> Projects per page:</label> <!-- megha 2.3.15 -->
+			<input type="text" class="text_field" name="ppp" id="ppp" value="{projects_per_page:h}"/>
+			 <div class="form_info_text">No. of projects to be displayed in projects tab; <br />e.g. input 20 to display 20 latest projects on the projects tab.</div>
+		</div>	
+		<div class="form_item small_form_item">
+			<label for="tcpp">Task comments per page:</label> <!-- megha 2.3.15 -->
+			<input type="text" class="text_field" name="tcpp" id="tcpp"  value="{task_comments_per_page:h}"/>
+			<div class="form_info_text">No. of task comments to be displayed in task view tab; e.g. input 20 to display 20 latest comments.</div>
+		</div>
+		<div class="form_item small_form_item">
+			<label for="mmpp">Max. messages per page:</label> <!-- megha 2.3.15 -->
+			<input type="text" class="text_field" name="mmpp" id="mmpp" value="{max_messages_per_page:h}"/>
+			<div class="form_info_text">No. of messages to be displayed in messages tab; <br />e.g. input 50 to display 50 messages.</div>
+		</div>	
+	</div>
+		<div class="clear_fix"><br /></div>	
+		<div class="form_item">
+			<label>&nbsp;</label>
+			<div class="page_title">Dashboard:</div>	
+		</div>
+		<div class="form_item two_column_blk">
+			<label>&nbsp;</label>
+			  <div class="leftfix dashboard"> <!-- megha 3.3.15 -->
+				<div class="form_item small_form_item"><!-- megha 3.3.15 -->
+					<label> Max. records per block in dashboard:</label> <!-- megha 3.3.15 -->
+					<input type="text" class="text_field" name="mdbi" id="mdbi"  value="{max_dashboard_block_items:h}"/>
+					<div class="form_info_text">No. of tasks to be displayed in dashboard tab; <br />e.g. input 20 to display max 20 tasks in blocks.</div>
+				</div><!-- megha 3.3.15 -->	
+			  </div><!-- megha 3.3.15 -->
+				
+				<div class="leftfix">
+					{if:show_dashboard_unread_messages}
+						<div class="check_item">
+							<input type="checkbox" name="dum" id="dum" checked /> Show latest unread messages
+						</div>
+						<div class="form_info_text">Latest unread messages.</div>
+					{else:}
+						<div class="check_item">
+							<input type="checkbox" name="dum" id="dum" /> Show latest unread messages
+						</div>
+						<div class="form_info_text">Latest unread messages.</div>
+					{end:}
+				</div>
+				<div class="clear_fix"></div>	<!-- megha 3.3.15 -->
+			</div>
+			<div class="clear_fix">&nbsp;</div>
+			<div class="form_item two_column_blk">
+				<label>&nbsp;</label>	
+				<div class="leftfix">
+					{if:show_dashboard_others_tasks}
+						<div class="check_item"> 
+							<input type="checkbox" name="dot" id="dot" checked /> Show tasks assigned to others
+						</div>
+						<div class="form_info_text">Task assigned to others that were updated recently.</div>
+					{else:}
+						<div class="check_item">
+							<input type="checkbox" name="dot" id="dot" /> Show tasks assigned to others
+						</div>
+						<div class="form_info_text">Task assigned to others that were updated recently.</div>
+					{end:}
+				</div>				
+				<div class="leftfix">
+					{if:show_dashboard_my_tasks}
+						<div class="check_item">
+							<input type="checkbox" name="dmt" id="dmt" checked /> Show tasks assigned to me
+						</div>
+						<div class="form_info_text">Task assigned to me that were updated recently.</div>
+					{else:}
+						<div class="check_item">
+							<input type="checkbox" name="dmt" id="dmt" /> Show tasks assigned to me
+						</div>
+						<div class="form_info_text">Task assigned to me that were updated recently.</div>
+					{end:}
+				</div>
+				<div class="clear_fix"></div><!-- megha 3.3.15 -->
+			</div>	
+			<div class="clear_fix"><br /><br /></div>
+			<div class="form_item">
+				<label>&nbsp;</label>
+				<div class="page_title">Promoted tasks:</div>	
+			</div>		
+			<div class="form_item two_column_blk">
+				<label>&nbsp;</label>
+				<div class="leftfix">
+					{if:close_task_when_issue_closed}
+						<div class="check_item">
+						<input type="checkbox" name="cltic" id="cltic" checked /> Close task when issue is closed
+						</div>
+						<div class="form_info_text">Select to close task automatically when issue is closed.</div>
+					{else:}
+						<div class="check_item">
+							<input type="checkbox" name="cltic" id="cltic" /> Close task when issue is closed
+						</div>
+						<div class="form_info_text">Select to close task automatically when issue is closed.</div>
+					{end:}			
+				</div>	
+				<div class="leftfix">
+					{if:close_issue_when_task_closed}
+						<div class="check_item">
+							<input type="checkbox" name="clitc" id="clitc" checked /> Close issue when task is closed
+						</div>
+						<div class="form_info_text">Select to close issue automatically when task is closed.</div>
+					{else:}
+						<div class="check_item">
+							<input type="checkbox" name="clitc" id="clitc" /> Close issue when task is closed
+						</div>
+						<div class="form_info_text">Select to close issue automatically when task is closed.</div>
+					{end:}
+				</div>
+				<div class="clear_fix"></div><!-- megha 3.3.15 -->
+			</div>	
+			<div class="clear_fix"><br /><br /></div> 	
+			<div class="form_item">
+				<label>&nbsp;</label>
+				<div class="page_title">Issue report:</div>	
+			</div>		
+		<div class="form_item two_column_blk">
+			<label>&nbsp;</label>
+			<div class="leftfix">
+				{if:show_all_comments_of_open_issues}
+					<div class="check_item">
+						<input type="checkbox" name="sacoi" id="sacoi" checked /> Show all comments for open issues
+					</div>
+					<div class="form_info_text">Select to display all comments made on open issues.</div>
+				{else:}
+					<div class="check_item">
+						<input type="checkbox" name="sacoi" id="sacoi" /> Show all comments for open issues
+					</div>
+					<div class="form_info_text">Select to display all comments made on open issues.</div>
+				{end:}
+			</div>
+			<div class="leftfix">			
+				{if:show_closed_comments_of_closed_issues}
+					<div class="check_item">
+						<input type="checkbox" name="sccci" id="sccci" checked /> Show only closing comments for closed issues
+					</div>
+					<div class="form_info_text">Select to display only last comment made while closing the issue.</div>
+				{else:}
+					<div class="check_item">
+						<input type="checkbox" name="sccci" id="sccci" /> Show only closing comments for closed issues
+					</div>
+					<div class="form_info_text">Select to display only last comment made while closing the issue.</div>
+				{end:}
+			</div>
+			<div class="clear_fix"></div><!-- megha 3.3.15 -->
+		</div>
+		<div class="form_item two_column_blk">
+			<label>&nbsp;</label>
+			<div class="leftfix">
+				{if:show_attached_image_with_comments}
+					<div class="check_item">
+						<input type="checkbox" name="saiwc" id="saiwc" checked /> Show attached image with comments in export PDF
+					</div>
+					<div class="form_info_text">Select to display images attached with issue comments in PDF file.</div>
+				{else:}
+					<div class="check_item">
+						<input type="checkbox" name="saiwc" id="saiwc" /> Show attached image with comments in export PDF
+					</div>
+					<div class="form_info_text">Select to display images attached with issue comments in PDF file.</div>
+				{end:}
+			</div>
+			<div class="clear_fix"></div><!-- megha 3.3.15 -->
+		</div>	
+		<div class="clear_fix"><br /><br /></div>	
+			<div class="form_item">
+				<label>&nbsp;</label>
+				<div class="page_title">Search:</div>	
+			</div>
+		<div class="form_item two_column_blk">
+			<label>&nbsp;</label>
+			<div class="leftfix">	
+				{if:search_project_details}
+					<div class="check_item">
+						<input type="checkbox" name="spd" id="spd" checked /> Search project details
+					</div>
+					<div class="form_info_text">Select to enable searching of project details.</div>
+				{else:}
+					<div class="check_item">
+						<input type="checkbox" name="spd" id="spd" /> Search project details
+					</div>
+					<div class="form_info_text">Select to enable searching of project details.</div>
+				{end:}
+			</div>
+			<div class="leftfix">				
+				{if:search_task_details}
+					<div class="check_item">
+						<input type="checkbox" name="std" id="std" checked /> Search task details
+					</div>
+					<div class="form_info_text">Select to enable searching of task details.</div>
+				{else:}
+					<div class="check_item">
+						<input type="checkbox" name="std" id="std" /> Search task details
+					</div>
+					<div class="form_info_text">Select to enable searching of task details.</div>
+				{end:}
+			</div>
+			<div class="clear_fix"></div><!-- megha 3.3.15 -->
+		</div>
+		<div class="clear_fix">&nbsp;</div>			
+		<div class="form_item two_column_blk">
+			<label>&nbsp;</label>
+			<div class="leftfix">	
+				{if:search_issue_details}
+					<div class="check_item">
+						<input type="checkbox" name="sid" id="sid" checked /> Search issue details
+					</div>
+					<div class="form_info_text">Select to enable searching of issue details.</div>
+				{else:}
+					<div class="check_item">
+						<input type="checkbox" name="sid" id="sid" /> Search issue details
+					</div>
+					<div class="form_info_text">Select to enable searching of issue details.</div>
+				{end:}
+			</div>				
+			<div class="leftfix">	
+				{if:search_messages}
+					<div class="check_item">
+						<input type="checkbox" name="sm" id="sm" checked /> Search messages
+					</div>
+					<div class="form_info_text">Select to enable searching of projects, tasks and issues messages.</div>
+				{else:}
+					<div class="check_item">
+						<input type="checkbox" name="sm" id="sm" /> Search messages
+					</div>
+					<div class="form_info_text">Select to enable searching of projects, tasks and issues messages.</div>
+				{end:}
+			</div>
+			<div class="clear_fix"></div><!-- megha 3.3.15 -->
+		</div>		
+		
+		<div class="clear_fix">&nbsp;</div>	
+		<div class="form_item hide_projects"><!-- megha 7.4.15 -->
+				<label>&nbsp;</label>
+				<div class="page_title">Hide Projects:</div>	
+				<span> Select to hide projects in index and report tabs.</span>
+			</div>		
+		<div class="form_item two_column_blk hide_projects"><!-- megha 7.4.15 -->
+			<label>&nbsp;</label>
+			
+			<div class="leftfix">	
+				{foreach:project_filter_records,cnt,project_record}	
+						{if:!project_record.is_hidden}
+							<div class="check_item">
+								<input type="checkbox" name="hpids[]" value="{project_record.getId()}" /> {project_record.getName()}
+							</div>	
+						{end:}		<!--  endif -->
+				{end:}		<!--  endforeach -->
+			
+		   </div>
+		   <div class="leftfix" >	
+				{foreach:project_filter_records,cnt,project_record}	
+						{if:project_record.is_hidden}
+							<div class="check_item">
+								<input type="checkbox" name="hpids[]" value="{project_record.getId()}" checked/> {project_record.getName()}
+							</div>		
+						{end:}		<!--  endif -->			
+									
+				{end:}		<!--  endforeach -->
+			
+		   </div>
+			<div class="clear_fix"></div><!-- megha 3.3.15 -->
+		</div>	
+			
+		<div class="clear_fix">&nbsp;</div>		
+		<div class="form_item">
+			<label>&nbsp;</label>
+ 			<input type="submit" name="submit" value="Submit" class="blue_btn"/> &nbsp;
+			<input type="reset" value="Reset" class="blue_btn" />
+		</div>
+		<div class="clear_fix"></div>	
+	</form>	
+</div> <!-- end of configuration_block -->

@@ -1,0 +1,13 @@
+Hi [[to_user.first_name]],
+
+[[from_user.first_name]] has sent you message from [[website_name]].
+
+
+[[subject]]
+
+[[comments]]
+
+To reply to this message please visit [[message_url]] 
+
+Administrator
+[[website_name]]

@@ -1,0 +1,54 @@
+<style type="text/css">
+
+</style>
+<div class="users_block">
+<div class="page_title">Users
+	<span>+ </span>
+	<a href="{aurl(#/user/register#)}"> New user</a>
+</div>
+{if:no_records}
+	<br />
+	<div class="error_text ml_z">No users found</div>
+{else:} <!-- else of :no_records -->
+{outputBlock(#pagination.html#)}	
+	<div class="table_block">
+	<table>
+		<tr valign="middle">			
+			<th>First Name</th>
+			<th>Login Name</th>
+			<th>Email</th>
+			<th width="160">Permissions</th>
+			<th>Action</th>			
+		</tr>
+	 	{foreach:user_records,cnt,user_record}
+			<tr valign="top">
+				<td>{user_record.getFirstName():h}</td>
+				<td>{user_record.getSigninId():h}</td>
+				<td>{user_record.getEmail():h}</td>
+				<td>
+					<div class="tbl_permissions">
+					{if:user_record.can_create_project} 
+						Create project (Yes)
+					{else:}
+						 Create project (No)
+					{end:} <br/>
+					{if:user_record.can_perform_task} 
+						Execute task (Yes)
+					{else:}
+						 Execute task (No)
+					{end:} <br/>
+					<a href="{aurl(#/user/indexPermission#)}/id/{user_record.getId():h}">Edit permissions</a>
+					</div>
+				</td>				
+				<td>
+					<a onclick="if(tt.util.confirmReset()){window.location = '{aurl(#/user/resetPassword#):h}/id/{user_record.getId()}/type/{type}'}" title="Reset Password"><img src="{iurl(#reset.png#)}" width="16" height="16"  alt="userrecord_reset_icon" /></a>
+					<a onclick="if(tt.util.confirmUserDelete('user')){window.location = '{aurl(#/user/delete#):h}/id/{user_record.getId()}/type/{type}'}" title="Delete"><img src="{iurl(#delete_icon_big.png#)}" width="13" height="13" alt="userrecord_delete_icon"/></a>
+				</td>
+			</tr>
+	 	{end:} 
+	</table>		
+	</div><!-- end of table_block -->
+	{outputBlock(#pagination.html#)}
+{end:} <!-- end of else:no_records -->
+<div style="clear:both;"><br /></div>
+</div>

@@ -1,0 +1,77 @@
+	<div class="project_nav_link">
+	 	<img src="{project_icon}" width="16" height="18" title="{project_record.getName()} - {project_record.getDescription()}" onclick="window.location='{aurl(#/project/view#):h}/id/{project_record.getId()}'" class="project_icon" alt="project_icon"/> 
+	 	<a href="{aurl(#/project/view#):h}/id/{project_record.getId()}" title="{project_record.getName()} - {project_record.getDescription()}">{project_record.getName():h}</a>
+	</div>		
+	<div class="page_title">Add Issue</div>
+	<div class="form_block">
+		<div id="issue_upload_message" class="upload_message"><p id="message"> Please do not  close the browser until the attachment is completely uploaded</p><p>Loading, please wait...</p><img src="{iurl(#rel_interstitial_loading.gif#):h}" alt="progressbar" /></div>
+		<form enctype="multipart/form-data" method="post" id="issue_form" action="{aurl(#/issue/update#):h}" onsubmit="return tt.util.validateAndSubmitIssue(this);" flexy:ignore>
+			<div class="form_item">
+				<label for="title"><span>*</span> Issue Title:</label><br/>
+				<input type="text" name="title" id="title" maxlength="200" value="{task_record.getName():h}" class="text_field" />
+				<div class="form_info_text">Max. 200 characters.</div>
+			</div>
+			<div class="form_item">
+				<label for="priority"> Priority:</label>
+				<select>
+					<option value="0">Low</option>
+					<option value="1">Medium</option>
+					<option value="2">High</option>
+				</select>
+			</div>
+			<div id="upload" class="form_item">
+				<label for="uploadedfile"> Attachments:</label><span class="form_info_text">Allowed file types: {allowed_attachments:h}</span><br/>
+					<div class="file" id="upload_block_1">
+						<span id="upload_input_1"><input type="file" id="uploadedfile_1" size="20" name="uploadedfile_1" onchange="return tt.util.showDeleteIcon('1');"/></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_1" onclick="return tt.util.deleteUpload('1')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>						
+					<div class="file2" id="upload_block_2">
+						<span id="upload_input_2"><input type="file" size="20" id="uploadedfile_2" name="uploadedfile_2" onchange="return tt.util.showDeleteIcon('2');" /></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_2" onclick="return tt.util.deleteUpload('2')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>						
+					<div class="file" id="upload_block_3">
+						<span id="upload_input_3"><input type="file" size="20" id="uploadedfile_3" name="uploadedfile_3" onchange="return tt.util.showDeleteIcon('3');"/></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_3" onclick="return tt.util.deleteUpload('3')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>						
+					<div class="file2" id="upload_block_4">
+						<span id="upload_input_4"><input type="file" size="20" id="uploadedfile_4" name="uploadedfile_4" onchange="return tt.util.showDeleteIcon('4');"/></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_4" onclick="return tt.util.deleteUpload('4')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>										
+					<div class="file" id="upload_block_5">
+						<span id="upload_input_5"><input type="file" size="20" id="uploadedfile_5" name="uploadedfile_5" onchange="return tt.util.showDeleteIcon('5');"/></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_5" onclick="return tt.util.deleteUpload('5')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>						
+					<div class="file2" id="upload_block_6">
+						<span id="upload_input_6"><input type="file" size="20" id="uploadedfile_6" name="uploadedfile_6" onchange="return tt.util.showDeleteIcon('6');" /></span>
+						<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_6" onclick="return tt.util.deleteUpload('6')"/>
+						<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+					</div>						
+					<div class="upload_more_link" id="add_more" onclick="tt.util.showUploadBlock('add_more');" >Add more</div>
+			</div>
+			<div style="clear:both;"></div>
+			<div class="form_item">
+				<label for="issue_description"><span>*</span> Issue Description:</label><br/>
+				<textarea cols="101" rows="10" name="issue_description" id="issue_description" ></textarea>
+			</div>			
+			<div class="form_item" align="center">
+				<input type="hidden" name="project_id" value="{project_id}" />
+				{if:from}
+				<input type="hidden" name="from" value="{from}" />
+				{end:}
+				{if:page_index}
+				<input type="hidden" name="page_index" value="{page_index}" />
+				{end:}
+				<input type="hidden" name="from_page" value="{from_page:h}" />
+				<input type="submit" name="submit" value="Post" class="fbutton" /> &nbsp;
+				<input type="reset" value="Reset" class="fbutton" /> &nbsp;
+				<input type="button" value="Cancel" class="fbutton" onclick = "{window.location = '{aurl(#/project/index#):h}'}" />
+			</div>
+			<div style="clear:both;"></div>
+		</form>
+	
+</div>	

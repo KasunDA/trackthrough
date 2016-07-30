@@ -1,0 +1,16 @@
+Hi [[to_user.first_name]],
+
+
+New project added:
+
+Project Name: [[project_name]]
+Posted by: [[lead.first_name]]
+
+
+To view the project please visit [[message_url]] 
+
+Administrator
+[[website_name]]
+
+
+

@@ -1,0 +1,152 @@
+/**************************** Common ********************************/
+
+table th{background:#a17f7f;}
+table td{ background:#fff1ef;}
+.theme_color_block{border:1px solid #993366;}
+.user_settings_block{border:1px solid #993366;}
+.theme_color_block{  background:url('theme_color_block.png') no-repeat; width:68px; height:26px; border:none;}/* megha 20.1.15*/
+#more_theme_colors{  border:1px solid #993366; border-top:none; }/* megha 20.1.15*/
+
+/**************************** Header Part ***************************/
+.header{background:#b07f7f; border:1px solid #b07f7f; width:989px; margin-left:-1px;}/*megha 20.1.15*/
+.header_logo{background:url('logo.png') no-repeat; width:27px; height:27px;}
+/* --------- megha 20.1.15 ----------- */
+.header_logo{ background:url(black_logo.png) no-repeat; width:30px; height:30px; cursor:pointer; margin:15px 0px 0px 15px;}
+.search_btn { background:url(search_go_btn.png) no-repeat; width:49px; height:36px; border:none; color:#FFFFFF; }/* megha 6.4.15*/
+
+/************************** Menubar Part ****************************/
+.menu a , .menu_fav a , .dashboard_menu a , .more_menus_block , .more_menus_block a , #admin_menubar{background:#644343; color:white;} /*megha 20.1.15*/
+.menu a:hover , .menu_fav a:hover , .dashboard_menu a:hover , .more_menus_block a:hover, .last_menu:hover{background:#f8c9c9; color:#000000;} /*megha 20.1.15*/
+.menuSelected a , .menuSelected_fav a{background:#f8c9c9; color:#000000;}/*megha 20.1.15*/
+
+/* --------- megha 20.1.15 ----------- */
+.dashboard_menu .top_lt_corner , .dashboard_menu .admin_top_lt_corner , .dashboard_menu:hover .admin_top_lt_corner{ background:url(menubar_top_lt.png) no-repeat; width:13px; height:13px; position:absolute; left:67px; margin-top:-1px;}
+.dashboard_menu .btm_lt_corner , .dashboard_menu .admin_btm_lt_corner , .dashboard_menu:hover .admin_btm_lt_corner{ background:url(menubar_btm_lt.png) no-repeat; width:13px; height:13px; position:absolute; left:67px; top:45px;}
+.dashboard_menu:hover .top_lt_corner , .dashboard_menu a:hover .top_lt_corner{ margin-top:1px; margin-left:-2px; background:url(admin_menubar_top_lt1.png) no-repeat; width:13px; height:13px; position:absolute; }
+.dashboard_menu:hover .btm_lt_corner , .dashboard_menu a:hover .btm_lt_corner { margin-top:0px; margin-left:-2px; background:url(admin_menubar_btm_lt1.png) no-repeat; width:13px; height:13px; position:absolute; }
+
+
+.menu_fav .top_rt_corner , .top_rt_corner{ background:url(menubar_top_rt.png) no-repeat; width:13px; height:13px; position:absolute; left:555px !important/*non-i.e 8*/; left:556px; top:10px !important/*non-i.e 8*/; top:10px;}
+.top_rt_corner{ left:556px !important/*non-i.e 8*/; left:556px; }
+.menu_fav .btm_rt_corner , .btm_rt_corner{ background:url(menubar_btm_rt.png) no-repeat; width:13px; height:13px; position:absolute; left:555px !important/*non-i.e 8*/; left:557px; top:45px !important/*non-i.e 8*/; top:45px; }
+.btm_rt_corner{ left:556px !important/*non-i.e 8*/; left:557px; }
+.menu_fav:hover .top_rt_corner{  margin-left:-4px; background:url(menubar_top_rt_hover.png) no-repeat; width:13px; height:13px; position:absolute; }
+.menu_fav:hover .btm_rt_corner{ margin-top:-1px; margin-left:-3px; background:url(menubar_btm_rt_hover.png) no-repeat; width:13px; height:13px; position:absolute; }
+
+.menuSelected .top_lt_corner , .admin_top_lt_corner { background:url(admin_menubar_top_lt1.png) no-repeat; width:13px; height:13px; position:absolute; left:67px; top:10px;}
+.menuSelected .btm_lt_corner , .admin_btm_lt_corner { background:url(admin_menubar_btm_lt1.png) no-repeat; width:13px; height:13px; position:absolute; left:67px; top:45px;}
+
+.menuSelected_fav .top_rt_corner{ background:url(menubar_top_rt_hover.png) no-repeat;  margin-top:0px;left:555px !important/*non-i.e*/; left:557px;}
+.menuSelected_fav .btm_rt_corner{ background:url(menubar_btm_rt_hover.png) no-repeat; margin-top:0px; margin-left:-1px;}
+
+.menu a, .menu_fav a , .dashboard_menu a, .menuSelected a , .menuSelected_fav a{ border-right:1px solid #B07F7F;}
+
+/* ------------ 20.1.15 ----------------*/
+.admin_top_lt_corner{ left:59px;}
+.admin_btm_lt_corner{ left:59px;}
+.dashboard_menu .admin_top_lt_corner { left:59px; }
+.dashboard_menu .admin_btm_lt_corner , .dashboard_menu:hover .admin_btm_lt_corner{ left:59px; }
+.dashboard_menu:hover .admin_top_lt_corner { left:59px; margin-top:1px; background:url(admin_menubar_top_lt1.png) no-repeat; width:13px; height:13px; position:absolute;}
+.dashboard_menu:hover .admin_btm_lt_corner { background:url(admin_menubar_btm_lt1.png) no-repeat; width:13px; height:13px; position:absolute;}
+.last_menu { background:url('block7.png') no-repeat; width:83px; height:33px; position:absolute; top:68px; left:0px; cursor:pointer;  line-height:2.6; text-align:left; padding-left:8px; margin-left:-1px;  border-bottom:none; }
+.last_menu:hover{  background:url('block7_hover.png') no-repeat; }
+#more_menus { top:50px; left:473px;  padding-top:5px;background:#644343;  border:1px solid #B07F7F;border-top:none;  }
+#more_menus a { border-top:1px solid #B07F7F;}
+.content_admin .dashboard .project_top_right_corner { background:url(project_top_right_corner.png) no-repeat; margin-left:952px; margin-top:-5px;}/* megha - 5.2.15*/
+
+/* 21.1.15 */
+.user_settings_block{ background:url(profile_drop_menu.png) no-repeat; border:none; height:38px; position:relative; width:162px; float:right; padding:4px 4px 0px 4px; line-height:1.5; margin:10px 5px 0px 0px;}
+.user_settings_block a{ border:1px solid #993366; border-top:1px solid #DDDDDD;  border-bottom:none; text-align:left; float:left; width:160px; padding:3px 0px 3px 8px;}
+#more_user_settings { position:absolute; margin-top:-3px;  width:168px; border-top:none; top:35px; left:0px;}
+#more_user_settings a { height:25px; line-height:2; }
+.dd_last_mnu { background:url('dd_mnu_l1.png') no-repeat; width:160px; cursor:pointer; height:33px; float:left; z-index:10000; text-align:left; padding-left:10px; border-top:1px solid #cccccc; line-height:2.2;} /* megha 6.1.15 */
+.dd_last_mnu:hover { background:url('dd_mnu_l_hover.png') no-repeat;}  /* Abhilash 7.11.14 */
+
+
+/* for dashboard corner hover 3.2.15  */
+.dashboard_menu .admin_top_lt_corner:hover , .dashboard_menu .top_lt_corner:hover { background:url(dashboard_hover_block.png) no-repeat; width:81px; height:38px; margin-left:3px; margin-top:6px;  }
+.dashboard_menu .admin_btm_lt_corner:hover , .dashboard_menu .btm_lt_corner:hover { background:url(dashboard_hover_block.png) no-repeat; width:81px; height:38px; margin-left:3px; margin-top:-30px;}
+.dashboard_menu .admin_top_lt_corner:hover { margin-left:5px;}
+.dashboard_menu .admin_btm_lt_corner:hover { margin-left:5px;}
+
+/* for favorites corner hover 3.2.15  */
+.menu_fav .top_rt_corner:hover { background:url(fav_hover_block.png) no-repeat; width:81px; height:38px; margin-left:-77px; margin-top:5px;}
+.menu_fav .btm_rt_corner:hover { background:url(fav_hover_block.png) no-repeat; width:81px; height:38px; margin-left:-76px; margin-top:-31px;}
+
+.content_admin .project_top_right_corner{ margin-left:950px/*megha 3.2.15*/;}
+/*************************** Content Part ***************************/Email with instructions to reset password has been sent.
+.content_header_block{background:#fff3f3;}
+
+
+/************************ Registration Block ************************/
+.registration_block{background:#f4f1f0; border:1px solid #f9ebe6;}
+
+
+/************************** Footer Part *****************************/
+.footer{background:#8a6666;}
+
+
+/************************** Projects Page ***************************/
+.task_list{border:1px solid #f8e1e1;}
+.project_top_left_corner{ margin-left:-15px; background:url(grey_project_top_left_corner.png) no-repeat;} /* megha 3.2.15*/
+.project_top_right_corner{ margin-left:950px; background:url(grey_project_top_right_corner.png) no-repeat;} /* megha 3.2.15*/
+.project_bottom_left_corner{ background:url(grey_project_btm_left_corner.png) no-repeat; width:13px; height:13px; float:left; margin-top:-9px; margin-left:-15px;} /* megha 3.2.15*/
+.project_bottom_right_corner{ background:url(grey_project_btm_right_corner.png) no-repeat; width:13px; height:13px; float:right;margin-top:-9px; margin-right:5px;  } /* megha 3.2.15*/
+.new_project{  background:url(new_proj.png) no-repeat; width:76px; height:31px; }
+.projects .project_top_left_corner { background:url(grey_project_top_left_corner.png) no-repeat; width:13px; height:13px; position:absolute; margin-left:-5px; margin-top:-4px; }
+.project_view_block .project_bottom_left_corner{ background:url(grey_project_btm_left_corner.png) no-repeat;}
+.project_view_block .project_bottom_right_corner{ background:url(grey_project_btm_right_corner.png) no-repeat; }
+
+
+/*************************** Views Page *****************************/
+.projects{border:none;}
+.project_desc_block .message_block{background:#fffafa; border:1px solid #fff2f2; border-bottom-color:#a1a1a1;}
+
+
+/************************* Settings Block ***************************/
+.configuration_block{background:#f4f1f0; border:1px solid #f9ebe6;}
+
+
+/************************ profile *********************************/
+.profile_cont{background:#f4f1f0; border:1px solid #f9ebe6;}
+
+
+/************************** Task copy page ****************************/
+.copy_form_block{background:#f4f1f0; border:1px solid #f9ebe6;}
+
+
+/************************** Dashboard ********************************/
+.dashboard .block_title , .pie_block_title {background:#fff3f3;}
+
+/* --- 22.1.15 ----- */
+.taskbar_top_lt_corner , .taskbar_top_lt_corner2  { background:url(dash_top_lt_cnr.png) no-repeat; }
+.taskbar_top_rt_corner , .taskbar_top_rt_corner2 { background:url(dash_top_rt_cnr.png) no-repeat; margin-top:-4px; }
+
+
+
+.blue_btn , .review_blue_btn , .close_blue_btn , .fbutton{ background:url(submit_button.png) no-repeat; width:73px; height:31px; border:none; color:#FFFFFF; cursor:pointer;}/* megha 26.2.15*/
+.review_blue_btn{ background:url(review_submit_button.png) no-repeat; width:120px; }
+.close_blue_btn{ background:url(close_button.png) no-repeat; width:90px; }
+.dashboard .task_details { border-bottom:1px solid #F8E1E1;}
+.block{ border-bottom:1px solid #F8E1E1;}
+.more_button a{ background:url(see_more.png) no-repeat;width:66px; height:28px; color:white;}/*added bkgrnd img megha- 6.1.15*/
+
+
+
+/**************************Reports Page *********************************/
+/* -------- 23.1.15 ---------*/
+.blue_go_btn { border:none; background:url('go_btn.png') no-repeat; width:36px; height:25px; color:white;cursor:pointer;float:right; margin:0px 56px 0px 0px; }
+
+/*********************** Task view Page ************************/
+/* .theme_block .header_block{ background:#FFF5EB; } */
+.theme_block .project_top_left_corner{ background:url(project_top_left_corner_task_lt.png) no-repeat; }
+.theme_block .proj_top_rt_corner{ background:url(project_top_right_corner_task_lt.png) no-repeat; margin-left:463px;}
+
+/************************ Issue view page *************************/
+/* .issues .theme_block .header_block{ background:#F89F9F; border:1px solid #FFCBCB; } */
+.issues .theme_block .project_description_block { border-top:none;}
+.issues .theme_block .project_top_left_corner{ background:url(project_top_left_corner_issue_lt.png) no-repeat; }
+.issues .theme_block .proj_top_rt_corner{ background:url(project_top_right_corner_issue_lt.png) no-repeat; margin-left:463px;}
+
+.button{background:url('submit_bttn2.png') no-repeat; color:white;}
+

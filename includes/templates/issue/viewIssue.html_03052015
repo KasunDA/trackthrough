@@ -1,0 +1,303 @@
+<div class="project_nav_link">	
+    <img src="{project_icon}" width="16" height="18" align="absmiddle" title="{project_record.getName()} - {project_record.getDescription()}" onclick="window.location='{aurl(#/project/view#):h}/id/{project_record.getId()}'" alt="project_icon" /> 
+    <a href="{aurl(#/project/view#):h}/id/{project_record.getId()}" title="{project_record.getName()} - {project_record.getDescription()}">{project_record.getName():h}</a>
+</div>
+<div class="issues">
+	<div class="project_view_header"> <!--  Abhilash 17.12.14 -->
+		{if:issue_record.isOpen()}
+			<img class="status_icon" src="{iurl(#open_status.png#)}" width="12" height="12" title="Open" alt="viewissue_open_icon" />
+		{end:}
+		{if:issue_record.isClosed()}
+			<img class="status_icon" src="{iurl(#closed_status.png#)}" width="12" height="12" title="Closed" alt="viewissue_closed_icon" />
+		{end:}
+		{if:isPromoted}
+			<div class="promo_icon"></div>
+		{end:}
+		<div class="proj_title">{issue_record.getTitle():h}&nbsp;</div><!--End of proj_title-->
+		<div class="project_header">
+			{if:allowCopyIssue}
+				<a onclick="window.location = '{aurl(#/issue/copyIssue#):h}/issue_id/{issue_record.getId()}'">Copy issue</a>
+			{end:} <!--  end of else view only -->
+		</div>
+		
+	</div> <!-- End of project view header -->
+	<div class="clear_fix"></div>
+	<div class="projects">	
+		<div class="content_left_block">
+			<div class="clear_fix"></div>
+			<div class="project_view_block">
+				<div class="project_top_left_corner"></div>
+				<div class="proj_top_rt_corner"></div>
+				<div class="header_block">
+					<div class="created_by">
+						<span> By:&nbsp;</span> {issue_record.getUserSigninId():h}
+					</div>
+					<div class="created_date">
+						<span>Created On:&nbsp;</span> {issue_record.getCreatedAtFormatted():h}
+					</div>
+					<div class="status_text"><span>Status:</span>   {issue_record.getStatusLabel():h}</div>
+						
+					{if:isBookmarked}
+						<div class="bookmarked"></div>
+					{else:}
+						<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/issue#)}/id/{issue_record.getId()}'"></div>	
+					{end:} 		 	
+					<div class="clear_fix"></div>
+				</div><!-- end of header_block -->
+				<div class="project_description_block">
+					<div class="description">
+						{issue_record.getDescription():h}
+					</div><!--end of description-->
+					{if:issue_record.getHasAttachment()}					
+						<div class="attached_doc">
+							{foreach:issue_attachments,cnt,issue_attachment}
+								{if:!issue_attachment.is_image}
+									{if:issue_attachment.attachment_name}
+										<img src="{iurl(issue_attachment.attachment_icon)}" alt="attach_image" align="absmiddle" /><a href="{aurl(#/issue/download#):h}/issue_id/{issue_record.getId():h}/file_name/{issue_attachment.attachment_name:h}" target="_blank">{issue_attachment.attachment_name}</a>
+									{end:}
+								{end:}
+							{end:}					
+							{foreach:issue_attachments,cnt,issue_attachment}
+								{if:issue_attachment.is_image}
+									{if:issue_attachment.attachment_name}
+										<span class="attached_img">
+											<a href="{aurl(#/issue/download#):h}/issue_id/{issue_record.getId():h}/file_name/{issue_attachment.attachment_name:h}" target="_blank">
+												<img src="{issue_attachment.image_path}" width="150" height="120" alt="issue_attachment_icon"/><br/>
+											</a>
+											<a href="{aurl(#/issue/download#):h}/issue_id/{issue_record.getId():h}/file_name/{issue_attachment.attachment_name:h}" target="_blank">{issue_attachment.attachment_name}</a>
+										</span>
+									{end:}
+								{end:}
+							{end:}
+							<div style="clear:both;"></div>
+							{if:file_missing}
+								<span class="missing_attachments">Some of the attachments may be missing.</span> <!-- megha 26.12.14-->
+							{end:}
+						</div> <!-- end of attached_doc -->
+					{end:}<!-- end of hasattachment -->
+					{if:leadProject}
+						<div class="promoted_link_block">
+							<div class="promoted_link">
+								{if:isPromoted}
+ 									This issue is promoted as a task <a href="{aurl(#/task/view#):h}/id/{issue_task.getTaskId()}" title="View the task">view task</a>
+								{end:}
+							</div>
+							<div align="right">
+								{if:issue_record.getIsOpen()}
+									{if:!isPromoted}
+										<input type="button" class="black_button" value="Promote as Task" onclick="if( tt.util.confirmPromoteIssue()) {window.location = '{aurl(#/issue/promoteTask#):h}/issue_id/{issue_record.getId()}'}" />
+									{end:}
+								{else:}
+										<input type="button" class="black_button" value="Open Issue" onclick="if( tt.util.confirmOpenIssue()) {window.location = '{aurl(#/issue/openIssue#):h}/issue_id/{issue_record.getId()}'}" />
+								{end:}
+							</div>
+							<div style="clear:both;"></div>
+						</div> <!-- promoted_link_block -->	 		
+					{else:}
+						{if:isPromoted}
+							{if:display_link}
+								<div class="promoted_link_block cuser">
+									This issue is promoted as a task <a href="{aurl(#/task/view#):h}/id/{issue_task.getTaskId()}" title="View the task">view task</a>
+								</div>
+							{end:}
+						{end:}
+					{end:} <!-- end of lead project --> 
+					<div class="clear_fix"></div>	
+				</div><!-- end of project_description_block -->
+				<div class="proj_btm_left_corner"></div> <!-- megha 11.12.14-->
+				<div class="proj_btm_rt_corner"></div>			
+			</div><!-- end of project_view_block -->
+			{if:issue_record.getIsOpen()}
+				<div class="project_view_block">
+					<div class="project_top_left_corner"></div>
+					<div class="proj_top_rt_corner"></div>
+					<div class="header_block">
+						{if:is_compose_desc_visible} <!-- Abhilash 3.1.15 -->
+							<a onclick = "{window.location = '{aurl(#/issue/setIssueDescVisibility#):h}/issue_id/{issue_record.getId():h}/visibility/hide/page/view'}"> <img src="{iurl(#hide_icon.png#)}" width="17" height="17" alt="tasks_hide_icon" title="Hide Details" align="absmiddle" class="compressor_image"  /></a>
+						{else:}
+							<a onclick = "{window.location = '{aurl(#/issue/setIssueDescVisibility#):h}/issue_id/{issue_record.getId():h}/visibility/show/page/view'}"> <img src="{iurl(#show_icon.png#)}" width="17" height="17" alt="tasks_show_icon" title="Show Details" align="absmiddle" class="compressor_image" /></a>
+						{end:}
+						<!-- megha 16.12.14-->
+						<span> Post Comments</span>	<!-- megha 26.12.14 -->								
+					</div>	<!--end of header_block-->
+					
+					
+					{if:is_compose_desc_visible} <!-- Abhilash 3.1.15 -->
+					<div class="project_description_block">
+						<div class="form_block">			
+							<div id="validate_issue_upload_message" class="upload_message"><p id="message"> Please do not  close the browser until the attachment is completely uploaded</p><p>Loading, please wait...</p>
+							<img src="{iurl(#rel_interstitial_loading.gif#):h}" alt="progressbar" /></div>			
+							<form enctype="multipart/form-data" method="post" id="message_form" action="{aurl(#/issue/message#):h}/" onsubmit="return tt.util.validateIssueComments(this);" flexy:ignore>		
+								<a name="reply_button"></a> <!-- To move to form block when reply is clicked. -->	
+								<div id="upload" class="form_item">
+									<div class="attachments"> <!-- megha 30.12.14 -->
+										<label for="uploadedfile"> Attachments:</label>
+										<div class="attachment_types">Allowed file types:<span> {allowed_attachments:h}</span></div>
+										<br/>
+									</div> <!--end of attachments--> <!-- megha 30.12.14 -->
+										<div class="file" id="upload_block_1">
+										<span id="upload_input_1"><input type="file" id="uploadedfile_1" size="20" name="uploadedfile_1" onchange="return tt.util.showDeleteIcon('1');"/></span>
+										<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_1" onclick="return tt.util.deleteUpload('1')" />
+										<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+									</div>					
+									<div class="file2" id="upload_block_2">
+										<span id="upload_input_2"><input type="file" size="20" id="uploadedfile_2" name="uploadedfile_2" onchange="return tt.util.showDeleteIcon('2');" /></span>
+										<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_2" onclick="return tt.util.deleteUpload('2')"/>
+										<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+									</div>						
+									<div class="file" id="upload_block_3">
+										<span id="upload_input_3"><input type="file" size="20" id="uploadedfile_3" name="uploadedfile_3" onchange="return tt.util.showDeleteIcon('3');"/></span>
+										<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_3" onclick="return tt.util.deleteUpload('3')"/>
+										<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+									</div>						
+									<div class="file2" id="upload_block_4">
+										<span id="upload_input_4"><input type="file" size="20" id="uploadedfile_4" name="uploadedfile_4" onchange="return tt.util.showDeleteIcon('4');"/></span>
+										<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_4" onclick="return tt.util.deleteUpload('4')"/>
+										<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+									</div>						
+									<div class="file" id="upload_block_5">
+										<span id="upload_input_5"><input type="file" size="20" id="uploadedfile_5" name="uploadedfile_5" onchange="return tt.util.showDeleteIcon('5');"/></span>
+										<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_5" onclick="return tt.util.deleteUpload('5')"/>
+										<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+									</div>						
+									<div class="file2" id="upload_block_6">
+										<span id="upload_input_6"><input type="file" size="20" id="uploadedfile_6" name="uploadedfile_6" onchange="return tt.util.showDeleteIcon('6');" /></span>
+										<img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_6" onclick="return tt.util.deleteUpload('6')"/>
+										<div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+									</div>					
+									<div class="upload_more_link" id="add_more" onclick="tt.util.showUploadBlock('add_more');">Add more</div>
+								</div>
+								<div style="clear:both;"></div>
+								<div class="form_item">
+									<label for="comments">Issue Comments:</label><br/>
+									<textarea rows="15" class="add_desc_txtarea" id="comments" name="comments"></textarea><!-- megha 31.12.14 -->
+								</div>								
+								<div class="form_item" align="center">
+									<input type="submit" value="Submit" class="blue_btn"/> &nbsp;
+									<input type="reset" value="Reset" class="blue_btn" />
+									{if:leadProject}
+										&nbsp; <input type="submit" name="close_issue" value="Close Issue" class="close_blue_btn" onclick="window.loaction ='{aurl(#/issue/ChangeStatus#):h}/issue_id/{issue_record.getId()}'" /><!-- megha 23.12.14-->	
+									{end:}
+									<input type="hidden" name="subject" id="subject" value="Issue message" />
+									<input type="hidden" name="issue_id" id="issue_id" value ="{issue_record.getId():h}" />
+								</div>			
+								<div style="clear:both;"></div>
+							</form>
+						</div><!-- end of form_block -->
+					</div> <!--end of project_description_block-->	
+					<div class="proj_btm_left_corner"></div> <!-- megha 11.12.14-->
+					<div class="proj_btm_rt_corner"></div>	
+					
+					{end:}
+					<div class="project_bottom_left_corner"></div> <!-- megha 19.12.14 -->
+					<div class="project_bottom_right_corner"></div> <!-- megha 19.12.14 -->
+				</div><!-- end of project_view_block -->				
+			{end:}<!-- end of is open issue -->
+		</div><!--end of content_left_block-->
+        
+        
+        <div class="content_right_block">
+        	
+        	{if:!no_records}
+        	<div class="project_top_left_corner"></div> <!-- megha 29.12.14 -->
+        	<div class="proj_top_rt_corner"></div> <!-- megha 29.12.14 -->
+				<div class="header_block">
+        			<span>Issue Messages</span>
+				</div><!--end of header_block-->
+				{foreach:message_records,cnt,message_record}
+		 	 		{if:message_record.m_record.getFromSelf()}
+        				<div class="project_message">
+        			{else:}
+        				<div class="alt_user_message">
+       				{end:}
+        					<img src="{iurl(#profile_avatar.png#)}" width="41" height="41" alt="profile_avatar" class="msg_sender_icon" />
+        					<div class="msg_info">
+	        					<span class="msg_sender_name" id="{message_record.m_record.getFromName():h}">{message_record.m_record.getFromName():h}</span>
+	        					<span><a name="{message_record.m_record.getId():h}"></a> #{message_record.m_record.getId():h}</span>
+	        					<span> {message_record.m_record.getDateFormatted():h} </span>
+        					</div><!-- end of message_info-->
+        					{if:message_record.m_record.getFromSelf()}
+        						{if:!is_closed_issue}
+        							<img class="delete_msg_icon" src="{iurl(#delete_project.png#)}" width="14" height="14"  align="middle" onclick="if(tt.util.confirmDelete('task comment')){window.location = '{aurl(#/message/delete#):h}/message_id/{message_record.m_record.getId()}/page_index/{page_index}'}" alt="delete_image" title="Delete" alt="icon_block_icon" />
+        						{end:}
+       							
+        					{else:}
+        						{if:isAdmin}
+        							<img class="delete_msg_icon" src="{iurl(#delete_project.png#)}" width="14" height="14" align="middle" onclick="if ( tt.util.confirmDelete('task comment') ) {window.location = '{aurl(#/message/delete#):h}/message_id/{message_record.m_record.getId()}/page_index/{page_index}'}" alt="task_comment_delete_icon" title="Delete" />
+        						{end:}
+        						{if:issue_record.getIsOpen()}
+        							<a href="#reply_button"><img class="reply_icon" src="{iurl(#reply.png#)}" align="middle" alt="reply_icon" title="Reply" class="reply_icon" /></a>
+        						{end:}
+        					{end:}
+        					{if:message_record.isCommentBookmarked}
+        						<div class="bookmarked" ></div>
+        					{else:}
+        						<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/message#)}/id/{message_record.m_record.getId()}/page_index/{page_index:h}'"></div>
+        					{end:}
+        					<div class="clear_fix"></div>
+        					<div class="msg_content">
+        						{if:!message_record.no_comment}
+        							{message_record.m_record.getCont():h}
+        						{end:}
+        					</div><!--end of msg_content-->
+        					{if:message_record.m_record.getHasAttachment()}
+        						<div class="msg_attachments">
+        							<span>Attachments:</span>
+        							<div class="clear_fix"></div>
+        							<div class="attachment_list">
+        								
+        									{foreach:message_record.m_attachments,cnt,message_attachment}
+        										{if:!message_attachment.is_image}
+        											<span style=" margin-left:5px;margin-right:5px;"> <!-- megha 26.12.14 -->
+        												<img src="{iurl(message_attachment.attachment_icon)}" align="absmiddle" alt="attach_image" align="absmiddle" />&nbsp;
+        												<a href="{aurl(#/message/download#):h}/message_id/{message_record.m_record.getId()}/file_name/{message_attachment.attachment_name:h}" target="_blank">{message_attachment.attachment_name}</a>
+        											</span>
+        										{end:}
+        									{end:}				 				
+        									{foreach:message_record.m_attachments,cnt,message_attachment}
+        										{if:message_attachment.is_image}
+        											<span class="attached_img">
+        												<a href="{aurl(#/message/download#):h}/message_id/{message_record.m_record.getId()}/file_name/{message_attachment.attachment_name:h}" target="_blank">
+       														<img src="{message_attachment.image_path}" width="150" height="120" alt="message_attachment_icon" />
+        													
+        												</a>
+        												<a href="{aurl(#/message/download#):h}/message_id/{message_record.m_record.getId()}/file_name/{message_attachment.attachment_name:h}" target="_blank">{message_attachment.attachment_name}</a>
+        											</span>
+        										{end:}
+        									{end:}				 				
+        									
+        								
+        							</div><!--end of attachment_list-->
+        							{if:message_record.msg_attachment_missing}
+        				<!-- megha 24.12.14 --><span class="missing_attachments"> Some of the attachments may be missing.</span>
+        									{end:}
+        						</div><!--end of msg_attachments-->
+        					{end:}
+        					<div class="clear_fix"></div> <!-- megha - 1.1.15 -->
+        					{if:isAdmin}
+        						{if:message_record.m_record.getIsDeleted()}
+								<div class="revoke_msg">This message was later retracted by the sender.&nbsp; 
+									<a onclick="window.location = '{aurl(#/message/revoke#):h}/message_id/{message_record.m_record.getId()}/page_index/{page_index:h}'" title="Revoke the message" > Revoke</a>
+								</div>
+        						{end:}
+        						<div class="clear_fix"></div> <!-- megha - 1.1.15 -->
+						{end:}
+						</div><!--end of project_message-->
+						
+						<div class="clear_fix"></div>
+						
+						
+        			{end:}<!-- end of !foreach-->
+					<div style="clear:both;"></div>
+					<div class="msg_btm_left_corner"></div> <!-- megha 29.12.14 -->
+        		<div class="msg_btm_rt_corner"></div> <!-- megha 29.12.14 -->
+        		 {end:}<!-- end of !if no records -->
+        			
+        		<div class="clear_fix"></div>
+        		
+        </div><!--end of content_right_block-->
+        
+        <div class="clear_fix"></div>  
+    </div><!-- end of project -->
+    <div class="clear_fix"></div>
+</div> <!-- end of issues -->

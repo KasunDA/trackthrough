@@ -1,0 +1,165 @@
+<div class="page_title">Search Results</div>
+{if:has_error}
+	<div class="error_text">{error_message:h}</div>
+{else:}
+	<div class="search_results">
+		{total_results}: 
+		<span>{search_text}</span> 
+		<a href="{aurl(#/user/indexUserSettings#)}">Edit search settings</a>
+	</div>	
+	{if:no_results} 
+		<br />
+ 		<div class="error_text">Your search yielded no results.</div>
+ 	{else:}
+ 		{foreach:search_results,cnt,search_result}
+ 			<div class="search_block">
+ 			<!-- Project section -->
+			{if:search_result.project_action} 
+				<!-- Project message search result -->
+				{if:search_result.message_id}
+					<div class="search_title_block">						
+						<div class="search_bookmark_block">
+							{if:search_result.isBookmarked}
+		 						<div class="bookmarked"></div> <!-- megha 2.3.15 -->
+		 					{else:}
+		 						<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/message#)}/id/{search_result.message_id}/search_text/{search_text}'"></div> <!-- megha 2.3.15 -->
+		 					{end:}
+		 				</div>
+					</div>
+					<div class="search_desc">
+						<img src="{iurl(#message.png#)}" width="12" height="11" title="{search_result.search_description}" onclick="window.location = '{aurl(#/project/view#):h}/id/{search_result.search_id}#{search_result.message_id}'" alt="search_desc_icon" /> &nbsp;
+						<a href="{aurl(#/project/view#):h}/id/{search_result.search_id}#{search_result.message_id}" title="{search_result.search_description}">{search_result.search_description}</a>
+					</div>
+					<div class="project_link"> 
+						<img src="{search_result.pro_icon}" width="16" height="18" title="{search_result.project_record.getName()}" alt="project_icon" onclick="window.location='{aurl(#/project/view#):h}/id/{search_result.search_id}'" class="project_icon" />
+						<a href="{aurl(#/project/view#):h}/id/{search_result.search_id}#{search_result.message_id}" title="{search_result.project_name_short}">{search_result.project_name_short}</a>
+					</div>
+				{else:}
+					<!-- Project search result -->
+					<!-- JL 24-Jan-2013 This condition is common for both project title and project main description search. We have to write separate block for both -->
+					<div class="search_title_block">
+						<div class="search_project_title">
+							<img src="{aurl(#/project/icon#):h}/id/{search_result.search_id}" alt="search_project_title_icon" width="16" height="18" title="{search_result.search_title}" onclick="window.location='{aurl(#/project/view#):h}/id/{search_result.search_id}'" class="project_icon" />
+							<a href="{aurl(#/project/view#):h}/id/{search_result.search_id}" title="{search_result.search_title}">{search_result.search_title}</a>
+						</div>
+						<div class="search_bookmark_block">
+							{if:search_result.isBookmarked}
+		 						<div class="bookmarked"></div> <!-- megha 2.3.15 -->
+		 					{else:}
+		 						<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/project#)}/id/{search_result.search_id}/search_text/{search_text}'"></div><!-- megha 2.3.15 -->
+		 					{end:}
+		 				</div>
+						<div style="clear:both;"></div>
+					</div>
+					<div class="search_desc">
+						<a href="{aurl(#/project/view#):h}/id/{search_result.search_id}" title="{search_result.search_description}">{search_result.search_description}</a>
+					</div>
+				{end:}
+			{end:}<!-- end of Project section -->
+			<!-- Task section -->
+			{if:search_result.task_action}
+				<!-- Task message search result -->
+				{if:search_result.message_id}
+					<div class="search_title">
+						<img src="{iurl(#message.png#)}" alt="message_search_icon" width="12" height="11" title="{search_result.search_description}" 
+						onclick="window.location='{aurl(#/task/view#):h}/id/{search_result.search_id}#{search_result.message_id}'" /> &nbsp;
+						<a href="{aurl(#/task/view#):h}/id/{search_result.search_id}#{search_result.message_id}" title="{search_result.search_description}">{search_result.search_description}</a>
+					</div>
+					<div class="search_title_block">						
+						<div class="search_bookmark_block" >
+							{if:search_result.isBookmarked}
+								<div class="bookmarked"></div> <!-- megha 2.3.15 -->
+		 					{else:}
+		 						<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/message#)}/id/{search_result.message_id}/search_text/{search_text}'"></div><!-- megha 2.3.15 -->
+		 					{end:}
+		 				</div>
+		 				<div style="clear:both; "></div>						
+					</div>										
+				{else:}
+				 	<!-- Task search result --> 
+				 	<!-- JL 24-Jan-2013 This condition is common for both task title and task main description search. We have to write separate block for both -->
+				 		
+					<div class="search_title_block">					
+						<div class="search_title">
+							<img src="{search_result.task_icon}" width="12" height="12" title="{search_result.task_status_label}" onclick="window.location='{aurl(#/task/view#):h}/id/{search_result.search_id}'" alt="task_search_icon" /> &nbsp;
+							{if:search_result.isPromoted}
+								<div class="search_promo_icon"></div>
+							{end:}
+							{if:search_result.view_only_for_self}
+								<span class="view_only"><a href="{aurl(#/task/view#):h}/id/{search_result.search_id}" title="{search_result.search_title}">{search_result.search_title}</a></span>
+							{else:}
+								<a href="{aurl(#/task/view#):h}/id/{search_result.search_id}" title="{search_result.search_title}">{search_result.search_title}</a>
+							{end:}
+						</div>
+						<div class="search_bookmark_block">
+							{if:search_result.isBookmarked}
+		 						<div class="bookmarked"></div> <!-- megha 2.3.15 -->
+		 					{else:}
+		 						<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/task#)}/id/{search_result.search_id}/search_text/{search_text}'"></div> <!-- megha 2.3.15 -->
+		 					{end:}
+		 				</div>
+						<div style="clear:both; "></div>
+					</div>
+					<div class="search_desc">
+						<a href="{aurl(#/task/view#):h}/id/{search_result.search_id}" title="{search_result.search_description}">{search_result.search_description}</a>
+					</div>
+				{end:}
+				<div class="project_link">
+					<img src="{aurl(#/project/icon#):h}/id/{search_result.project_id}" width="16" height="18" title="{search_result.project_record.getName()}" alt="project_icon" onclick="window.location='{aurl(#/project/view#):h}/id/{search_result.project_id}'" class="project_icon" />
+					<a href="{aurl(#/project/view#):h}/id/{search_result.project_id}" title="{search_result.project_record.getName()}">{search_result.project_name_short}</a>
+				</div>
+				<div style="clear:both;"></div>
+			{end:}<!-- end of Task section -->		
+			<!-- Issue section -->
+			{if:search_result.issue_action}
+				<!-- Issue message search result -->
+				{if:search_result.message_id}
+					<div class="search_title_block">						
+						<div class="search_title">
+							<img src="{iurl(#message.png#)}" width="12" height="11" title="{search_result.search_description}" alt="issue_search_icon" onclick="window.location='{aurl(#/issue/view#):h}/id/{search_result.search_id}#{search_result.message_id}'" /> &nbsp;
+							<a href="{aurl(#/issue/view#):h}/id/{search_result.search_id}#{search_result.message_id}" class="red_text" title="{search_result.search_description}">{search_result.search_description}</a>
+						</div>
+						<div class="search_bookmark_block" >
+							{if:search_result.isBookmarked}
+								<div class="bookmarked"></div> <!-- megha 2.3.15 -->
+		 					{else:}
+		 						<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/message#)}/id/{search_result.message_id}/search_text/{search_text}'"></div><!-- megha 2.3.15 -->
+		 					{end:}
+		 				</div>
+		 				<div style="clear:both;"></div>						
+					</div>
+				{else:}
+				 	<!-- Issue search result -->
+				 	<!-- JL 24-Jan-2013 This condition is common for both issue title and issue main description search. We have to write separate block for both -->
+					<div class="search_title_block">						
+						<div class="search_title">
+							<img src="{search_result.issue_icon}" width="12" height="12" title="{search_result.issue_status_label}" onclick="window.location='{aurl(#/issue/view#):h}/id/{search_result.search_id}'" alt="issue_search_icon" /> &nbsp;
+							{if:search_result.isPromoted}
+								<div class="search_promo_icon"></div>
+							{end:}
+							<a href="{aurl(#/issue/view#):h}/id/{search_result.search_id}" class="red_text" title="{search_result.search_title}">{search_result.search_title}</a>
+						</div>
+						<div class="search_bookmark_block">
+							{if:search_result.isBookmarked}
+		 						<div class="bookmarkedn"></div> <!-- megha 2.3.15 -->
+		 					{else:}
+		 						<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/issue#)}/id/{search_result.search_id}/search_text/{search_text}'"></div><!-- megha 2.3.15 -->
+		 					{end:}
+		 				</div>
+						<div style="clear:both;"></div>
+					</div>
+					<div class="search_desc">
+						<a href="{aurl(#/issue/view#):h}/id/{search_result.search_id}" title="{search_result.search_description}">{search_result.search_description}</a>
+					</div>
+				{end:}
+				<div class="project_link">
+					<img src="{aurl(#/project/icon#):h}/id/{search_result.project_id}" width="16" height="18" title="{search_result.project_record.getName()}" alt="project_icon" onclick="window.location='{aurl(#/project/view#):h}/id/{search_result.project_id}'" class="project_icon" />
+					<a href="{aurl(#/project/view#):h}/id/{search_result.project_id}" title="{search_result.project_record.getName()}">{search_result.project_name_short}</a>
+				</div>
+			{end:}<!-- end of Issue section -->			
+			</div>
+		{end:}<!-- end of foreach search_result -->
+		<br/>
+		<br/>
+ {end:}<!-- end of if:else no_results section --> 
+ {end:} 

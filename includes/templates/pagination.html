@@ -1,0 +1,28 @@
+{if:!pc.getDoHidePagination()}
+	<div class="pagination">
+		 <b>{pc.getPaginationBlock():h}</b>
+			{if:!pc.getIsDisableFirst()}
+				 <a href="{pc.url():h}/from/{pc.getFirstPageNumber():h}/">First</a>
+			{else:}
+				<span>First</span>
+			{end:}
+			&nbsp;|&nbsp;
+			{if:!pc.getIsDisablePrev()}
+				<a href="{pc.url():h}/from/{pc.getPreviousFrom():h}/page_index/{pc.getPreviousPageNumber():h}">Prev</a>
+			{else:}
+				<span>Prev</span>		
+			{end:}
+			&nbsp;|&nbsp;
+			{if:!pc.getIsDisableNext()}
+		 		<a href="{pc.url():h}/from/{pc.getNextFrom():h}/page_index/{pc.getNextPageNumber():h}">Next</a>
+			{else:}
+				<span>Next</span>
+			{end:} 
+			&nbsp;|&nbsp;
+			{if:!pc.getIsDisableLast()}
+					<a href="{pc.url():h}/from/{pc.getLastPageNumber():h}/">Last</a>
+			{else:}
+				<span>Last</span>
+			{end:} 		
+	</div>
+{end:}

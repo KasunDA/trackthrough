@@ -1,0 +1,617 @@
+<div class="project_view_header"> <!--  Abhilash 17.12.14 -->
+	<img src="{aurl(#/project/icon#):h}/id/{project_record.getId()}" width="16"   class="proj_icon" alt="project_icon">
+	<div class="proj_title">{project_record.getName():h}</div><!--End of proj_title-->
+</div> <!-- End of project view header -->
+<div class="clear_fix"></div><!-- megha 22.12.14 -->
+<div class="project_header">
+	{if:lead_project}
+		<a href="{aurl(#/project/edit#):h}/project_id/{project_record.getId():h}">Edit</a><span>|</span>
+		
+		{if:issue_tracking} 
+			<a onclick="window.location = '{aurl(#/project/changeIssueSetting#)}/project_id/{project_record.getId()}/setting/0'">Disable Issue Tracking </a>
+		{else:}
+			<a onclick="window.location = '{aurl(#/project/changeIssueSetting#)}/project_id/{project_record.getId()}/setting/1'">Enable Issue Tracking </a>
+		{end:}
+	{end:}	
+	
+	{if:isAdmin}			
+		<div class="edit_project_header">
+			<a onclick="window.location = '{aurl(#/project/changeLead#)}/project_id/{project_record.getId()}'">Change lead</a>		
+		</div><!--end of edit_project_header-->
+	{end:}
+				
+	{if:lead_project}
+		<div class="edit_block" id="edit_title_block">
+			<form enctype="multipart/form-data" method="post" id="edit_title_form" action="{aurl(#/project/updateTitle#):h}" flexy:ignore>
+				<div>
+					<b>Project Title:</b><br/>
+					<input type="text" name="name" id="name" maxlength="200" value="{project_record.getName():h}" class="text_field" />
+					<input type="hidden" name="project_id" id="project_id" value ="{project_record.getId():h}" />	
+					<input type="submit" name="submit" value="Update" class="blue_btn" />
+					<input type="button" value="Cancel" onclick="tt.util.hideBlock('edit_title_block');" class="blue_btn" />
+					<div style="clear:both;"></div>
+				</div>
+			</form>
+		</div>		
+	{end:}
+		
+	{if:lead_project}
+		<div class="edit_block" id="edit_icon_block">
+			<form enctype="multipart/form-data" method="post" id="edit_icon_form" action="{aurl(#/project/changeIcon#):h}"  onsubmit="return tt.util.confirmChangeIcon(this);" flexy:ignore>
+				<div>
+					<b>Project Icon:</b>
+					<div id="edit_form">
+						<input type="file" id="upload_icon" size="20" style="margin-top:10px;" name="uploaded_icon" />
+						<input type="hidden" name="project_id" id="project_id" value ="{project_record.getId():h}" />	
+						<div class="form_info_text">Max. Upload size 1M; Allowed formats (png,jpg,gif).</div>
+						<input type="submit" name="submit" value="Update" class="blue_btn" />
+						<input type="button" value="Cancel" onclick="tt.util.hideBlock('edit_icon_block');" class="blue_btn" />
+					</div>
+					<div style="clear:both;"></div>					
+				</div>
+			</form>
+		</div>		
+	{end:}
+</div><!--End of project_header-->
+<div class="clear_fix"></div>
+
+<div class="projects">	
+	<div class="content_left_block">
+		<div class="clear_fix"></div>
+		<div class="project_view_block">
+			<div class="project_top_left_corner"></div>
+			<div class="proj_top_rt_corner"></div>
+			<div class="header_block">
+				<div class="created_by">
+					<span>By:&nbsp;</span>{project_record.getLeadSigninId():h}
+				</div>
+				<div class="created_date">
+					<span>Created On:&nbsp;</span>{project_record.getCreatedAtFormatted():h}
+				</div>
+				
+				{if:isBookmarked}
+					<div class="bookmarked"></div>
+				{else:}
+					<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/project#)}/id/{project_record.getId()}'"></div>
+				{end:}
+				{if:zeroprogress}
+					<div class="progress_bar_disabled" title="{project_record.getProgress()}%">	
+						<div class="progress_line" style="width:{project_record.getProgress():h}%;"></div>
+					</div>
+				{else:}	
+					<div class="progress_bar" title="{project_record.getProgress()}%">
+						<div class="progress_line" style="width:{project_record.getProgress():h}%;"></div>
+					</div>
+				{end:}
+				<div class="clear_fix"></div>
+			</div><!-- end of header_block -->
+			<div class="project_description_block">
+				<div class="description">
+					{project_record.getDescription():h}
+					 
+				</div><!--end of description-->
+				<div class="edit_block" id="edit_project_desc_block">
+					<form enctype="multipart/form-data" method="post" id="edit_project_desc_form" action="{aurl(#/project/updateProjectDesc#):h}" flexy:ignore>
+						<div>
+							<b>Project Description:</b><br />
+							<textarea name="project_description" id="proj_desc_area"  rows="5" flexy:ignore>{project_record.getDescription():h}</textarea> 
+							<input type="hidden" name="project_id" id="project_id" value ="{project_record.getId():h}" />	
+							<input type="submit" name="submit" value="Update" onclick="tt.util.hideBlock('edit_project_desc_block');" class="blue_btn" />
+							<input type="button" value="Cancel" onclick="tt.util.hideBlock('edit_project_desc_block');" class="blue_btn" />
+							<div style="clear:both;"></div>
+						</div>
+					</form>
+				</div>
+				
+				{if:project_record.getHasAttachment()}	
+					<div class="attachment_list">
+						{foreach:project_attachments,cnt,project_attachment}
+							{if:!project_attachment.is_image}
+								{if:project_attachment.attachment_name}
+									<img src="{iurl(project_attachment.attachment_icon)}" alt="project_attachment_icon"  /><a href="{aurl(#/project/download#):h}/project_id/{project_record.getId():h}/file_name/{project_attachment.attachment_name:h}" target="_blank">{project_attachment.attachment_name}</a>
+								{end:}
+							{end:}
+						{end:}
+						
+						{foreach:project_attachments,cnt,project_attachment}
+							{if:project_attachment.is_image}
+								{if:project_attachment.attachment_name}
+									<span class="attached_img">
+										<a href="{aurl(#/project/download#):h}/project_id/{project_record.getId():h}/file_name/{project_attachment.attachment_name:h}" target="_blank">
+											<img src="{aurl(#/project/download#):h}/project_id/{project_record.getId():h}/thumb/150120/file_name/{project_attachment.attachment_name:h}" width="150" height="120" alt="project_attachment_icon"/><br/>
+										</a>
+										<a href="{aurl(#/project/download#):h}/project_id/{project_record.getId():h}/file_name/{project_attachment.attachment_name:h}" target="_blank">{project_attachment.attachment_name}</a>
+									</span>
+								{end:}
+							{end:}
+						{end:}
+						
+						<div style="clear:both;"></div>
+						
+						{if:file_missing}
+							<span class="missing_attachments">Some of the attachments may be missing.</span> <!-- megha 26.12.14-->
+						{end:}
+						
+					</div><!--end of attachment_list-->
+				{end:}
+				
+				{if:add_team_to_track_issues}
+					<div class="assigned_to_link">
+						<a onclick="tt.util.showBlock('{project_record.getId():h}');">Add new user</a>
+					</div>
+					<div class="assigned_to_text"><span>Issue tracking team:</span>
+						{if:has_issue_tracking_team}
+							{foreach:issue_tacking_teams,cnt,team}
+								{team.signinId}{if:!team.isLead}&nbsp;<img src="{iurl(#remove_user.png#)}" alt="remove_icon" title="Remove" width="17" height="17" align="absmiddle"  onclick="if(tt.util.confirmUnAssignIssue('{team.signinId}')){window.location = '{aurl(#/issue/removeTeam#):h}/project_id/{project_record.getId():h}/user_id/{team.id}'}" />{end:}{if:!team.count_end},{end:}
+							{end:} <!-- end of foreach -->
+						{end:} <!-- end of has_issue_tracking_team -->		 			
+					</div> <!-- end of assigned_to_text -->	
+					<div style="clear:both;"></div>	 		
+					<div class="assignment_block" align="center" id="{project_record.getId():h}">
+						{if:teams_array}
+							<form method="post" id="update_form_{project_record.getId():h}" action="{aurl(#/issue/setAddIssuePermission#):h}/" onsubmit="return tt.util.validateAddNewUser(this);" flexy:ignore>
+								<label style="">Select the user for reporting: </label>
+								<select name="team_id[]" multiple="multiple">							
+									{foreach:teams_array,cnt,team}																							
+										<option value="{team.getId()}" >{team.getSigninId()}</option>
+									{end:}
+								</select>	
+								<input type="hidden" name="page_index" value="{page_index:h}" />
+								<input type="hidden" name="project_id" value="{project_record.getId():h}"/>
+								<input type="submit" value="Submit" class="blue_btn" />
+								<input type="button" value="Cancel" onclick="tt.util.hideBlock('{project_record.getId():h}');" class="blue_btn" />
+							</form>
+						{else:}
+							<b>No users to add</b>
+						{end:}
+					</div> <!-- end of assignment_block  -->
+				{end:}
+				
+				<div class="clear_fix"></div>	
+			</div><!-- end of project_description_block -->
+			<div class="proj_btm_left_corner"></div> <!-- megha 11.12.14-->
+			<div class="proj_btm_rt_corner"></div>			
+		</div><!-- end of project_view_block -->
+					
+                {if:lead_project}
+                <div class="project_view_block">
+                    <div class="project_top_left_corner"></div>
+                    <div class="proj_top_rt_corner"></div>
+                    <div class="header_block">
+                    <span class="header_block_add_desc">Add Description</span>
+	                    {if:is_compose_desc_visible} <!-- Abhilash 17.12.14 -->
+							<a onclick = "{window.location = '{aurl(#/project/setProjectDescVisibility#):h}/project_id/{project_record.getId():h}/visibility/hide/page/view'}"> <img src="{iurl(#hide_icon.png#)}" width="17" height="17" alt="tasks_hide_icon" title="Hide Details" align="absmiddle" class="compressor_image"  /></a>
+							
+						{else:}
+							<a onclick = "{window.location = '{aurl(#/project/setProjectDescVisibility#):h}/project_id/{project_record.getId():h}/visibility/show/page/view'}"> <img src="{iurl(#show_icon.png#)}" width="17" height="17" alt="tasks_show_icon" title="Show Details" align="absmiddle" class="compressor_image" /></a>
+							<div class="project_bottom_left_corner"></div>
+                      <div class="project_bottom_right_corner"></div>
+						{end:}
+						
+	                   <!-- megha 16.12.14-->
+                        
+                    	
+                    	 									
+                    </div>	<!--end of header_block-->
+                    
+                    {if:is_compose_desc_visible} <!-- Abhilash 17.12.14 -->
+                    <div class="project_description_block">
+                    	<div class="form_block">							
+                        	<div id="validate_project_upload_message" class="upload_message"><p id="message"> Please do not  close the browser until the attachment is completely uploaded</p><p>Loading, please wait...</p><img src="{iurl(#rel_interstitial_loading.gif#):h}" alt="progressbar" /></div>					
+                                <form enctype="multipart/form-data" method="post" id="message_form" action="{aurl(#/project/message#):h}/" onsubmit="return tt.util.validateProjectDescription(this);" flexy:ignore>					 		
+                                    <a name="reply_button"></a>
+                                    <div id="upload" class="form_item">
+                                        <div class="attachments">
+                                            <label for="uploadedfile"> Attachments:</label>
+                                            <div class="attachment_types" style=" ">Allowed file types:<span> {allowed_attachments:h} </span></div>
+                                            <br />
+                                            
+                                        </div> <!--end of attachments-->
+                                        <div class="file" id="upload_block_1">
+                                            <span id="upload_input_1"><input type="file" id="uploadedfile_1" size="20" name="uploadedfile_1" onchange="return tt.util.showDeleteIcon('1');"/></span>
+                                            <img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_1" onclick="return tt.util.deleteUpload('1')"/>
+                                            <div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+                                        </div>						
+                                        <div class="file2" id="upload_block_2">
+                                            <span id="upload_input_2"><input type="file" size="20" id="uploadedfile_2" name="uploadedfile_2" onchange="return tt.util.showDeleteIcon('2');" /></span>
+                                            <img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_2" onclick="return tt.util.deleteUpload('2')"/>
+                                            <div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+                                        </div>						
+                                        <div class="file" id="upload_block_3">
+                                            <span id="upload_input_3"><input type="file" size="20" id="uploadedfile_3" name="uploadedfile_3" onchange="return tt.util.showDeleteIcon('3');"/></span>
+                                            <img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_3" onclick="return tt.util.deleteUpload('3')"/>
+                                            <div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+                                        </div>						
+                                        <div class="file2" id="upload_block_4">
+                                            <span id="upload_input_4"><input type="file" size="20" id="uploadedfile_4" name="uploadedfile_4" onchange="return tt.util.showDeleteIcon('4');"/></span>
+                                            <img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_4" onclick="return tt.util.deleteUpload('4')"/>
+                                            <div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+                                        </div>						
+                                        <div class="file" id="upload_block_5">
+                                            <span id="upload_input_5"><input type="file" size="20" id="uploadedfile_5" name="uploadedfile_5" onchange="return tt.util.showDeleteIcon('5');"/></span>
+                                            <img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_5" onclick="return tt.util.deleteUpload('5')"/>
+                                            <div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+                                        </div>						
+                                        <div class="file2" id="upload_block_6">
+                                            <span id="upload_input_6"><input type="file" size="20" id="uploadedfile_6" name="uploadedfile_6" onchange="return tt.util.showDeleteIcon('6');" /></span>
+                                            <img src="{iurl(#delete_icon.png#)}" width="10" height="10" alt="attachment_delete_icon" title="Delete Attachment" class="upload_delete_icon" id="delete_icon_6" onclick="return tt.util.deleteUpload('6')"/>
+                                            <div class="form_info_text">Max. Upload size {max_upload_size:h}.</div>
+                                        </div>						
+                                        <div id="add_more" onclick="tt.util.showUploadBlock('add_more');" class="upload_more_link">Add more</div>
+                                    </div><!-- end of form_items-->
+                                    <div style="clear:both;"></div>
+                                    <div class="form_item">
+                                        <label for="description">
+                                            <textarea rows="15" class="add_desc_txtarea" id="description" name="description"></textarea><!--megha 12.12.14-->
+                                    </div>		
+                                    <div class="form_item" align="center">
+                                        <input type="submit" value="Submit" class="blue_btn"/> &nbsp; <!--megha 12.12.14-->
+                                        <input type="reset" value="Reset" class="blue_btn" /> <!--megha 12.12.14-->
+                                        <input type="hidden" name="subject" id="subject" value="" />
+                                        <input type="hidden" name="project_id" id="project_id" value ="{project_record.getId():h}" />					
+                                    </div>				
+                                    <div style="clear:both;"></div>
+                                </form>
+                            </div> <!-- end of form_block -->
+                        
+                    </div> <!--end of project_description_block-->	
+             				
+                    <div class="proj_btm_left_corner"></div> <!-- megha 11.12.14-->
+                    <div class="proj_btm_rt_corner"></div>	
+                    {end:}	
+                    		
+                </div><!-- end of project_view_block -->				
+				{end:}
+                {if:can_access_tasks}	
+                    <div class="project_view_block">
+                        <div class="project_top_left_corner"></div>
+                        <div class="proj_top_rt_corner"></div>
+                        <div class="header_block">
+                            {if:is_task_visible}
+                                <a onclick = "{window.location = '{aurl(#/project/setProjectVisibility#):h}/project_id/{project_record.getId():h}/type/{task_type}/visibility/hide/page/view'}"> <img src="{iurl(#minus_task.png#)}" width="15"  height="15" alt="tasks_hide_icon" title="Hide Tasks" align="absmiddle" class="compressor_image"  /></a>
+                            {else:}
+                                <a onclick = "{window.location = '{aurl(#/project/setProjectVisibility#):h}/project_id/{project_record.getId():h}/type/{task_type}/visibility/show/page/view'}"> <img src="{iurl(#plus_task.png#)}" width="15"  height="15" alt="tasks_show_icon" title="Show Tasks" align="absmiddle" class="compressor_image" /></a>
+                            {end:}
+                            <span>Tasks</span>
+                            {if:can_add_task}
+                                <span>  <a href="{aurl(#/task/create#):h}/id/{project_record.getId()}/from_page/view_project/page_index/{page_index:h}">+ New</a></span>
+                            {end:}
+                            <div class="total_records">Total:#{count_task}</div><!-- 16.12.14-->
+                            <div class="sort_{project_record.task_sort_order:h}_block" onclick="window.location='{aurl(#/project/toggleSortOrder#):h}/project_id/{project_record.getId():h}/from_page/view_project/type/task'" ></div> <!-- megha 6.2.15 -->
+										
+                            <div class="task_status_filter"> 											
+                                <form name="taskFilterForm" method="post"> <!-- megha 4.2.15 -->
+                                <select name="task_status" onchange="tt.util.submitTaskFilter(this,'{aurl(#/project/setTaskFilter#):h}/project_id/{project_record.getId():h}/from_page/view_project')" flexy:ignore>
+                                    {if:project_record.is_task_filter_all}
+                                        <option value="" selected="selected">All</option>
+                                    {else:}
+                                        <option value="">All</option>	
+                                    {end:}
+                                    {if:project_record.is_task_filter_open}
+                                        {if:allowUser}
+                                            <option value="{task_open}" selected="selected">Open</option> 
+                                        {end:}
+                                    {else:}
+                                        {if:allowUser}
+                                            <option value="{task_open}">Open</option> 
+                                        {end:}
+                                    {end:}
+                                    {if:project_record.is_task_filter_inprogress}
+                                        <option value="{task_inprogress}" selected="selected">In progress</option>
+                                    {else:}
+                                        <option value="{task_inprogress}" >In progress</option>
+                                    {end:}
+                                    {if:project_record.is_task_filter_review}
+                                        <option value="{task_review}" selected="selected">Review Pending</option>															
+                                    {else:}
+                                        <option value="{task_review}">Review Pending</option>
+                                    {end:}
+                                    {if:project_record.is_task_filter_closed}
+                                        <option value="{task_closed}" selected="selected">Closed</option>
+                                    {else:}
+                                        <option value="{task_closed}">Closed</option>
+                                    {end:}
+                                </select> 																																											
+                                </form>											
+                            </div> <!-- task_status_filter -->
+                            
+                            <!-- ************ megha 4.2.15 ********** -->
+											<div class="priority_filter">											
+												<form name="priorityTaskFilterForm" method="post" flexy:ignore>
+								 					<select name="task_priority" onchange="tt.util.submitPriorityFilter(this,'{aurl(#/project/setPriorityFilter/type/task#):h}/project_id/{project_record.getId():h}/from_page/view_project')" flexy:ignore>
+														{if:project_record.is_task_priority_filter_all}
+															<option value="" selected="selected">All</option>
+														{else:}
+															<option value="">All</option>	
+														{end:}
+														{if:project_record.is_task_priority_filter_high}
+															<option value="{high_priority}" selected="selected">High</option>
+														{else:}
+															<option value="{high_priority}" >High</option>
+														{end:}
+														{if:project_record.is_task_priority_filter_medium}
+															<option value="{normal_priority}" selected="selected">Medium</option>
+														{else:}
+															<option value="{normal_priority}" >Medium</option>
+														{end:}
+														{if:project_record.is_task_priority_filter_low}
+															<option value="{low_priority}" selected="selected">Low</option>															
+														{else:}
+															<option value="{low_priority}">Low</option>
+														{end:}
+													</select> 																																											
+												</form>											
+											</div> <!-- priority_filter -->
+											<!-- *********** end of priority filter *****************-->
+											
+                        </div><!--end of header_block-->
+                        {if:is_task_visible}
+                            <div class="list_block">
+                                {if:no_task_records}
+                                    <div class="black_bold_text">No tasks found </div>
+                                {else:}
+                                    {foreach:task_records,cnt,task_record}
+                                        <div class="tasks_list">
+                                            {if:task_record.getIsViewOnly()}
+                                                <img src="{iurl(#viewonly_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" title="View Only" class="status_icon" alt="task_viewonly_status_icon" flexy:ignore/><!-- megha 2.2.15 -->
+                                            {else:}
+                                                {if:task_record.getIsOpen()}
+                                                    <img src="{iurl(#open_status.png#)}" width="12" align="absmiddle" height="12" title="Open" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" alt="task_open_status_icon"  />
+                                                {end:}
+                                                {if:task_record.getIsInProgress()}
+                                                    <img src="{iurl(#inprogress_status.png#)}" width="12" height="12" align="absmiddle" height="12" title="In progress" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" alt="task_inprogress_status_icon" />
+                                                {end:}
+                                                {if:task_record.getIsInReviewStatus()}
+                                                    <img src="{iurl(#pending_status.png#)}" width="12" height="12" title="Review Pending" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" alt="task_pending_status_icon"  />
+                                                {end:}
+                                                {if:task_record.getIsClosed()}
+                                                    <img src="{iurl(#closed_status.png#)}" width="12" height="12" title="Closed" class="status_icon" onclick="window.location='{aurl(#/task/view#):h}/id/{task_record.getId():h}'" alt="task_closed_status_icon"  />
+                                                {end:}
+                                                {if:task_record.isPromoted}
+                                                    <div class="promo_icon"></div>
+                                                {end:}
+                                            {end:} <!--  end of else view only -->
+                                            {if:task_record.view_only_for_self}
+                                                <div class="pv_task_title view_only">
+                                                    <a href="{aurl(#/task/view#):h}/id/{task_record.getId()}" title="{task_record.getName()} - {task_record.getDescription()}">{task_record.getName():h} &nbsp;({task_record.getProgress()}%)</a> 
+                                                </div>
+                                            {else:}
+                                                <div class="pv_task_title">											
+                                                    <a href="{aurl(#/task/view#):h}/id/{task_record.getId()}" title="{task_record.getName()} - {task_record.getDescription()}">{task_record.getName():h} &nbsp;({task_record.getProgress()}%)</a> 
+                                                </div>
+                                            {end:}
+                                            <div class="clear_fix"></div>
+                                        </div><!--end of tasks_list-->
+                                    {end:}
+                                {end:}
+                            </div><!--end of list_block-->
+                            <div class="proj_btm_left_corner"></div>
+                            <div class="proj_btm_rt_corner"></div>
+                        {else:}
+                            <div class="project_bottom_left_corner"></div>
+                            <div class="project_bottom_right_corner"></div>
+                        {end:}
+                    </div><!-- end of project_view_block -->
+                {end:}			
+                
+                {if:add_issue_permission}
+                    <div class="project_view_block">
+                        <div class="project_top_left_corner"></div>
+                        <div class="proj_top_rt_corner"></div>
+                        <div class="header_block">
+                            {if:is_issue_visible}
+                                <a onclick = "{window.location = '{aurl(#/project/setProjectVisibility#):h}/project_id/{project_record.getId():h}/type/{issue_type}/visibility/hide/page/view'}"> <img src="{iurl(#minus_task.png#)}" width="15" height="15" alt="hide_issues" title="issues_hide_icon" align="absmiddle" class="compressor_image"  /></a>
+                            {else:}
+                                <a onclick = "{window.location = '{aurl(#/project/setProjectVisibility#):h}/project_id/{project_record.getId():h}/type/{issue_type}/visibility/show/page/view'}"> <img src="{iurl(#plus_task.png#)}" width="15" height="15" alt="issues_show_icon" title="Show Issues" align="absmiddle" class="compressor_image" /></a>
+                            {end:}
+                            <span>Issues</span>
+                            {if:add_issue_permission}
+                                <span> <a href="{aurl(#/issue/create#):h}/id/{project_record.getId()}/from_page/view_project/page_index/{page_index:h}">+ New</a></span>
+                            {end:}
+                            <div class="total_records">Total:#{count_issues}</div> <!-- 16.12.14-->
+                          
+                             <div class="sort_{project_record.issue_sort_order:h}_block" onclick="window.location='{aurl(#/project/toggleSortOrder#):h}/project_id/{project_record.getId():h}/from_page/view_project/type/issue'" ></div> <!-- megha 6.2.15 -->
+							
+                            <div class="task_status_filter">											
+                                <form name="issueFilterForm" method="post" flexy:ignore> <!-- megha 4.2.15 -->
+                                <select name="issue_status" onchange="tt.util.submitProjectIssuesFilter(this,'{aurl(#/project/setIssueFilter#):h}/project_id/{project_record.getId():h}/from_page/view_project')"flexy:ignore>
+                                    {if:project_record.is_issue_all}
+                                        <option value="" selected="selected">{all_type_label:h}</option>															
+                                    {else:}
+                                        <option value="">{all_type_label:h}</option>
+                                    {end:}
+                                    {if:project_record.is_issue_open}
+                                        <option value="{issue_open}" selected="selected">Open</option>
+                                    {else:}
+                                        <option value="{issue_open}">Open</option>
+                                    {end:}
+                                    {if:project_record.is_issue_closed}
+                                        <option value="{issue_closed}" selected="selected">Closed</option>
+                                    {else:}
+                                        <option value="{issue_closed}">Closed</option>
+                                    {end:}
+                                </select> 																																											
+                                </form>											
+                            </div> <!-- task_status_filter -->
+                            
+                            <!-- ************ megha 4.2.15 ********** -->
+											<div class="priority_filter">											
+												<form name="priorityIssueFilterForm" method="post" flexy:ignore>
+								 					<select name="issue_priority" onchange="tt.util.submitPriorityFilter(this,'{aurl(#/project/setPriorityFilter/type/issue#):h}/project_id/{project_record.getId():h}/from_page/view_project')" flexy:ignore>
+														{if:project_record.is_issue_priority_filter_all}
+															<option value="" selected="selected">All</option>
+														{else:}
+															<option value="">All</option>	
+														{end:}
+														{if:project_record.is_issue_priority_filter_high}
+															<option value="{high_priority}" selected="selected">High</option>
+														{else:}
+															<option value="{high_priority}" >High</option>
+														{end:}
+														{if:project_record.is_issue_priority_filter_medium}
+															<option value="{normal_priority}" selected="selected">Medium</option>
+														{else:}
+															<option value="{normal_priority}" >Medium</option>
+														{end:}
+														{if:project_record.is_issue_priority_filter_low}
+															<option value="{low_priority}" selected="selected">Low</option>															
+														{else:}
+															<option value="{low_priority}">Low</option>
+														{end:}
+														
+														
+													</select> 																																											
+												</form>											
+											</div> <!-- priority_filter -->
+											<!-- *********** end of priority filter *****************-->
+											
+                        </div><!--end of header_block-->
+                        {if:is_issue_visible}
+                            <div class="list_block">
+                                {if:no_issue_records}
+                                    <div class="black_bold_text">No issues found</div>
+                                {else:}
+                                    {foreach:issue_records,cnt,issue_record}
+                                        <div class="issues_list">
+                                            {if:issue_record.isOpen()}
+                                                <img src="{iurl(#open_status.png#)}" width="12" height="12" onclick="window.location='{aurl(#/issue/view#):h}/id/{issue_record.getId()}'" title="Open" class="status_icon" alt="issue_open_status_icon"   />
+                                            {end:}
+                                            {if:issue_record.isClosed()}
+                                                <img src="{iurl(#closed_status.png#)}" width="12" height="12" title="Closed" onclick="window.location='{aurl(#/issue/view#):h}/id/{issue_record.getId()}'" class="status_icon"  alt="issue_closed_status_icon"  />
+                                            {end:}
+                                            {if:issue_record.isPromoted}
+                                                <div class="promo_icon"></div>
+                                            {end:}
+                                            <div class="pv_task_title">
+                                                <a href="{aurl(#/issue/view#):h}/id/{issue_record.getId()}" title="{issue_record.getTitle()} - {issue_record.getDescription()}">{issue_record.getTitle():h}</a> 
+                                            </div>
+                                            <div style="clear:both;"></div>	
+                                        </div><!-- end of issues_list -->
+                                    {end:}
+                                {end:} <!-- end of no_issue_records -->
+                            </div> <!-- end of class list_block -->
+                            <div class="proj_btm_left_corner"></div> <!--megha 11.12.14-->
+                            <div class="proj_btm_rt_corner"></div>
+                        {else:}
+                            <div class="project_bottom_left_corner"></div> <!--megha 11.12.14-->
+                            <div class="project_bottom_right_corner"></div>
+                        {end:} <!-- end of if:is_show_issues -->
+                    </div> <!-- end of project_view_block -->
+                    <div style="clear:both;"></div>
+                {end:} <!-- end of if:add_issue_permission -->	
+        </div><!--end of content_left_block-->
+
+        <div class="content_right_block">
+            <div class="project_top_left_corner"></div>
+            <div class="proj_top_rt_corner"></div>
+            {if:!no_message_records}
+                <div class="header_block">
+                    <span>Project Messages</span>
+                </div><!--end of header_block-->
+                {foreach:message_records,cnt,message_record}
+                  {if:message_record.m_record.getFromSelf()} <!--  Abhilash 6.5.2015 -->
+                    <div class="project_message">
+                  {else:}
+        			<div class="alt_user_message">
+       			  {end:}
+                        <img src="{aurl(#/user/icon#):h}/id/{message_record.m_record.getFromId():h}" width="41" height="41" alt="profile_avatar" class="msg_sender_icon" />
+                        <div class="msg_info">
+                            <span class="msg_sender_name">{message_record.m_record.getFromName():h}</span>
+                            <span><a name="{message_record.m_record.getId():h}"></a>#{message_record.m_record.getId():h}</span>
+                            <span> {message_record.m_record.getDateFormatted():h} </span>
+                        </div><!-- end of message_info-->
+                        {if:can_delete_project_message}						
+                            {if:isAdmin}
+                                <img src="{iurl(#delete_project.png#)}" width="14" height="14" alt="attachment_delete_icon" title="Delete" class="delete_msg_icon"  onclick="if (tt.util.confirmDelete('project description')) {window.location = '{aurl(#/message/delete#):h}/message_id/{message_record.m_record.getId()}/'}" />
+                            {else:}
+                                <img src="{iurl(#delete_project.png#)}" width="14" height="14" alt="attachment_delete_icon" title="Delete" class="delete_msg_icon"  onclick="if(tt.util.confirmDelete('project description')){window.location = '{aurl(#/message/delete#):h}/message_id/{message_record.m_record.getId()}/'}" />
+                            {end:}						  		 
+                        {end:}
+                        {if:message_record.isCommentBookmarked}
+                            <div class="bookmarked" ></div>
+                        {else:}
+                            <div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/message#)}/id/{message_record.m_record.getId()}'"></div>
+                        {end:}
+                        <div class="clear_fix"></div>
+                        <div class="msg_content">
+                            {message_record.m_record.getCont():h}
+                        </div><!--end of msg_content-->
+                        {if:message_record.m_record.getHasAttachment()}
+                            <div class="msg_attachments">
+                                <span>Attachments:</span>
+                                 <div class="clear_fix"></div>
+                                <div class="attachment_list">
+                                	<div class="attachment_list_one"><!-- megha 13.12.14-->
+                                		{foreach:message_record.m_attachments,cnt,message_attachment}
+                                   			{if:!message_attachment.is_image}
+                                        		<span class="attached_docs"> <!-- megha 5.2.15 -->
+                                        			<img src="{iurl(message_attachment.attachment_icon)}" width="16" height="11" alt="message_attachment_icon" align="absmiddle" />&nbsp;
+                                        			<a href="{aurl(#/message/download#):h}/message_id/{message_record.m_record.getId()}/file_name/{message_attachment.attachment_name:h}" target="_blank">{message_attachment.attachment_name}</a>
+                                    			</span> <!-- megha 24.12.14 -->
+                                    		{end:}
+                                		{end:}
+                                	</div>				 				
+                                	{foreach:message_record.m_attachments,cnt,message_attachment}
+                                    	{if:message_attachment.is_image}
+                                        	<span class="attached_img">
+                                            	<a href="{aurl(#/message/download#):h}/message_id/{message_record.m_record.getId()}/file_name/{message_attachment.attachment_name:h}" target="_blank">
+                                                	<img src="{aurl(#/message/download#):h}/message_id/{message_record.m_record.getId()}/thumb/150120/file_name/{message_attachment.attachment_name:h}" width="150" height="120" alt="message_attachment_icon" /><br/>
+                                            	</a>
+                                            	<a href="{aurl(#/message/download#):h}/message_id/{message_record.m_record.getId()}/file_name/{message_attachment.attachment_name:h}" target="_blank">{message_attachment.attachment_name}</a>
+                                        	</span>
+                                    	{end:}
+                                	{end:}	
+                                	<div class="clear_fix"></div>
+                                </div>			 				
+                                {if:message_record.msg_attachment_missing}
+               <!-- megha 24.12.14 --><span class="missing_attachments"> Some of the attachments may be missing.</span>
+                                {end:}
+                            </div><!--end of msg_attachments-->
+                        {end:}
+                        <div class="clear_fix"></div> <!-- megha - 1.1.15 -->
+                        {if:isAdmin}
+                        	{if:message_record.m_record.getIsDeleted()}
+                            	<div class="message_action_block">							
+                                	<div class="revoke_msg">This message was later retracted by the sender.&nbsp; <a onclick="window.location = '{aurl(#/message/revoke#):h}/message_id/{message_record.m_record.getId()}/'" title="Revoke the message" > Revoke</a></div>
+                                	<div style="clear: both;"></div>						
+                            	</div>
+                        	{end:}
+                        	<div class="clear_fix"></div> <!-- megha - 1.1.15 -->	
+                    	{end:}
+                    </div><!--end of project_message-->
+                    <div class="clear_fix"></div>
+                    
+                {end:}
+            {end:}
+            <!--<div class="alt_user_message">
+                    <img src="TrackThrough 1.4.3 - Projects_files/profile_avatar.png" width="41" height="41" alt="profile_avatar" class="msg_sender_icon" />
+                <div class="msg_info">
+                    <span class="msg_sender_name">Abhilash</span>
+                    <span>#125</span>
+                    <span>Yesterday at 4:13 PM</span>
+                </div>--><!--end of msg_info-->
+                <!-- <img src="TrackThrough 1.4.3 - Projects_files/bookmark.png" width="22" height="21" alt="bookmark" class="bookmark" title="bookmark" />
+                <div class="clear_fix"></div>					
+                <div class="msg_content">
+                    Project owner changed: [abhishek]
+                </div>--><!--end of msg_content
+            </div>--><!--end of alt_user_message-->
+            <div class="clear_fix"></div>
+            
+            <!-- pagination block not needed in project-view
+            <div class="pagination_block">
+                <div class="pagination_controls">
+                    <span><a href="#">First</a></span>&nbsp;|&nbsp;
+                    <span><a href="#">Prev</a></span>&nbsp;|&nbsp;
+                    <a href="#">Next</a>&nbsp;|&nbsp;
+                    <a href="#">Last</a>
+                </div> --><!--end of pagination_controls-->	
+                <!-- <div class="show_pages">Showing page 1 of 4</div>
+                <div class="clear_fix"></div>
+            </div> --><!-- end of pagination_block -->
+            <div class="{msg_btm_left_corner}"></div> <!--  Abhilash 6.5.15 -->
+            <div class="{msg_btm_rt_corner}"></div>	 <!--  Abhilash 6.5.15 -->
+        </div><!--end of content_right_block-->
+        <div class="clear_fix"></div>  
+</div><!-- end of project -->
+<div class="clear_fix"></div>

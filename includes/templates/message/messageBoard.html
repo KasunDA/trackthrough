@@ -1,0 +1,113 @@
+<div class="message_board_block">
+	{if:show_unread_only}
+			<div class="page_title">Unread Messages</div>
+	{else:}				
+			<div class="page_title">Messages</div>
+	{end:}
+{if:no_records}
+  	<div class="error_text">
+  		{if:show_unread_only}
+			No unread messages found
+		{else:}				
+			No messages found
+		{end:}  		
+	</div>	
+{else:}
+	{outputBlock(#pagination.html#)}	  
+	<div class="msg_inbox">
+		<form method="post" id="messageboard_form" action="{aurl(#/message/deleteInbox#):h}" onsubmit="return tt.util.confirmDelete('message', true) ? true : false;" flexy:ignore>
+		 {if:!show_unread_only} 
+		 <!--  JL - this is required,  experimental, do not takeout-->
+		 <span class="delete_check_item">
+			<input type="checkbox" name="select_all" id="select_all" onclick="tt.util.toggleCbxes(this)" />
+		</span>	
+		<input type="submit" class="button" value="Delete"  name="delete_selected" id="delete_selected" />			
+		{end:}
+		<div style="clear:both;"></div>
+		<div class="msg_header">
+			<div class="msg_header_from">From</div>
+			<div class="msg_header_title">Messages</div>
+			<div class="msg_header_date">Date</div>
+			<div style="clear:both;"></div>
+		</div>
+		{foreach:message_records,cnt,message_record}
+			<div class="message_record_block">
+			   	{if:!show_unread_only} 
+			  		 <!--  JL - this is required,  experimental, do not takeout  -->
+					{if:message_record.message_board_id}
+						<span class="delete_check">
+							<input class="chk_box" type="checkbox" name="selected_id[]" value="{message_record.message_board_id:h}>" flexy:ignore/>
+						</span>
+					{end:}
+				{else:}
+					{if:message_record.getIsProjctMessage()}
+						<img src="{iurl(#comment.png#)}" class="msg_rcd_icon" width="12" height="12" title="New Message" onclick="window.location = '{aurl(#/project/view#):h}/id/{message_record.getTypeId():h}/#message'" alt="message_record_block_icon" />
+					{end:}
+         			{if:message_record.getIsTaskMessage()}
+						<img src="{iurl(#comment.png#)}" class="msg_rcd_icon" width="12" height="12" title="New Message" onclick="window.location = '{aurl(#/task/view#):h}/id/{message_record.getTypeId():h}/#message'"  alt="new_message_icon" />
+         			{end:}	
+         			{if:message_record.getIsIssueMessage()}
+						<img src="{iurl(#comment.png#)}" class="msg_rcd_icon" width="12" height="12" title="New Message" onclick="window.location = '{aurl(#/issue/view#):h}/id/{message_record.getTypeId():h}/#message'"  alt="new_message_icon" />
+         			{end:}	
+			   	{end:}				   		
+			   	{if:show_unread_only}			
+					<div class="msg_rcd_from_blk_u">
+				{else:}
+					<div class="msg_rcd_from_blk">
+				{end:}	
+					<img src="{aurl(#/user/icon#):h}/id/{message_record.getFromId():h}" width="27" height="28" alt="user_pic"  style="margin-bottom:1px;" />
+				{if:message_record.getFromName():h}								
+					{message_record.getFromName():h}
+				{else:}
+					&nbsp;
+				{end:}
+				</div>
+				<div class="msg_rcd_subject_blk">
+					{if:message_record.getIsUnread()}
+						<div class="new_msg_text">
+					{end:}	
+		 			{if:message_record.getIsProjctMessage()}	
+						<a href="{aurl(#/project/view#):h}/id/{message_record.getTypeId():h}/#message" title="{message_record.getCont()}">{message_record.short_description}</a>
+         			{end:}
+         			{if:message_record.getIsTaskMessage()}	
+ 						<a href="{aurl(#/task/view#):h}/id/{message_record.getTypeId():h}/#message" title="{message_record.getCont()}">{message_record.short_description}</a>
+		 			{end:}
+		 			{if:message_record.getIsIssueMessage()}	
+ 						<a href="{aurl(#/issue/view#):h}/id/{message_record.getTypeId():h}/#message" class="red_text" title="{message_record.getCont()}">{message_record.short_description}</a>
+		 			{end:}
+		 			{if:message_record.getIsUnread()}
+						</div>
+					{end:}
+					<div style="clear:both;"></div>
+					<div class="mb_project_link" title="{message_record.project_link.getName()}">						
+						<img src="{aurl(#/project/icon#):h}/id/{message_record.project_link.project_id}" width="12" height="14" align="top" onclick="window.location='{aurl(#/project/view#):h}/id/{message_record.project_link.project_id}'" alt="{message_record.project_link.getName():h}" /> <!-- megha 5.1.15 -->
+						<a href="{aurl(#/project/view#):h}/id/{message_record.project_link.project_id}">{message_record.project_link.project_short_name:h}</a>
+					</div> <!-- end of project_link -->	
+				</div>	
+				<div class="msg_rcd_date_blk">
+					{message_record.getDateFormatted():h}
+				</div>
+				<div class="msg_bookmark">
+					{if:message_record.isBookmarked}
+		 				<div class="bookmarked"></div>
+		 			{else:}
+		 				{if:message_record.getIsProjctMessage()}
+		 					<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/message#):h}/id/{message_record.getId():h}/from_page/messageboard/#message'"></div>
+		 				{end:}
+		 				{if:message_record.getIsTaskMessage()}	
+		 					<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/message#):h}/id/{message_record.getId():h}/from_page/messageboard/#message'"></div>
+		 				{end:}
+		 				{if:message_record.getIsIssueMessage()}	
+		 					<div class="bookmark" title="Bookmark" onclick="window.location = '{aurl(#/bookmark/message#):h}/id/{message_record.getId():h}/from_page/messageboard/#message'"></div>
+		 				{end:}
+		 			{end:}
+				</div>
+				<div style="clear:both;"></div>				
+			</div>
+		{end:}	
+		</form>	
+	</div>
+	{outputBlock(#pagination.html#)}
+	<div style="clear:both;"></div>		
+{end:}
+</div>

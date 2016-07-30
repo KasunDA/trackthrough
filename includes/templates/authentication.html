@@ -1,0 +1,22 @@
+
+<div class="login_block">
+	
+	<div class="clear_fix"></div>
+	<div class="banner_header"> Online collaboration simpler, faster and better</div>
+	<form name ="signin_form" action="{aurl(#/user/signin#)}" method="post" onsubmit="return tt.util.validateSigninForm(this)">
+		<div class="login_label">
+			<label for="username">Username:</label>
+		</div>
+		<div class="login_input_bg">
+			<input type="text" name="signin_id" maxlength="100" title="Your Login Name" class="login_txtbox" />
+		</div>
+		<div class="login_label">
+			<label for="password" >Password:</label>
+		</div>
+		<div class="login_input_bg">
+			<input type="password" name="password" maxlength="20" title="Your Password" class="login_txtbox" />
+		</div>
+		<input type="submit" name="login" class="login_btn" value="Login" />
+		<p>Don't have an account? Please contact your site administrator.</p> <!-- megha 6.4.15 -->
+	</form>		
+</div> <!-- End of login block -->

@@ -1,0 +1,31 @@
+<div class="page_title">Permissions</div>
+<div class="registration_block">
+	<form name="permission_form" action="{aurl(#/user/updatePermission#)}" method="POST" onsubmit="return tt.util.validateRegistrationInputs(this)" flexy:ignore> 
+		<div class="form_item">
+			<label for="permission"> Permission:</label>
+			{if:can_create_project}
+				<input type="checkbox" id="create_project_permission" name="create_project_permission" value="1" size="40" checked /> 
+			{else:}
+				 <input type="checkbox" id="create_project_permission" name="create_project_permission" value="1" size="40" /> 
+			{end:}
+			This user can create projects &nbsp; &nbsp;
+			<div class="form_info_text">Select the check box to allow user to create projects</div><br />			
+			<label for="">&nbsp;</label>			
+			{if:can_perform_task}
+				<input type="checkbox" id="perform_task_permission" name="perform_task_permission" value="1" size="40" checked /> 
+			 {else:}
+				 <input type="checkbox" id="perform_task_permission" name="perform_task_permission" value="1" size="40" /> 
+			{end:}
+			This user can execute tasks
+			<div class="form_info_text">Select the check box to allow user to get tasks assigned</div>			
+		</div>
+		<div class="form_item">
+			<label for="">&nbsp;</label>
+			<input type="hidden" name="tt_user_id" value="{tt_user.getId():h}" />						
+			<input type="submit" value="Submit" class="fbutton"/> &nbsp;
+			<input type="reset" value="Reset" class="fbutton" /> &nbsp;	
+			<input type="button" value="Cancel" class="fbutton" onclick = "{window.location = '{aurl(#/user/indexUsers#):h}'}" />		 
+		</div>
+		<div style="clear:both;">&nbsp;</div>	
+	</form>
+</div><!-- end of registration_block -->

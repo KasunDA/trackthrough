@@ -1,0 +1,67 @@
+[FW]
+module_dir = includes/modules
+image_dir = resources/images
+permitted_uri_chars = "a-z 0-9~%.:_-"
+default_module = user
+base_url=BASE_URL_VAL
+multi_session = false
+non_authorized_modules = user
+error_module = error
+error_controller = ErrorAction
+
+
+[DB]
+dsn =DSN_VAL
+prefix =PREFIX_VAL
+
+
+[ETC]
+uploads_folder=uploads
+mail_template_folder=resources/mail_templates/
+hashed_password=false
+version = 1.4.4
+
+
+
+[HTML_Template_Flexy]
+templateDir = ./includes/templates
+compileDir =  ./templates_c
+forceCompile = 0
+debug = 0
+locale = en
+
+
+[FlexyView]
+resources_dir = resources
+style_sheets=images/style.css
+java_scripts = js/tt.util.js
+
+
+[THEMES] 
+default_theme = black
+names=grey,lime,violet,red,plum,black
+
+
+
+
+[Attachment_icon]
+css = css.png
+csv = xls.png
+default = attach.png
+doc = doc.png
+flv = flv.png
+gif = image.png
+jpg = image.png
+mht = mht.png
+module = php.png
+pdf = pdf.png
+png = image.png
+php = php.png
+odt = odt.png
+rtf = doc.png
+txt = txt.png
+tar = tar.png
+xls = xls.png
+zip = zip.png
+
+

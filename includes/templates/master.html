@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<link rel="shortcut icon" href="{iurl(#favicon.ico.png#)}" type="image/x-icon" /> <!-- Abhilash 13.2.15 -->
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<title>TrackThrough {version} - {title:h}</title>
+	{style_links:h}
+	{javascript_links:h}
+	{includeThemeCSS(#style.css#):h}
+	{includeLandingPageCSS(#style.css#):h}
+	{includeiPhoneCSS(#style.css#):h}
+	{includeIE6JS(#ie_png.js#):h}	
+	{includeIE7CSS(#style_ie7.css#):h}
+	{includeIE11CSS(#style_ie11.css#):h} <!--  Abhilash 6.1.15 -->
+	<!--[if lt IE 7]>
+		<script type="text/javascript">
+    		ie_png.fix('.png, .header_logo, .landing_header_logo, .bookmark_icon, .go_btn, .bookmarked_icon, .link img, .project_delete a img, .content_header_block a img, .table_block a img');
+    	</script>
+    <![endif]--> 
+    
+    		
+</head>	
+<body>
+	<div class="whole">
+		<div class="header">		
+			<div class="header_left_block">		
+				<a href="{aurl(#/project/index#)}">
+					<div class="header_logo" title="logo"></div>
+				
+				</a>			
+			</div>	
+		{if:!action.getIsAuthorised()}
+			{if:loginBlock}
+				<div class="app_name">Trackthrough</div>
+			{end:}
+		{end:}	
+			{if:!action.getIsAuthorised()}
+				
+				{if:loginBlock}
+					<div class="company_name">{company_name:h}</div>
+					<div class="clear_fix"></div>						
+				{end:}
+			{end:}
+			{if:action.getIsAuthorised()}
+				<div class="header_right_block">					
+					<div align="right" class="ie_position">					
+					<div class="user_settings_block" onmouseover="tt.util.moreusersettings('more_user_settings','arrow_img2','{iurl(##)}');" onmouseout="tt.util.hidemoreusersettings('more_user_settings','arrow_img2','{iurl(##)}');">
+						<div class="user_name_block">
+							<img src="{aurl(#/user/icon#):h}/id/{user.getId():h}" class="user_logo" /> <!-- megha 5.1.15 -->
+							<span class="user_name">{user.getFirstName():h}</span>	
+							<span id="arrow_img2"> 
+								<img src="{iurl(#right_arrow1.png#)}" width="12" height="11" alt="more_user_settings" title="More User Settings" /> 
+							</span>
+							<span class="msg_icon">
+						 		{if:unreadMessages}
+						 			<img src="{iurl(#email.png#)}" title="Unread Messages" onclick="{window.location ='{aurl(#/message/index/type/unread#):h}'}" alt="unread_message" />
+								{end:}
+							</span>
+							<div class="clear_fix"></div>
+						</div>
+						<div id="more_user_settings" style="padding-top:4px;">
+							<a href="{aurl(#/user/profile#)}" title="Edit Profile">Profile</a>
+							<a href="{aurl(#/user/indexUserSettings#)}" title="Update Settings">Settings</a>
+							<div class="dd_last_mnu" title="logout" onclick="window.location='{aurl(#/user/signout#)}'">Logout</div>
+							<div class="clear_fix"></div>
+						</div>
+					</div> <!-- end of user_settings_block -->		
+					<!-- jl please be careful while changing anything below -->
+					<div class="theme_color_block">	
+						<div class="inner_color_block">
+							{foreach:theme_pallette,row_cnt,row}									
+							 	{foreach:row,cnt,obj}
+								 	{if:obj.start_first_row}
+										<div style="float:left;"> 
+									{end:}
+									{if:obj.start_2nd_row}
+										<div id="more_theme_colors" align="left">
+									{end:}
+									
+									<img src="{obj.icon_url}" width="13" height="13" alt="{obj.alt}" title="{obj.alt}" onclick= "window.location ='{obj.click_url:h}'"/>
+							 		{if:obj.end_first_row}
+							 			<span id="arrow_img" onclick="tt.util.morethemecolors('more_theme_colors','arrow_img','{iurl(##)}');"> 
+											<img src="{iurl(#right_arrow.png#)}" width="10" height="8" alt="more_theme_colors" title="More Theme Colors" class="more_themes_arrow" style="margin-top:0px;"/>
+										</span>
+									 </div> 
+									{end:}
+									{if:obj.end_any_row}
+										<br/>
+									{end:}							 
+								{end:}							  	
+							{end:}
+							<div class="clear_fix"></div>
+							</div>
+							<div class="clear_fix"></div>
+						</div>
+					</div>						
+						{if:action.getIsAuthorised()}	
+							<div class="header_search_block">
+								
+							 	
+									<input type="submit" class="go_btn" value="" onclick="return tt.util.toogleSearch('search_overlay');"  /> <!-- megha 5.1.15 -->
+							
+							</div>
+							<div class="advance_search_overlay" id="search_overlay" >
+								<img src="{iurl(#up_arrow2.png#)}" width="31" height="21" alt="up_arrow" id="arrow" />
+								<form method="get" id="search_form" action="{aurl(#/search/index#):h}" onsubmit="return tt.util.validateSearch(this);">					
+								
+									<div class="form_item" >
+										<input type="text" name="search_text"  value=""  class="advance_search_field"   />
+									<div class="clearfix"></div>
+									</div><!--end of project-->
+										
+	
+								<div class="form_item" >
+									<!--  <label>Project: </label>
+									<select name="project_search"  value="" onfocus="this.value=(this.value==&#39;&#39;)?&#39;&#39;:this.value;" onblur="this.value=(this.value==&#39;&#39;)?&#39;&#39;:this.value;" >
+										<option> </option>
+										<option> </option>
+									</select> -->
+									<input type="submit" class="search_btn" value="Go" />
+									<div class="clearfix"></div>
+									
+								</div><!--end of project-->
+								
+								
+								 	
+								</form>
+							</div><!--end of advance_search_overlay-->
+						{end:}			 
+						<div style="clear:both;"></div>						
+					</div>					
+					<input type="text" name="search_text_small" class="header_search_field_small" style="" value="Search"  onfocus="this.value=(this.value=='Search')?'':this.value;" onblur="this.value=(this.value=='')?'Search':this.value;" onclick="return tt.util.toogleSearch('search_overlay');" readonly/> 
+				</div> <!-- end of header_right_block -->
+			{end:}	
+			<div>	
+				<!-- Menubar Comes Here -->
+				{if:action.getIsAuthorised()}		
+					{if:isAdmin}
+						{outputBlock(#adminMenuBar.html#)}
+					{else:}
+						{outputBlock(#userMenuBar.html#)}					
+					{end:}
+				{end:}	
+			</div>	
+			<div class="clear_fix"></div>
+		</div><!-- end of header -->	
+		{if:isAdmin}
+		<div class="content_admin">
+		{else:}	
+		<div class="content">
+		{end:}		
+		{if:message_f} 
+			{if:message_f.error_type}
+				<div class="error_text">{message_f.message:h}</div>	
+			{else:}
+				<div class="update_message">{message_f.message:h}</div>	
+			{end:}
+			
+		{else:}
+			 {if:message}
+				<div class="update_message">{message:h}</div>	
+			 {end:}
+			{if:error_message}
+				<div class="error_text">{error_message:h}</div>	
+			{end:}	
+		{end:}	
+		{outputContent()}		
+		</div> <!-- end of content --> 	
+		{outputBlock(#footer.html#)} <!-- this is footer -->
+	</div> <!-- end of whole -->
+</body> 	 
+</html>

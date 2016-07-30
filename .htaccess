@@ -1,0 +1,11 @@
+
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  
+
+ RewriteCond $1 !^(index\.php|resources|css|javascript|install|mini|any|uploads) 
+
+  RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+</IfModule>
+

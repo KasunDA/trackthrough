@@ -1,0 +1,1098 @@
+/**************************** Common ********************************/
+body{font:normal 14px Arial, Helvetica, sans-serif;  margin:0px; }
+
+.whole{ width:999px; background:#FFFFFF; margin:0px auto; overflow-x:hidden; border:1px solid #D0D0D0;}
+img{cursor:pointer;}
+a{color:black; font-weight:normal; text-decoration:none;}
+a:hover{text-decoration:underline;}
+form{padding:0px; margin:0px;}
+a img{border:none;}
+/*.user_settings_block:hover #more_user_settings { background-color:#DBFFF9; margin:1px 0px 0px 0px;}*/
+#more_user_settings, #more_user_settings1, #edit_icon_block, #edit_title_block, #issues_block, #edit_project_desc_block, #change_password, #edit_task_desc_block{display:none;}
+#upload{min-height:50px; height:auto !important /*Non-IE*/; height:50px;}
+#upload_block_1{display:block;}
+.upload_delete_icon{display:none; float:left; margin-top:5px;}
+.leftfix{float:left; margin-right:72px;}
+.clear_fix, .clearfix{clear:both;}
+.pull-left{ float:left; }
+.form_item{clear:both; margin-bottom:10px;}
+.form_item label{color:#283255; font-size:13px; margin-right:5px; width:150px; text-align:right; float:left; line-height:2;}
+.form_item label span{color:red;}
+.form_item .text_field{height:20px;}
+.form_item .file{float:left; margin-bottom:10px; display:none; width:252px;}
+.form_item .file img, .form_item .file2 img{display:none;}
+.form_item .file span, .form_item .file2 span{float:left;}
+.form_item .file2{float:left; margin-bottom:10px; display:none; width:252px;}
+.form_item .file .form_info_text{margin-left:0px; width:140px; }
+.form_item .file2 .form_info_text{margin-left:0px; width:140px;}
+.form_item .file .form_info_text, .form_item .file2 .form_info_text{clear:both;}
+.form_block{ background:none; margin-left:-10px; margin-right:10px;}/*megha - 2.2.15*/
+.form_rt_cont{ float:left; margin-top:7px/* megha 4.2.15*/; }
+.button{background:url('submit_bttn2.png') no-repeat; width:70px; height:25px; font:normal 13px Arial, Helvetica, sans-serif; border:none; padding:0px; cursor:pointer;}
+.fbutton{background:url('close_button.png') no-repeat; width:90px; height:31px; margin-left:10px;  color:#FFFFFF; font:normal 13px Arial, Helvetica, sans-serif; border:none; padding:0px; cursor:pointer;}
+
+.text{line-height:1.4;}
+.error_text{ color:#cc0000; border:1px solid #BEBEBE; clear:both; font-size:13px; height:auto !important /*Non-IE*/; height:27px; line-height:2.1; text-align:center; margin-left:-10px; margin-right:10px; }
+.ml_z { margin-left:0px; }
+.update_message{ color:#339933; border:1px solid #BEBEBE; clear:both; font-size:13px; height:27px; line-height:2.1; text-align:center; margin-left:-10px /*megha 28.10.14*/; margin-right:10px /*megha 28.10.14*/;}
+.general{background:#fffff1; padding-bottom:25px; padding:10px; border:1px solid #f8f8db;}
+
+.left_top_corner{border-top:1px solid #BEBEBE; margin:0px 1px;}
+.right_top_corner{border-top:1px solid #BEBEBE;}
+.left_bottom_corner{border-top:1px solid #BEBEBE;}
+.right_bottom_corner{border-top:1px solid #BEBEBE; margin:0px 1px;}
+
+.form_block{ padding-top:20px; margin-bottom:30px; } /* Abhilash 17.12.14 */
+.form_block .form_item{padding-left:60px; padding-bottom:10px;}
+.form_block .form_item label{float:none;}
+.form_info_text{margin-left:208px; width:270px; font-size:10px; color:#666666; margin-top:2px;}
+.form_block .form_info_text{margin-left:5px;}
+.form_block .form_item .text_field{width:830px; height:20px;}
+.form_block .blue_bg_height{height:540px;}
+
+.pagination{ color:#0000FF; float:right; font-size:12px; margin:15px 10px 10px 0px/*megha 16.1.15*/; text-align:right; }
+.pagination b{color:#603b16; padding-right:10px; font-weight:normal;}
+.pagination a{color:#0000FF; text-decoration:underline; font-size:12px;}
+.pagination span{color:#CCCCCC;}
+.pagination_bottom{margin-top:0px;}
+
+.revoke_msg{float:right; margin-top:0px; color:#CC0000; text-align:center; font-weight:bold;}
+.revoke_msg a{color:#0000ff; margin-right:15px; text-decoration:underline; cursor:pointer;}
+.error_msg_box{border:1px solid #bb2209; background:#be2e17; padding:27px; padding-bottom:36px; color:#FFFFFF; margin:15px 10px; margin-left:-10px; float:left; font:normal 1.1em Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;} /* Abhilash 11-2-15 */
+.error_msg_text{margin-left:20px;}
+.error_msg_box a{color:#FFFFFF; text-decoration:underline;}
+.error_msg_header_text{font-weight:bold; margin-bottom:14px; font-size:18px;color:#FFFFFF;}
+.error_img{background:url('error.png') no-repeat; width:16px; height:14px; float:left; margin-right:6px; margin-top:4px}
+
+.users_block .page_title{float:left;}
+.table_block{width:966px; overflow-y:hidden; overflow:auto; clear:both;}
+table{clear:both; margin:5px 0px; border-collapse:collapse; width:966px;}
+table th{ color:white; height:30px; background:#CCCCFF; border-right:1px solid white; padding-left:9px; text-align:left;}
+table td{background:#e6f2f3; height:25px; border-right:1px solid white; border-bottom:1px solid white; padding:7px 5px 8px 9px;}
+.table_block a{cursor:pointer;color:#0000ff; text-decoration:underline; }
+.tbl_permissions{line-height:1.5;}
+.upload_more_link{cursor:pointer; text-decoration:underline; float:left; margin-left:5px; color:#0041B7/*megha 12.12.14*/; line-height:1.8;}
+
+.assignment_block{display:none; clear:both; background:#FFFFFF; margin:11px; border:1px solid #CFCFCF; padding:20px 10px;}
+.assignment_block select{width:200px;}
+.assignment_block .form_item select{float:left;}
+.assignment_block label{font-weight:bold; line-height:2.5;}
+
+.content_message_block{ background:#EDFCCD; padding:0px 21px; color:#cc0000; border:1px solid #efef00; font-size:13px; line-height:2.1; float:inherit;/*megha 22.12.14*/ height:25px; text-align:center; margin-top:17px;}
+.content_message_block a{ color:#0000ff; text-decoration:underline;}
+
+.promoted_link_block{border-top:1px solid #efefef; color:#bb0000; text-align:right; margin-top:5px; padding-top:4px;}
+.cuser{text-align:center;}
+.promoted_link{text-align:center;  margin-top:5px; padding-top:4px;}
+.promoted_link_block a{color:#0000ff; text-decoration:none;}
+.promoted_link_block a:hover{text-decoration:underline;}
+
+.user_icon{cursor:default; }
+.project_link{padding:11px 0px 0px 23px !important /*Non-IE*/; padding:0px 0px 0px 23px; margin-top:0px !important /*Non-IE*/; margin-top:11px; clear:both;}
+.project_link img{cursor:pointer; margin-top:3px;}
+.project_link a{color:#000000;}
+
+.project_nav_link{ margin-left:-10px/*megha 2.2.15*/;padding:9px 0px 6px 0px; line-height:1.5; word-break:break-all; word-wrap:break-word; margin-right:9px/*megha 9.1.15*/;/* IE>=5.5 */}
+.project_nav_link a{font-weight:normal; font-size:14px;}
+.project_nav_link img{cursor:pointer; margin-right:5px;}
+
+.page_title_block{float:left; }
+.page_title, .dashboard_page_title {  font-size:18px; margin-bottom:15px; padding-top:10px; word-wrap:break-word; margin-left:-10px/*megha 5.12.14*/;  }
+.page_title span{color:#ff6600; font-weight:normal; font-size:13px; margin-left:7px;}
+.page_title a{color:#ff6600; font-size:13px; font-weight:normal; text-decoration:underline;}
+.page_sub_title{color:#003366; font-size:13px; font-weight:bold; margin-bottom:15px; padding-top:10px;}
+
+.page_view_title{font-size:16px; font-weight:bold; margin-bottom:15px; padding-top:10px; word-break:break-all; word-wrap:break-word; /* IE>=5.5 */}
+.page_view_title span{text-decoration:underline; font-weight:normal; font-size:13px; cursor:pointer; margin-left:7px; color:#095477;}
+.page_view_title .header_link_seperator{color:#000000; text-decoration:none;}
+.page_view_sub_title{font-size:13px; font-weight:bold; margin-top:10px; margin-bottom:0px;border:1px solid #e1e1e1; padding:6px; background:#efefef;}
+.page_view_sub_title span{color:#ff6600; margin-left:10px; font-weight:normal;}
+.page_view_sub_title a{color:#ff6600; text-decoration:underline;}
+
+.red_text{color:red;}
+.help_text{margin-left:96px !important /*Non-IE*/; margin-left:99px; width:270px; font-size:10px; color:#666666; margin-top:2px;}
+.black_bold_text{ margin-left:7px; margin-top:10px; text-align:center;  }
+
+.bookmark { background:url(bookmark.png) no-repeat; float:right; width:25px; height:24px; margin:-35px 0px 0px 0px;}
+.bookmark1 { background:url(bookmark1.png) no-repeat; float:right; width:23px; height:23px; margin-top:-28px; margin-right:0px; margin-bottom:0px; margin-left:0px;cursor:pointer;  }
+.bookmark2 { background:url(bookmark1.png) no-repeat; float:right; width:23px; height:23px; margin:-20px -85px 0px 0px;}
+/*.underline{ border-bottom-color:#D0D0D0; border-bottom-style:solid; border-bottom-width:thin; margin:10px 0px 0px 0px;}*/
+.profile_img { float:left; } /* Abhilash 24.4.15 */
+.black_bold_text1 .text2{ margin-left:0px; color:#7B454A; padding:0px 0px 0px 0px; font-size:14px; } /* Abhilash 25.4.15 */
+.black_bold_text1 .text{ color:#7B454A;  font-size:14px; }
+.black_bold_text1 .date{  }
+.project_logo { width:17px; height:18px; float:left; margin:0px/* abhilash 24.4.15*/; cursor:pointer;}
+.message_display_block .project_logo{ margin:0px; } /* Abhilash 24.4.2015 */
+.text1 { margin: 0px 0px 0px 22px/* abhilash 24.4.15*/; cursor:pointer; }
+.viewonly_text{color:#999999;}
+
+.more_button{ padding-top:20px; padding-bottom:0px/*megha 14.1.15*/; padding-right:3px;}
+.more_button a{ background:url(see_more1.png) no-repeat; width:66px; height:28px; float:right;margin:-10px 0px 0px 0px; color:white; text-decoration:none; font:normal 12px Arial, Helvetica, sans-serif; line-height:2.3; text-align:center;}/*megha 6.1.15*/
+
+.delete_check_item{padding:0px 3px 0px 0px;  margin-left:-3px /* megha 26.12.14*/;}
+.button2{background:url('button.png') repeat-x; width:119px; height:25px; font:normal 13px Arial, Helvetica, sans-serif; border:none; border:1px solid #AAAAAA; cursor:pointer; tex-align:center;}
+
+.header_search_block{ float:right; margin:0px 0px 0px 0px; }
+
+.header_search_field {     margin-top:-38px;}
+
+.go_btn{  background: url(search_icon.png) no-repeat; width:35px; height:35px; position:absolute; left:700px; top:19px; border:none; font:bold 13px Arial, Helvetica, sans-serif; cursor:pointer; text-align:center; padding:0px;}
+
+.black_button{border:none; font:normal 13px Arial, Helvetica, sans-serif; height:25px; padding:3px 0px; width:117px; background:#696969; color:#ffffff; cursor:pointer;}
+.search-box-top-left-corner { background:url(sb_top_left_cr.gif) no-repeat; width:9px; height:8px; position:absolute; margin-top:-11px; left:-2px; }
+.search-box-top-right-corner { background:url(sb_top_right_cr.gif) no-repeat; width:8px; height:8px; position:absolute; margin-top:-11px; left:960px; }
+.search-box-bottom-right-corner { background:url(sb_bottom_right_cr.gif) no-repeat; width:8px; height:8px; position:absolute; margin-top:48px; left:960px; }
+.search-box-bottom-left-corner  { background:url(sb_bottom_left_cr.gif) no-repeat; width:8px; height:8px; position:absolute; margin-top:48px; left:-2px; }
+
+
+.promo_icon{ background:url('promoted.png') no-repeat; width:12px; height:12px; position:absolute; z-index:1000; margin-top:3px; margin-left:0px /* megha 8.12.14*/; opacity:0.3; filter:progid:DXImageTransform.Microsoft.BasicImage(opacity=0.3);}
+.pi_icon{position:absolute; filter:progid:DXImageTransform.Microsoft.BasicImage(opacity=0.3); opacity:0.3; margin-left:-19px; margin-top:4px;}
+
+
+.header_search_field, .header_search_field_small {width:809px; height:37px; float:left; margin-right:5px; border:1px solid #CCCCCC; color:#999999; font-size:14px; padding-left:5px;  }
+.header_search_field_small {width:108px; height:30px;  margin-top:-38px; background:url('search_field.png') no-repeat; border:none; line-height:2;}
+.project .header_search_field, .type .header_search_field {width:202px; height:28px; float:left; margin-left:5px; border:1px solid #CCCCCC; color:#999999; font-size:14px; padding-left:0px; margin-top:-20px;  }
+.project label, .type label  {float:left; padding-left:10px; margin-top:-15px; font-size:14px;}
+
+ 
+
+
+
+
+.advance_search_overlay { width:947px; height:45px; border:1px solid #CCCCCC;  top:70px; left:16px; background-color:#DFF0FF; position: absolute; z-index:1000; display:none; padding:10px;}
+.advance_search_overlay img { margin-top:-31px; left:680px; position:absolute;}
+.advance_search {float:left; margin-top:52px; width:809px; height:37px; margin-left:7px;   }
+ .advance_search_field{ width:887px; height:31px; margin:5px 0 0 5px; /*float:left; */ border:1px solid #CCCCCC; line-height:2.2; border-right:none;  border:1px solid #CCCCCC; position:relative; margin-right:55px;/*geeta 4.4.2015 */ }
+
+  .advance_search_overlay .form_item { margin-bottom:10px;}
+ .advance_search_overlay .form_item label { float:left; width:auto; margin-left:5px; line-height:2.5; }
+ .advance_search_overlay .form_item select { width:798px; height:30px; float:left;border:1px solid #CCCCCC;  }
+ .search_btn { background:url(search_go_btn.png) no-repeat; width:49px; height:36px; border:none; margin-right:5px; z-index:1010;  text-align:center; color:#FFFFFF; /*line-height:2;*/ cursor:pointer; /*position:absolute;*/ float:left; margin-left:892px; /*margin-left:-55px;*/ margin-top:-46.5px/*geeta 4.4.2015*/;}
+/*********************** Edit Block **************************************
+.edit_block{border:1px solid #ECECEC; padding:20px 0px 20px 9px; margin:10px 0px;}
+.edit_block .text_field{width:720px;}
+.edit_block textarea{width:882px;} 
+.edit_block .form_info_text{margin-left:80px;}
+#task_upload_message, #message, #project_upload_message, #validate_project_upload_message, #validate_task_upload_message, #validate_issue_upload_message, #issue_upload_message{display:none;}
+*/
+
+/**************************** Header Part ***************************/
+.header{ background-color:black; border:1px solid #e7f9ff; padding:5px 5px 2px 5px; position:fixed; width:991px;  height:62px; z-index:10000; top:0px; margin-left:-2px; }
+.company_name{ float:right; padding-right:15px; text-align:right; color:#FFFFFF; font-size:19px; width:720px; margin-top:15px; word-break:break-all; word-wrap:break-word; /* IE>=5.5 */} 
+
+.header_left_block{float:left; width:50px; background-color:none/* 2.1.15*/;}
+.header_logo{ background:url(logo.png); width:30px; height:30px; cursor:pointer; margin:15px 0px 0px 15px;}
+.header_left_block span { display:none; }
+.app_name { width:150px; float:left; color:#FFFFFF; font-size:20px; margin-top:18px; margin-left:10px;}
+.header_right_block{  float:right; width:420px; height:50px;}
+
+/*.set_top_lt {background:url(set_top_lt.png) no-repeat;	width:13px;	height:13px; position:absolute; left:-6px; top:-6px;	}	
+.set_top_rt {  background:url(set_top_rt.png) no-repeat; width:13px; height:13px; position:absolute; left:169px; top:-3px; }
+
+.set_btm_lt {	background:url(set_btm_lt.png) no-repeat; width:13px; height:13px;	position:absolute; left:-6px; top:34px;}
+.set_btm_rt { background:url(set_btm_rt.png) no-repeat;	width:13px;	height:13px; position:absolute; left:171px; top:31px; }
+*/
+/*.theme_color_block{float:left; background:white; border:1px solid black; position:relative; margin:10px 0px 0px 160px; width:70px; height:25px;}*/
+.theme_color_block{ background:url('theme_color_block.png') no-repeat; float:right; position:relative; width:68px; height:26px;	padding-top:4px;padding-left:1px; margin:-35px 185px 0px 0px; }
+.inner_color_block{  /*margin-left:1px;margin-right:2px; margin-bottom:2px; margin-top:2px; */ padding-left:1px; padding-right:2px; padding-top:2px; padding-bottom:2px;   }
+.theme_color_block img{ cursor:pointer; float:left; margin-left:3px;  }
+.more_themes_arrow { cursor:pointer; float:left; padding-top:2px; padding-left:1px; }
+#more_theme_colors{ display:none; background:#FFFFFF; width:65px; position:absolute; padding-left:1px; border:1px solid #cccccc; border-top:none; padding-bottom:3px; padding-right:0px; top:23px; left:0px; }
+#more_user_settings { position:absolute; margin-top:-3px;  width:168px; border-top:none; top:35px; left:0px; z-index:10000;}
+#more_user_settings a { height:25px; line-height:2; }
+.user_settings_block{background:url(profile_drop_menu.png) no-repeat; border:none; height:38px; position:relative; width:162px; float:right; padding:4px 4px 0px 4px; line-height:1.5; margin:10px 5px 0px 0px;}
+.user_name_block{padding:2px 0px 4px 5px;}
+.user_name{ float:left; font-size:13px;  margin-top:0px;}
+.user_settings_block #arrow_img2{float:right;}
+.user_settings_block #arrow_img2 img{margin:7px 0px 0px 0px;}
+.user_settings_block .msg_icon{ float:left; margin:2px 9px 0px 0px;}
+.user_settings_block a{border-top:1px solid #DDDDDD; background:#FFFFFF; border:1px solid #cccccc; border-bottom:none; text-align:left; float:left; width:160px; padding:3px 0px 3px 8px;}
+.user_settings_block a:hover{text-decoration:none; background:#e7f9ff; color:#000000;}
+.dd_last_mnu {background:url('dd_mnu_l.png') no-repeat; width:160px; cursor:pointer; height:33px; float:left; z-index:10000; text-align:left; padding-left:10px; border-top:1px solid #cccccc; line-height:2.2;} /* Abhilash 7.11.14 */
+.dd_last_mnu:hover {background:url('dd_mnu_l_hover.png') no-repeat;}  /* Abhilash 7.11.14 */
+.ie_position{position:static !important /*Non-IE*/; position:absolute;}
+.user_name_block{
+	padding-top: 2px;
+	padding-right: 3px;
+	padding-bottom: 4px;
+	padding-left: 2px;
+	margin-right: 2px;
+}
+.user_logo{ /*background:url(user_logo.png) no-repeat; megha - 5.1.15*/ width:27px; height:28px; float:left; margin-top:-1px;}
+.user_name{ float:left; padding:5px 0px 4px 5px/*megha 31.10.14*/;width:80px/*megha 31.10.14*/; text-align:left/*megha 31.10.14*/; }
+.user_settings_block .msg_icon{float:right; margin:5px 5px 0px 5px/*megha 31.10.14*/;}
+
+/************************** Login Block *****************************/
+.login_block{padding:95px 0px 0px 0px; /*width:500px;*/ /*float:right; megha - 4.3.15*/ margin-left:200px; /*megha - 4.3.15*/;}
+.login_title{font-size:24px; color:#0B70BE; margin-bottom:15px;}
+.login_label{padding:10px 0px 5px 0px; color:#262626 /*megha - 4.3.15*/;}
+
+.login_txtbox{border:none; background:none; height:33px/*megha - 4.3.15*/; margin-bottom:5px/*megha - 4.3.15*/; width:322px/*megha - 4.3.15*/; background:#FFFFFF; border:1px solid #cccccc; line-height:2;}
+.login_btn{background:#0B70BE; color:#FFFFFF; width:323px/*megha - 4.3.15*/; height:38px/*megha - 4.3.15*/; border:none; cursor:pointer; margin-top:15px;font-size:17px/*megha - 4.3.15*/;}
+.login_btn:hover { background:#0D568F; }
+.login_block a{text-decoration:none; padding-left:20px;  color:#07389B/*megha - 4.3.15*/; font-size:14px;margin-left:190px/*megha - 4.3.15*/;}
+
+.image_blk{float:left; width:665px; padding:25px 0px 11px 5px;}
+.image_inner_blk{border:2px solid #cccccc; min-height:10px; height:auto !important /*Non-IE*/; height:10px; padding:0px 21px;}
+.top_left_corner{background:url(top_left_corner.png) no-repeat; width:13px; height:13px; margin:0px 0 0 0px; position:absolute;}
+.top_right_corner{background:url(top_right_corner.png) no-repeat; width:13px; height:13px; margin:0px 0 0 655px; position:absolute;}
+.bottom_left_corner{background:url(bottom_left_corner.png) no-repeat; width:13px; height:13px; margin:-9px 0 0 0px; position:absolute;}
+.bottom_right_corner{background:url(bottom_right_corner.png) no-repeat; width:13px; height:13px; margin:-9px 0 0 655px; position:absolute;}
+.banner_header{font-size:24px; margin:10px 0px 10px 40px; color:#606060; font-weight:normal; /*text-align:center;/*megha - 4.3.15*/*/}/*megha - 4.3.15*/
+/*megha 5.3.15*/
+.project_title_block{ text-align:center; margin:0px; margin-left:-20px; margin-top:20px;}
+.project_title_block .header_logo{ background:url(logo_black.png) no-repeat; width:30px; height:30px; margin:0 auto;}
+.login_block form{  margin-left:120px;}
+.title{ background:url(tt.png) no-repeat; width:155px; height:20px; float:left; margin-top:23px; margin-left:8px;}/* megha - 4.3.15*/
+
+/************************** Menubar Part ****************************/
+.menubar{ float:right; margin-top:10px; background:#FFFFFF; margin-right:10px; width:492px/*megha 12.9.14*/; }
+#admin_menubar{ width:500px; }
+.menubar a:hover{ text-decoration:none;}
+.menu, .menu_fav , .dashboard_menu{ float:left;}
+.menu a, .menu_fav a , .dashboard_menu a, .menuSelected a , .menuSelected_fav a{ width:81px; height:38px; float:left; text-align:center; color:#000000; line-height:2.8; border-right:1px solid #E7E7E7;}
+.menu a:hover, .dashboard_menu:hover, .menu_fav a:hover{ background:#CECECE;  }
+.menu_fav:hover{ background:#CECECE;  }
+.menu_fav:hover .top_rt_corner { background:url(fav_top_rt_corner_hover.png) no-repeat;top:10px !important/*non-i.e*/; /*top:9px; */left:559px !important/*non-i.e 8*/; left:558px; }
+.menu_fav:hover .btm_rt_corner { background:url(fav_btm_rt_corner_hover.png) no-repeat; top:46px !important/*non-i.e*/; /*top:47px;*/ left:558px !important/*non-i.e 8*/; /*left:557px;*/ }
+
+
+.dashboard_menu .top_lt_corner { background:url(dash_menu_top_lt.png) no-repeat; top:11px !important/*non-i.e*/; top:7px; left:69px ; }
+.dashboard_menu .btm_lt_corner { background:url(dash_menu_btm_lt2.png) no-repeat; margin-left:0px; top:45px;    }
+.dashboard_menu:hover .top_lt_corner { background:url(menubar_top_left_corner_hover.png) no-repeat;top:9px !important/*non-i.e*/; top:8px; left:69px; }
+.dashboard_menu:hover .btm_lt_corner { background:url(menubar_bottom_left_corner_hover.png) no-repeat; left:69px; top:45px !important/*non-i.e*/; top:46px; }
+
+
+.menuSelected , .menuSelected_fav{ float:left; background-color:#CECECE;}
+/*.menuSelected a , .menuSelected_fav a{ width:81px; height:38px; float:left;text-align:center; color:#000000; line-height:2.8; border-right:1px solid #E7E7E7;}*/
+.menuSelected_fav .top_rt_corner{ background:url(fav_top_rt1.png) no-repeat;  margin-top:-1px;left:558px !important/*non-i.e*/; left:557px;}
+.menuSelected_fav .btm_rt_corner{ background:url(fav_btm_rt.png) no-repeat; margin-top:1px;}
+.menu .big_menu, .menuSelected .big_menu{width:92px;}
+.top_lt_corner { background:url(menubar_top_lt.png) no-repeat; width:13px; height:13px; position:absolute; left:69px; top:10px;}
+.top_rt_corner { background:url(menubar_top_rt.png) no-repeat; width:13px; height:13px; position:absolute; left:557px !important/*non-i.e 8*/; left:556px; top:11px !important/*non-i.e 8*/; top:10px;}
+.btm_lt_corner { background:url(menubar_btm_lt.png) no-repeat; width:13px; height:13px; position:absolute; left:69px; top:45px;}
+.btm_rt_corner { background:url(menubar_btm_rt.png) no-repeat; width:13px; height:13px; position:absolute; left:558px !important/*non-i.e 8*/; left:557px; top:44px !important/*non-i.e 8*/; top:45px; }
+
+/******admin corners****/
+.admin_top_lt_corner { background:url(admin_menubar_top_lt1.png) no-repeat; width:13px; height:13px; position:absolute; left:61px; top:10px; }
+.admin_btm_lt_corner { background:url(admin_menubar_btm_lt1.png) no-repeat; width:13px; height:13px; position:absolute; left:61px; top:45px;}
+.dashboard_menu .admin_top_lt_corner { background:url(dash_menu_top_lt.png) no-repeat; top:11px !important/*non-i.e*/; top:7px; left:61px ; }
+.dashboard_menu .admin_btm_lt_corner { background:url(dash_menu_btm_lt2.png) no-repeat; margin-left:0px; top:45px;    }
+.dashboard_menu:hover .admin_top_lt_corner { background:url(menubar_top_left_corner_hover.png) no-repeat;top:9px !important/*non-i.e*/; top:8px; left:61px; }
+.dashboard_menu:hover .admin_btm_lt_corner { background:url(menubar_bottom_left_corner_hover.png) no-repeat; left:61px; top:45px !important/*non-i.e*/; top:46px; }
+/*added on 15.12.14*/.dashboard .project_top_right_corner{ background:url(project_top_right_corner.png) no-repeat; margin-top:-5px; margin-left:960px; width:13px; height:13px; position:absolute;}
+
+/******megha done on 12.9.14******/
+.user_settings_block:hover .btm_left_corner { background:url(more_menu_lt.png) no-repeat; width:8px; height:9px; position:absolute; left:0px;  top:127px; z-index:10000; }
+.user_settings_block:hover .btm_right_corner { background:url(more_menu_rt_1.png) no-repeat; width:8px; height:10px; position:absolute; left:163px; top:127px;  z-index:10000; }
+
+//.menu_fav a:hover { background:url('fav_menu_hover.png') no-repeat; position:absolute; z-index:1000;}
+/*************************** Content Part ***************************/
+.content{  padding:75px 5px 10px 25px; min-height:506px; height:auto !important /*Non-IE*/; height:506px; }
+.content_admin {  /*border:1px solid #DDDDDD; megha 8.1.15*/ padding:75px 5px 10px 25px/*megha 28.10.14*/; min-height:506px; height:auto !important /*Non-IE*/; height:506px;}
+.cont_info_block{padding-bottom:27px; padding-top:100px; text-align:center; line-height:1.4;}
+
+/*these classes are written at the end - 5.12.14
+.content_header_block{border-bottom:1px solid #c3c3c3; border-top:1px solid white; background:#f0f3fe; padding:5px 5px 3px 5px; min-height:20px; height:auto !important /*Non-IE; height:20px;}
+.content_header_block img{border:none; cursor:pointer;}
+.content_header_block a{cursor:pointer;}
+.content_header_rt_block{float:right; width:760px;}
+*/
+
+/************************ Registration Block ************************/
+.registration_block{background:#f7faff; border:1px solid #eaf6ff; padding:20px 0px !important /*Non-IE*/; padding-bottom:0px; margin-left:-10px/* megha - 3.2.15*/; margin-right:10px/* megha - 3.2.15*/;}
+.registration_block .form_item{margin-bottom:15px;}
+.registration_block .form_item label{width:200px;}
+
+
+/**************************** Profile Page **************************/
+.tab_block{padding:13px 0px 8px 0px;}
+.tab_block a:hover{text-decoration:none;}
+.tab_button_selected{float:left; width:130px; height:27px; text-align:center; line-height:2; margin-right:5px; background:#666666; color:#FFFFFF; cursor:pointer;}
+.tab_button{float:left; width:130px; height:27px; text-align:center; line-height:2; margin-right:5px; background:none; color:#333333; cursor:pointer;}
+.profile_cont{background:#f7faff; border:1px solid #eaf6ff;padding-top:32px; height:299px;}
+
+
+/*********************** Forgot Password Page ***********************/
+.forgot_password_blk{ height:150px; width:400px; margin:0 auto;} /* Abhilash 12.2.15 */
+.forgot_password_blk .taskbar_top_rt_corner { margin-left:391px;} /* Abhilash 12.2.15 */
+.fp_blk {border:1px solid #D0D0D0; }
+.forgot_password_blk .form_item label { margin-left:10px; text-align:left; font-weight:bold; float:none;}
+.forgot_password_blk .form_item .text_field { height:30px; float:none; margin-left:10px; width:371px; border:1px solid #bcbcbc; line-height:2; }
+
+/************************** Footer Part *****************************/
+.footer{clear:both; background:black; font-weight:bold; font-size:10px; text-align:center; color:#FFFFFF; line-height:1.5; padding:9px;}
+
+
+/************************** Projects Page ***************************/
+.projects{clear:both; min-height:180px; height:auto !important /*Non-IE*/; height:180px; float:left/*megha 12.12.14*/; }
+.projects .form_block{margin-bottom:9px; margin-left:0px; margin-right:0px;}/*megha 2.2.15*/
+.project_block{ margin-bottom:10px; padding-bottom:7px; }
+.projects .content_header_block{padding-top:0px;}
+.projects .content_header_block .bookmark_icon, .projects .content_header_block .bookmarked_icon{margin-top:3px;}
+.projects .black_bold_text{  margin-bottom:10px/*16.12.14*/; padding-bottom:0px; margin-left:0px; margin-top:0px; float:none; text-align:center;}
+.projects .assignment_block .fbutton{margin-left:9px;}
+
+/*** these classes are written at the end - 5.12.14 
+ .filter_block{margin:12px 0px 0px 0px; float:left;}
+.filter_block select{width:380px;}
+.filter_block select option{width:600px;}
+*****/
+.status_filter , .priority_filter{float:right; margin-right:15px/*megha 6.2.15*/; margin-top:1px; color:#000000/*megha 5.12.14*/;} /* megha 4.2.15*/
+.status_filter select , .priority_filter select{width:126px;}/* megha 4.2.15*/
+.priority_filter { margin-right:45px;}/* megha 6.2.15*/
+.export_issues .priority_filter{ margin-right:0px; float:left; }/* megha 5.2.15*/
+.projects .task_status_filter select , .projects .priority_filter select{ width:80px;}/* megha 4.2.15*/
+.task_report .priority_filter{ margin-right:15px;}/* megha 6.2.15*/
+.projects .priority_filter{ margin-top:-1px;}/* megha 6.2.15*/
+.projects .task_status_filter select { margin-right:-10px;}/* megha 6.2.15*/
+.projects .priority_filter select { margin-right:-20px; margin-top:2px; }/* abhilash 14.2.15*/
+.compressor_image { margin-right:5px; float:left; margin-top:2px;}
+.page_title .compressor_image{ margin-top:3px; }
+/*megha 8.12.14*/ .hide_compressor_image{ margin-top:6px;  float:left; margin-right:5px;}
+.project_icon{margin-right:7px; float:left; cursor:default; margin-top:3px;}
+
+/******** Progress bar style old
+.progress_bar ,.task_list .progress_bar  {padding:1px; width:80px; float:right; border:1px solid #b2b2b2; background:#FFFFFF; margin:0px 0px 5px 5px ; margin-bottom:0px; padding-right:2px ;  }
+.task_list .progress_bar { margin-top:4px;  padding:1px 1px 1px 1px; height:17px; }
+.progress_bar_disabled { padding:1px; width:82px; float:right; border:1px solid #b2b2b2; background:#FFFFFF; margin:1px 0px 5px 5px; opacity:0.4; filter:alpha(opacity=40);   }
+.task_list .progress_bar_disabled{ margin-top:4px; }
+.tasks .content_header_block .progress_bar, .tasks .content_header_block .progress_bar_disabled{margin-top:0px;}
+.projects .content_header_block .progress_bar, .projects .content_header_block .progress_bar_disabled{ margin:4px 25px 0px 15px !important Non-IE; margin-bottom:0px; border:1px solid #b8bfdc;}
+.progress_line , .task_details .progress_line { height:17px; background:url('task_progress1.png') no-repeat;}
+.project_header_info .progress_line, .projects .content_header_block .progress_line , .project_view_block .progress_line{background:url('proj_progress1.png') no-repeat; height:17px; }
+******/
+
+.project_title{float:left; width:655px; word-break: break-all; padding-top:3px; word-wrap: break-word; /* IE>=5.5 */}
+.project_title a{color:#064b68; font-size:13px; line-height:1.3;}
+
+.project_header_info{margin-bottom:5px; font-size:12px; color:#000000; padding-right:3px; font-weight:bold/*megha 5.12.14*/;}
+.project_header_info span{padding-left:10px; color:#7B454A/*megha 5.12.14*/;}
+.project_header_info img{margin-top:3px;}
+.project_header_info .info_text{float:right; margin-top:4px; width:104px; text-align:left; /*margin-top:4px;*/}
+.project_cont_block{ margin-left:-10px /*megha 5.12.14*/; margin-right:10px/*megha 5.12.14*/; padding:0px 10px 10px 10px; border:1px solid #d0d0d0; /*reshma 18.8.14 border-top:0px;*/ height:auto !important /*Non-IE*/; height:1px;}
+.project_cont_block .page_title{color:#003366; font-size:13px; font-weight:bold;}
+
+.description{clear:both; padding:15px 0px; font-size:14px; word-break: break-all; word-wrap: break-word; /* IE>=5.5 */} /* Abhilash */
+.more_link{ color:#00a0c8; font-weight:normal; font-size:11px; text-decoration:none;}
+.project_delete{float:right; width:30px/*megha 5.12.14*/;}
+.project_delete a{cursor:pointer;}
+.project_delete img{float:right; margin:3px 2px 5px 0px/*megha 5.12.14*/;}
+
+.compressor_block{float:left; margin-top:3px; color:black /*megha 6.12.14*/;}
+.total_record{float:right; font-weight:normal; width:110px; text-align:right; margin:3px 0px 0px 2px/*megha 16.12.14*/; color:#000000/*megha 5.12.14*/;}
+.task_list{ font-size:12px; background:url('task_bg.png') repeat-x; padding:2px 3px; clear:both; border:1px solid #DADADA/*megha 6.12.14*/; margin-bottom:4px; min-height:5px; height:auto !important /*Non-IE*/; height:5px;}
+.task_list .task_icon{margin-top:6px;}
+.task_id{color:#003366; float:left; margin-left:5px;}
+/*.task_title{float:left; line-height:1.3; width:616px; margin-top:6px; word-break: break-all; word-wrap: break-word; /* IE>=5.5 }*/
+.task_title{ float:left; line-height:1.3; width:410px/*megha 5.12.14*/; margin-top:10px; word-break: break-all; word-wrap: break-word; /* IE>=5.5 */ }
+.task_title a{color:#003366;}
+.task_details{ padding:1px;  } /*megha 5.12.14*/
+.task_details .bookmark1 { margin-top: 0px; margin-right: 10px; margin-bottom: 0px; margin-left: 0px; cursor:pointer;}
+.task_details .bookmark { margin-top: 0px;	margin-right: 10px;	margin-bottom: 0px;	margin-left: 0px; /*cursor:pointer; megha - 24.1.15*/ }
+.task_details span{ color:#990000; padding-left:5px;}
+.task_details .info_text{ float:right; margin-right:87px/*megha 2.02.15*/; text-align:left; width:90px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; /*megha 10.03.14*/ margin-top:2px;}
+.task_list .delete_icon{float:right; margin:8px 3px 0px 8px;}
+.task_list a{color:#0041b7;}
+.task_list .viewonly_text, .task_title .viewonly_text{color:#999999;}
+.p_status_icon{float:left; margin:8px 9px 2px 2px; }
+.pi-iblock-promo-icon { background:url('promoted.png') no-repeat; width:12px; height:12px; position:absolute; z-index:1000; opacity:0.3;filter:progid:DXImageTransform.Microsoft.BasicImage(opacity=0.3); margin-left:5px; margin-top:5px;}
+.pi_promo_icon{background:url('promoted.png') no-repeat; width:12px; height:12px; position:absolute; z-index:1000; margin-top:9px; margin-left:2px; opacity:0.3;filter:progid:DXImageTransform.Microsoft.BasicImage(opacity=0.3);}
+.user_icon {margin:2px 0px 0px 0px;}
+.left_corner{ background:url(block_lt_btm.png) no-repeat; width:13px; height:13px; margin-top:-26px; margin-left:-5px; margin-bottom:8px;}
+.right_corner{ background:url(block_rt_btm.png) no-repeat; width:13px; height:13px; margin-left:959px; margin-top:-9px; margin-bottom:8px;}
+.project_top_right_corner{ background:url(project_top_right_corner.png) no-repeat; margin-top:-5px; margin-left:960px; width:13px; height:13px; position:absolute;}
+
+/*************************** Views Page *****************************/
+.message_block{border:1px solid #f6f6f6; background:#FAFAFA; margin-bottom:5px; clear:both; min-height:50px; height:auto !important /*Non-IE*/; height:1px;}
+.project_desc_block .message_block{background:#f7faff; border-bottom:1px solid #a1a1a1;} 
+.message_content{margin-bottom:10px; clear:both;}
+.comment{margin:15px; line-height:1.5; width:936px; word-break: break-all; word-wrap: break-word; /* IE>=5.5 */}
+.comment b{color:#313131;}
+.attached_doc{clear:both; padding-top:3px; margin-left:20px;}
+.attached_doc a{color:blue; font-weight:normal; font-size:11px; margin-right:5px;}
+.attached_doc span{margin-right:5px; /*color:#993300; megha 26.12.14*/ }
+.attached_doc img{margin-right:3px;}
+.attached_img{float:left; margin:5px; margin-bottom:10px; margin-left:5px/*megha 26.12.14*/; }
+.header_box{border-bottom:1px solid #e1e1e1; background:#f0f0f0; font-size:12px; padding:5px; padding-bottom:0px;}
+.header_box_txt{float:left; width:150px; line-height:2;}
+.header_box_txt2{float:left; width:150px; margin-left:9px; line-height:2;}
+.message_action_block{padding-bottom:6px; margin-right:10px;}
+.message_action_block .form_item{padding-bottom:0px;}
+.upload_message{text-align:center; color:#003366; font-weight:bold; font-size:14px;}
+.msg_button{float:right; margin-right:3px;}
+.pv_task_title, .pv_issue_title{ float:left; width:400px; /* megha 11.12.14 line-height:1.3; width:905px;  text-align:justify; */ word-break: break-all; word-wrap: break-word; /* IE>=5.5 */}
+.pv_task_title a , .pv_issue_title a { color:#0041B7; font-size:14px;}
+
+
+.message_block_2{background:#ffefdf; margin-bottom:5px; border:1px solid #fffcfa; border-bottom:1px solid #DDDDDD;clear:both; min-height:50px; height:auto !important /*Non-IE*/; height:1px;}
+.message_block_2 .header_box2{background:#FFE7CF; padding:5px; font-size:12px; border-bottom:1px solid #ebe6eb;}
+.header_box img{float:right; margin:5px 10px;}
+.header_box2 img{float:right; margin:5px 10px;}
+
+.edit_title_block{border:1px solid #ECECEC; padding:20px 0px 20px 9px; margin:10px 0px;}
+.edit_title_block .text_field{width:520px;}
+
+.icon_block{float:right; width:65px; height:12px;}
+
+.task_records{margin:5px 11px 15px 15px;}
+.task_records .task_title{width:900px; line-height:1.5;}
+
+.list_block{   /* megha 11.12.14 border-bottom:1px solid #9a9a9a;*/ padding-top:10px; background:#ffffff; border:1px solid #D0D0D0; }
+.project_view .task_list{border:0px; border-bottom:2px solid #FFFFFF; background:none;}
+.project_view .task_list img{float:left; margin:2px 8px 0px 4px; width:10px;}
+ 
+.status_icon{ float:left; margin-top: 12px; margin-right: 9px; margin-bottom: 2px; margin-left:0px/* megha 10.3.15*/; padding-left:7px/* megha 10.3.15*/;}
+.pv_header_left_part{float:left; width:650px;}
+.pv_header_right_part{float:right; width:300px;}
+
+.pv_header_info_1{float:left; margin:5px 25px 0px 10px;}
+.pv_header_info_2{float:left; margin-top:5px;}
+.pv_header_info_1 span{color:#990000;}
+
+.assignment_block label {float:left; margin-top:0px/* megha 2.2.15*/;  }
+.assignment_block select { margin-bottom:10px/* megha 2.2.15*/; width:170px; }
+/************************* Tasks View Page **************************/
+.tasks{clear:both;}
+.tasks .promoted_link_block{text-align:center;  margin-bottom:0px/*megha 23.12.14*/; padding-top:10px/*megha 23.12.14*/; }
+.tasks .content_header_block{background:#fff5eb; padding-right:0px;}
+.task_view .message_block{background:#fffaf5; border:1px solid #fffcfa; border-bottom:1px solid #DDDDDD;}
+.task_view .header_box{background:#fff7ef; border-bottom:1px solid #ebe6eb;}
+.task_view .header_box2{background:#ffe7cf; border-bottom:1px solid #ebe6eb}
+.tasks_cmts_blk{margin-bottom:10px;}
+.tasks_cmts_blk .form_block{margin-bottom:0px;  border:none;}
+.edit_task_desc{text-decoration:underline; cursor:pointer; color:#095477; margin-top:10px;}
+
+.assigned_to_text{ text-align:left; float:right; padding:0px 11px;}
+.assigned_to_text span{ /*color:#073253; megha 11.12.14*/ font-weight:bold /* megha 11.12.14*/;}
+.assigned_to_link{ text-align:right; margin-right:11px; float:right; padding-bottom:7px;}
+.assigned_to_link a{ color:#09549f; text-decoration:underline; cursor:pointer; margin-left:10px;}
+.header_left_part{float:left; width:650px;}
+.header_right_part{float:right; width:300px; padding-top:4px; padding-right:2px;}
+
+.header_info_1{float:left; margin:5px 25px 0px 10px;}
+.header_info_2{float:left; margin-top:5px;}
+.header_info_1 span, .header_info_2 span{color:#990000;}
+
+
+/************************* Settings Block ***************************/
+.configuration_block{background:#f7faff; border:1px solid #eaf6ff; padding:30px 0px; margin-left:-10px/* megha 29.1.15*/; margin-right:10px/* megha 29.1.15*/;}
+.configuration_block .form_item{margin-left:30px; margin-bottom:20px;}
+.configuration_block .form_item label{width:250px;}
+.configuration_block .form_item .text_field{width:250px;}
+.configuration_block .form_info_text{padding-left:50px; clear:both;}
+.copy_mail_check{margin-top:33px;}
+check_item{height:15px; float:left; margin-bottom:5px;}
+#ie_check_fix .form_info_text{clear:both;}
+.two_column_blk{  }
+.two_column_blk .form_info_text{padding-left:0px; margin-left:3px; } 
+.user_settings_blk .form_item label{width:100px;}
+.user_settings_blk .form_item .text_field{width:50px; float:left;}
+.user_settings_blk .small_form_item{ width:345px; float:left; clear:none; margin-left:0px;  }
+.small_form_item{ }
+.user_settings_blk .small_form_item label{text-align:left; line-height:1; padding-bottom:5px; width:340px;}
+.user_settings_blk .small_form_item .form_info_text{margin-left:1px; padding-left:0px; width:340px;}
+.user_settings_blk .settings_top_block{margin-left:137px; float:left/*megha - 26.3.15*/;}
+.user_settings_blk .page_title{font-size:13px; margin-left:0px;  /*float:leftmegha - 7.3.15*/; font-weight:bold;}
+
+
+/************************* Site Settings ****************************/
+.column_one{width:300px; margin-left:120px; float:left;}
+.column_one .form_item label{float:left; text-align:left;} 
+.column_one .form_item .form_info_text{width:250px; margin:2px; padding:0px;}
+.column_one h4{text-align:left;clear:left;}
+.column_one .form_item .text_field_med{height:20px; width:120px;}
+
+.column_two{width:380px; float:left; margin-left:10px;} 
+.column_two .form_item label{float:left; text-align:left;} 
+.column_two .form_item .form_info_text{width:250px; margin:2px; padding:0px;}
+.admin_settings .form_item .form_info_text{width:340px;}
+.column_two .form_item .checkbox{margin-top:-32px;}
+.column_two .form_item .text_field_med{height:20px; width:120px;}
+.column_two .form_item .text_field_small{height:20px; width:95px;}
+.column_two .form_item .checkbox_two{margin-top:40px;}
+
+
+/************************* Message Record Block *********************/
+.message_record_block{border-bottom:1px solid #e9e9e9; padding:15px 0px 15px 0px/*reshma 24.12.14 */;}
+.msg_inbox .delete_check_item{margin-left:-4px;}
+.msg_inbox .delete_check{float:left; margin-top:-2px; margin-left:0px !important /*Non-IE*/; margin-left:-4px;}
+.msg_inbox .delete_check input{margin:0px; float:left;}
+.msg_inbox .delete_check .chk_box{margin-top:5px !important; margin-top:0px;}
+.msg_rcd_from_blk{float:left; margin-left:9px; width:90px; margin-right:10px/*megha 27.2.15*/;}
+.msg_rcd_from_blk_u{float:left; width:90px;}
+.msg_rcd_subject_blk{float:left; width:405px; line-height:1.5; margin-right:10px; word-break: break-all; word-wrap: break-word; /* IE>=5.5 */}
+.msg_rcd_subject_blk a{color:#005082;}
+.msg_rcd_icon{margin:2px 9px 0px 0px; float:left;}
+.msg_rcd_date_blk{float:left; width:155px;}
+.msg_rcd_from_blk span, .msg_rcd_date_blk span{color:#990000;}
+.msg_bookmark{float:right; width:20px;}
+.msg_bookmark .bookmark_icon, .msg_bookmark .bookmarked_icon{margin:0px;}
+.new_msg_text a{font-weight:bold;}
+.msg_header{font-weight:bold; padding:18px 0px 11px 21px; border-bottom:1px solid #BBBBBB; color:#990000;}
+.msg_header .msg_header_from{float:left; width:60px; margin-right:10px/*megha 27.2.15*/;}
+.msg_header .msg_header_title{float:left; width:764px;}
+.msg_header .msg_header_date{float:left;}
+/*.msg_title_block{float:left; word-break: break-all; word-wrap: break-word; /* IE>=5.5 }*/
+
+
+/************************* Message Board Block **********************/
+.message_board_block{ margin-left:-10px; margin-right:10px;} /* megha - added this class on 26.12.14*/
+.message_board_block .page_title{ margin-left:0px;}/* megha - added this class on 26.12.14*/
+.message_board_block .msg_rcd_from_blk, .message_board_block .msg_rcd_from_blk_u{width:60px;}
+.message_board_block .msg_rcd_subject_blk{width:754px;}
+.message_board_block .mb_project_link{margin-top:9px; word-break: break-all; word-wrap: break-word; /* IE>=5.5 */ width:864px;}
+.message_board_block .mb_project_link img{cursor:pointer; margin:3px 6px 0px 0px;}
+.message_board_block .mb_project_link a{color:#000000;}
+.message_board_block .msg_rcd_date_blk{width:89px; line-height:1.5;}
+.message_board_block .pagination{ margin-right:0px;} /* megha - added this on 16.1.15 */
+
+/*********************** Bookmark Block *****************************/
+.bookmark_list{border-bottom:1px solid #e9e9e9; padding:10px 0px;}
+.bookmark_link{float:left; width:890px; word-break: break-all; word-wrap: break-word; /* IE>=5.5 */}
+.bookmark_link a{color:#0041b7;}
+.bookmark_link a:hover{color:#0000FF;}
+.bmsg_icon{float:left; margin:3px 7px 0px 0px;}
+.bdel_icon{float:right; margin:4px 0px 0px 5px;}
+.bookmark_delete_check{ float:left; margin:2px 9px 0px 1px !important /*Non-IE*/ /*reshma 24.12.14 fav page*/; margin:-3px 9px 0px 0px;}
+.bookmark_list .project_link{padding:11px 0px 0px 0px !important /*Non-IE*/; padding:0px;}
+.bookmark_list .project_link a{color:#000000;}
+.bookmark_list .red_text{color:red;}
+.total_bookmarks{float:right; clear:right;}
+
+
+/************************** Search page ****************************/
+.search_block{border-bottom:1px solid #d1d1d1; border-left:1px solid #dadada; line-height:1.8; height:auto !important /*Non-IE*/; height:9px; margin-top:20px; padding:0px 0px 5px 10px; margin-left:-10px/* megha 2.3.15*/; margin-right:10px/* megha 2.3.15*/;}
+.search_title_block a{color:#0041b7;}
+.search_title_block a span{color:#000000;}
+.search_title{width:927px; float:left;}
+.search_project_title{width:927px; float:left;}
+.search_project_title img{cursor:pointer;}
+.search_bookmark_block{float:right;}
+.search_bookmark_block .bookmark_icon, .search_bookmark_block .bookmarked_icon{margin:0px;}
+.search_title span{color:#000000;}
+.search_desc a{color:#0a3668;}
+.search_desc .red_text, .search_title .red_text{color:red;}
+.search_results { margin-left:-10px; margin-right:10px;}/* megha 2.3.15*/
+.search_results span{color:#800000; margin-right:11px;}
+.search_results a{color:#FF6600; text-decoration:underline;}
+.search_promo_icon{background:url('promoted.png') no-repeat; width:12px; height:12px; position:absolute; z-index:1000; margin-top:-18px; margin-left:0px; opacity:0.3;}
+
+
+/************************* Task copy page **************************/
+.copy_form_block{background:#f7faff; border:1px solid #eaf6ff; padding:20px 0px; margin-bottom:30px; margin-left:-10px; margin-right:10px;}
+.copy_form_block .form_item label{width:190px;}
+.copy_form_block .form_item select, .copy_form_block .form_item select option{width:460px;}
+.copy_form_block .form_info_text{margin-left:195px;}
+.copy_form_block .form_item select{margin-top:3px;}
+
+.task_name{font-size:13px; color:#4D4D4D; padding:8px 0px 16px 0px;  margin-left:-10px;} /* megha - 5.2.15*/
+.task_name a{font-weight:normal; color:#4D4D4D;}
+.task_name span{color:#990000;}
+.task_name .status_icon{ padding-left:1px; margin-top:3px;}/* megha - 5.2.15*/
+.tc-promo-icon {margin-left:1px; margin-top:4px;}
+/************************ Issues ***********************************/
+.issue_list{font-size:12px; background:#FEE5DC;  margin-bottom:4px; height:23px; height23; line-height:1.6; padding:5px 5px 2px 0px; clear:both; border:1px solid #D0BAAF; } /* ABhilash 18.12.14 */
+.issue_list .bookmark_icon, .issue_list .bookmarked_icon{margin:0px;}
+.issue_title{float:left; width:580px/*megha 8.1.15*/;}
+.issue_title a{color:#003366;}
+.issue_delete_icon{float:right; margin-top:4px;}
+.issue_date{float:right; width:130px;}
+.issue_user{float:right; width:90px;}
+.issue_user img{cursor:default;}
+.issues .content_header_block{background:#f89f9f; padding-right:0px; padding-top:0px; clear:both;}
+.issues .content_header_block .bookmarked_icon, .issues .content_header_block .bookmark_icon{margin:3px 7px 0px 7px;}
+
+.issue_view .issue_content{border:1px solid #ffcbcb; border-top:0px; word-break:break-all; word-wrap:break-word; /* IE>=5.5 */ padding:10px 15px; text-align:justify; margin-bottom:10px; min-height:50px; height:auto !important /*Non-IE*/; height:1px;}
+.issue_view .attached_doc{margin-left:0px;}
+.issue_view .attached_file{margin-left:15px;}
+.issue_view .attached_file span{margin-right:5px; color:#993300;}
+.issue_view .attached_file a{color:blue; font-weight:normal; font-size:11px; margin-right:5px;}
+.issue_action_block{text-align:center; padding:3px; margin-top:5px; border-top:1px solid #efefef; color:#bb0000;}
+.issue_cmt_blk .form_block{}
+.issue_id{float:left; margin-left:5px; color:#003366; padding-top:2px;} 
+
+.issue_header_left_part{float:left; width:650px; padding-top:2px;}
+.issue_header_right_part{float:right; width:300px; padding-top:2px;}
+
+.issue_header_info_1{float:left; margin:5px 25px 0px 10px;}
+.issue_header_info_2{ float:left; margin-top:5px;}
+.issue_header_info_1 span{color:#990000;}
+.issue_promo_icon{ background:url('promoted.png') no-repeat; width:12px; height:12px; position:absolute; z-index:1000; margin-top:-16px; opacity:0.3; filter:progid:DXImageTransform.Microsoft.BasicImage(opacity=0.3);} /* Abhilash 29.4.15 */
+.pv_issue_promo_icon{background:url('promoted.png') no-repeat; width:12px; height:12px; position:absolute; z-index:1000; opacity:0.3; margin-top:3px; margin-left:3px;}
+
+
+/************************ Task Report Page *************************/
+.report_filter_block{float:left; border:1px solid #C0C0C0; padding:15px 15px 5px 15px; width:934px;}
+.report_filter_block select{ width:145px/* megha 4.2.15*/; } 
+.report_filter_block .open_tab{ width:560px/*megha - 7.3.15*/; float:left; height:50px; padding-bottom:9px; margin-left:25px; }
+.report_filter_block .open_tab label{width:50px/* megha 4.2.15*/; float:left; text-align:right; line-height:1.7; margin-right:5px;}
+.report_filter_block .open_tab select{ width:500px;} /* megha 4.2.15*/
+.report_filter_block .pro_sel select option{width:600px;}
+.report_filter_block .form_item{padding-bottom:7px;  }
+.report_filter_block .form_item label{width:90px; line-height:1.4;}
+.report_filter_block .form_item .option_block input{margin-left:0px;}
+.report_filter_block .filter_item{ width:245px/* megha 4.2.15*/; float:left; height:50px; padding-bottom:9px;}
+.report_filter_block .filter_item label{ width:75px/*abhilash 4.2.15*/; float:left; text-align:right; line-height:1.7; margin-right:5px; }
+.report_filter_block .go_btn{ float:right; margin:0px 56px 0px 0px;}
+.report_filter_block .blue_go_btn { margin:0px -9px 0px 0px; } /* megha 4.2.15*/
+.report_filter_block .help_text{ width:145px; margin-left:80px !important /* Non-ie*/;}/*megha 4.2.15*/
+.reports{padding-bottom:30px; clear:both;}
+.reports .black_button{margin-left:9px; float:right; margin-right:3px; margin-top:-5px;}/*megha 27.1.15*/
+.task_report_page_header .tab_block{padding-top:7px;}
+.reports_block{border-bottom:1px solid #e9e9e9; padding:10px 0px 2px 0px;}
+.reports_block img{float:left;} 
+.reports_block .info_text{float:right; margin-top:0px; width:100px/*megha 8.1.15*/; text-align:left;}
+.reports_block .info_text img{cursor:default;}
+.reports_block .task_title{ width:430px/*megha 8.1.15*/; margin-top:-2px;}
+.reports_block .project_link{margin-bottom:9px; }
+.reports_block .bookmark_icon, .reports_block .bookmarked_icon{margin-right:0px;}
+.task_date{ float:left; width:170px/* megha 29.12.14*/; margin-left:7px;}
+
+
+/********************** Issue Report Page **************************/
+.export_issues{ margin:0px 10px 0px -9px;} /*megha 29.12.14*/
+.export_issues .pro_sel{ width:395px;}/*megha 29.12.14*/
+.export_issues .page_title{ clear:both;float:left;}
+.export_issues .black_button{margin-bottom:9px; margin-left:9px;}
+.export_issues .report_filter_block .go_btn{margin-right:0px;}
+.export_issues .report_filter_block .filter_item{height:auto; width:auto; margin-right:16px;}
+.export_issues .report_filter_block .filter_item label{  float:left/*megha 29.12.14*/;}
+
+
+/******* megha *****/
+
+/*************************** Dashboard Page ************************/
+.dashboard { margin:0px; padding:0px; position:static; }
+.dashboard_page_title{ margin-left:-10px;}/*megha 5.12.14*/
+.dashboard .project_icon{margin-top:0px; margin-right:11px; margin-left:4px; }
+.dashboard .project_cont_block{	padding-top:0px; margin-left:0px; margin-right:0px; }
+.dashboard .project_cont_block .task_list{ padding:4px 3px 5px 3px;}
+.dashboard .project_cont_block .status_icon{ padding-left:0px; margin-left:2px; }/*megha 10.3.15*/
+.dashboard .bookmark_icon, .dashboard .bookmark2{margin:0px 5px 0px 0px;}
+.dashboard .message_record_block{padding-top:0px; margin-bottom:9px;}
+
+.dashboard .task_details { border-bottom: 1px solid #D0D0D0; padding-top:10px; padding-bottom:10px;}/*megha 6.12.14*/
+.dashboard .task_details .info_text{  margin-bottom: 0px;margin-right:0px; margin-top:-2px/*megha 14.1.15*/; text-align:left; width:110px;  }
+.dashboard .progress_bar{ height:14px; width:34px; text-align:center; padding:1px; float:right; margin:1px 20px 5px 0px/*megha 14.1.15*/;}
+.dashboard .progress_bar_disabled{ border:1px solid #b2b2b2;background:#FFFFFF; height:14px; width:34px; text-align:center; opacity:0.4; filter:alpha(opacity=40); }/*megha 5.12.14*/
+.dashboard .task_desc{ float:left; width:586px; margin-left:22px/*megha 14.1.15*/; margin-top:5px/*megha 31.10.14*/; margin-bottom:4px;  word-break:break-all; word-wrap:break-word; /* IE>=5.5 */ }
+.dashboard .task_desc a { color:#000000; font-size:14px; line-height:1.7; }
+.dashboard .task_title{ width:300px/*megha 9.1.15*/; margin-top:10px/*megha 6.12.14*/;  }
+.dashboard .task_title a {color:#000000;  }
+
+.dashboard .message_title{line-height:1.3;width:212px; word-break: break-all; word-wrap: break-word; float:left; }
+.dashboard .msg_rcd_from_blk{float:left; margin-left:18px !important; margin-left:9px;}
+.dashboard .msg_rcd_date{float:right; margin-right:30px;}
+.dashboard .msg_rcd_date_blk{width:150px; line-height:1.5; margin-left:110px;}
+
+
+.project_cont_block .issue_title{ float:left; width:615px; word-break:break-all; word-wrap:break-word; /* IE>=5.5 */}
+.dashboard .d_project_link{ padding-top:2px; margin-left:18px/*megha 14.1.15*/; float:left;  }
+.dashboard .d_project_link a { float:none/*megha 24.12.14*/;  width:580px/*megha 23.12.14*/; }
+.dashboard .msg_rcd_icon{margin-right:5px;}
+.dashboard .msg_project_icon{margin-left:-5px; }
+.dashboard .task_display_block{ float:left; width:662px; margin-bottom:20px; margin-left:-10px;}
+.dashboard .block_title { height:34px; padding:6px 11px 0px 11px; border-bottom:1px solid #c3c3c3; border:1px solid #d0d0d0; background:#EFEFEF; border-bottom:0px;}
+.dashboard .block_title_left{  float:left; padding:5px 5px 5px 2px/*14.1.15*/; font-size:16px; font-weight:bold; font-stretch:semi-expanded; color:#989898;}
+.dashboard .block_title span{float:right; }
+.dashboard .message_display_block{ float:right; width:290px; padding-right:10px;}
+.dashboard .message_display_block .project_link{padding-left:22px; }
+.d_promo_icon{ width:12px; height:12px; position:absolute; z-index:10000; background:url('promoted.png') no-repeat; margin-top:13px; margin-left:2px/*megha 14.1.15*/; padding-left:0px !important; padding-left:-4px; filter:progid:DXImageTransform.Microsoft.BasicImage(opacity=0.3);  opacity:0.2;}
+/* .dashboard .block_title .counter{background:url('counter.png') no-repeat; width:22px; height:22px; color:#FFFFFF; text-align:center; font-weight:bold; margin-top:4px; line-height:1.7; } */
+.dashboard .unread_msg { background:url(unread_msg.png) no-repeat; width:24px; height:17px; float:right; margin:5px 15px 0px 0px;}
+.dashboard .count_unread_msg{ background:#DC0101; color:white; position:absolute; margin-top:3px; margin-left:260px; font-size:11px; text-align:center; padding:1px 2px 0px 3px; height:15px; }
+.msg { background:url(msg.png) no-repeat; float:left; width:20px; height:15px; margin-top:10px; cursor:pointer;}
+
+.taskbar_top_lt_corner { background:url(dash_top_lt_cnr.png) no-repeat; width:13px; height:13px; position:absolute; margin-top:-4px; margin-left:-4px;}
+.taskbar_top_rt_corner { background:url(dash_top_rt_cnr.png) no-repeat; width:13px; height:13px; position:absolute; margin-top:-3px; margin-left:653px;}
+.taskbar_btm_lt_corner { background:url(dash_btm_lt_cnr1.png) no-repeat; width:13px; height:13px; position:absolute; margin:-10px 0px 0px -5px;} 
+.taskbar_btm_rt_corner { background:url(dash_btm_rt_cnr1.png) no-repeat; width:13px; height:13px; position:absolute; margin:-8px 0px 0px 652px;}
+
+.taskbar_top_lt_corner2 { background:url(dash_top_lt_cnr.png) no-repeat;width:13px;	height:13px; position:absolute; margin-top:-4px; margin-left:-4px;}
+.taskbar_top_rt_corner2 { background:url(dash_top_rt_cnr.png) no-repeat;width:13px;	height:13px; position:absolute; margin-top:-3px; margin-left:281px;}
+.taskbar_btm_lt_corner2 { background:url(dash_btm_lt_cnr1.png) no-repeat;width:13px;height:13px; position:absolute; margin-top:-10px; margin-left:-5px; }
+.taskbar_btm_rt_corner2 { background:url(dash_btm_rt_cnr1.png) no-repeat;width:13px;height:13px; position:absolute; margin-top:-8px; margin-left:280px;}
+
+.admin_msg_btm_lt_corner { background:url(taskbar_btm_lt.png) no-repeat; margin-left:-16px; margin-top:2px;	width:13px;	height:13px; position:absolute;}
+.admin_msg_btm_rt_corner{ background:url(block_rt_btm.png) no-repeat; width:13px; height:13px; margin-left:950px/*megha 8.1.15*/; margin-top:2px; position:absolute;}
+
+
+.block{ padding-top:2px; border-bottom: 1px solid #D0D0D0;padding-bottom:12px; margin-top:0px;}
+.block .bookmark1 {	margin-top: 9px;  float:right; cursor:pointer;  }
+.block .bookmark { margin-top: 9px; float:right; /*cursor:pointer; megha - 24.1.15*/ }
+.black_bold_text1 .msg_sender{ float:left; width:198px; margin-top:0px; margin-left:10px/*megha 14.1.15*/; margin-bottom:10px;  } /* Abhilash 24.4.2015 */
+.message_display_block .black_bold_text1 .msg_sender{ margin-left:10px;}/* abhilash 24.4.15*/
+.message_display_block .black_bold_text{ margin-left:7px; margin-top:8px; text-align:center;}/*megha 14.1.15*/
+.msg_date{ margin-top:5px; text-align:left; } /* Abhilash 24.4.15 */
+.admin_message_block .black_bold_text1 .msg_sender { width:auto; }
+.admin_message_block { margin-bottom:10px; padding-bottom:7px; }
+.admin_message_block .black_bold_text{ margin-left:10px; width:870px; margin-top:9px; cursor:pointer; float:left;}
+.admin_message_block .msg_date{ /*float:left; megha 26.12.14*/ margin-top:5px; margin-left:0px/* abhilash 24.4.15 */; width:auto;}
+.msg_title_block{ word-wrap:break-word/*megha 27.2.15*/; font-weight:bold;  margin-left:7px; width:200px; margin-top:8px; float:left; cursor:pointer; margin-bottom:8px;}/*megha 30.10.14*/
+.admin_message_block .msg_title_block{ margin-left:10px; width:870px; margin-top:9px; cursor:pointer; float:left;}/*megha 30.10.14*/
+.admin_msg_count { background:#DC0101; color:white; height:15px; position:absolute; margin-top:3px; padding:1px 2px; margin-left:927px/*megha 15.12.14*/;}
+
+
+/****************************************pie chart***************************************/
+.pie_block_title { height:34px;  padding:6px 11px 0px 11px; /*border-bottom:1px solid #c3c3c3;*/ border:1px solid #d0d0d0; background:#EFEFEF;  border-bottom:0px; }
+.pie_block_title_left{  float:left; /*reshma 14.8.14 */padding:5px 5px 5px 0px; font-size:16px; font-weight:bold; font-stretch:semi-expanded; color:#989898;}
+.pie_block_title span{ float:right; padding:7px 5px 5px 5px; font-size:14px; margin-right:262px; font-weight:bold; font-stretch:semi-expanded; color:#404040; }
+
+
+/*reshma 8.8.14 */ .pie_black_bold_text span{ float:left; padding:7px 5px 5px 5px; font-size:14px; margin-right:262px; font-weight:bold; font-stretch:semi-expanded; color:#404040;}
+ .pie_black_bold_text1 span{float:left; padding:7px 5px 5px 5px; font-size:14px; margin-right:262px; font-weight:bold; font-stretch:semi-expanded; color:#404040;}
+
+/*reshma 9.8.14 */
+.pie_black_bold_text { /*font-weight:bold; megha 5.1.15*/  margin-left:2px; margin-top:10px; float:left; border-right:1px solid #D0D0D0; width:338px;}
+.pie_black_bold_text img { float:left;}
+.pie_black_bold_text span { margin-top:-22px; margin-left:20px; width:100px; }
+.pie1 { float:left; margin-left:15px; margin-top:20px; /*float:left;*/ cursor:default; }
+
+.icons { float:left; width:190px; height:125px; margin-top:-124px; margin-left:145px; position:absolute; }
+.rows { width:185px; margin-bottom:16px; height:18px;}
+.icon1 { float:left; margin-left:0px; margin-top:3px; }
+
+.pie_black_bold_text .Status { float:left; margin-top:0px;  margin-left:10px; font-size:14px; /*width:120px;*/ }
+.pie_black_bold_text .icons span { float:left; /* margin-top:2px;*/ margin-left:140px; font-size:14px; width:25px; height:10px;}
+
+
+.icon2 {  float:left; margin-left:0px; margin-top:3px;}
+
+
+.icon3 { float:left; margin-left:0px; margin-top:3px;}
+
+
+.icon4 { float:left; margin-left:0px; margin-top:3px;}
+
+.pie_black_bold_text1 { /*font-weight:bold; megha 5.1.15*/ margin-left:345px; margin-top:-164px; float:left; width:300px;}
+.pie_black_bold_text1 img { float:left;}
+.pie_black_bold_text1 span { margin-top:-22px; margin-left:20px; width:100px;  }
+.pie2 { margin-left:15px; margin-top:20px;cursor:default; }
+.pie_black_bold_text1 .icons span { float:left; /* margin-top:2px;*/ margin-left:75px; font-size:14px; width:35px; height:10px; }
+.pie_black_bold_text1 .icons { float:left; width:155px; height:125px; margin-top:-124px; margin-left:145px; position:absolute; }
+.pie_black_bold_text1 .rows {  width:155px; height:18px; margin-top:0px; margin-bottom:16px; }
+.pie_black_bold_text1 .icon1 { float:left; margin-left:0px; margin-top:3px; }
+.pie_black_bold_text1 .icon4 { float:left; margin-left:0px; margin-top:3px; }
+.pie_black_bold_text1 .Status { float:left; margin-top:1px;  margin-left:10px; font-size:14px; /*width:55px megha 9.12.14*/;}
+.pie_black_bold_text img{ cursor:default;}/* megha 16.12.14*/
+.pie_black_bold_text1 img{ cursor:default;}/* megha 16.12.14*/
+
+/*******************************admin menu bar **********************/
+#more_menus{ display:none;}
+#more_menus { position:absolute; width:89px; background:#FFFFFF; border:1px solid #E7E7E7; border-top:none; top:50px; left:475px; z-index:1000; }
+#more_menus a { height:25px; line-height:2; border-top:1px solid #E7E7E7;}
+.more_menus_block{ width:82px; height:38px; float:left;  text-align:center; color:#000000; line-height:2.8;  }
+.more_menus_block a{  background:#FFFFFF; text-align:left; float:left; width:82px; padding:3px 0px 3px 7px; height:33px;}
+.more_menus_block a:hover{ text-decoration:none; background:#CECECE; color:#000000;}
+.more_menus_block:hover .more_btm_lt_corner { background:url(more_menu_left_btm.png) no-repeat; width:8px; height:9px; position:absolute; left:475px; top:141px; z-index:10000;}
+.more_menus_block:hover .more_btm_rt_corner { background:url(r5.png) no-repeat; width:8px; height:9px; position:absolute; left:558px; top:141px;  z-index:10000; }
+.last_menu { background:url('block7.png') no-repeat; width:83px; height:33px; position:absolute; top:68px; left:0px; cursor:pointer;  line-height:2.6; text-align:left; padding-left:8px; margin-left:-1px;  border-bottom:none; }
+.last_menu:hover { background:url('block7_hover.png') no-repeat; }
+#more_menu{   float:left; margin-left:10px;  }
+.more_menus_block #arrow_img2{ float:right;}
+
+
+/***********************megha- projects page**************************/
+.page_title_block{ float:left; padding-top:3px; font-size:18px; margin-bottom:22px;  margin-left:-10px; margin-top:13px; margin-right:30px;   }
+.page_title_block .page_title{}
+.new_project{  background:url(new_proj.png) no-repeat; width:76px; height:31px; color:#FFFFFF; border:none; cursor:pointer; font-weight:bold; margin-left:30px; padding-bottom:2px; float:left; margin-top:10px; margin-right:30px;  }
+.filter_block{ margin:10px 0px 0px 0px/*abhilash 18.12.14*/; float:left; }
+.filter_block select{ width:200px/*megha*/; height:30px/*megha*/; }
+.filter_block select option{ }
+
+.content_header_block{ border:1px solid #D0D0D0/*megha*/; border-bottom:1px solid #D0D0D0/*megha*/;  background:#EFEFEF/*megha*/; padding:5px 5px 3px 5px; height:25px; margin-left:-10px /*megha 5.12.14*/; margin-right:10px/*megha 5.12.14*/;}/*megha 11.03.14*/
+.content_header_block img{ border:none; cursor:pointer;}
+.content_header_block a{ cursor:pointer;}
+.content_header_rt_block{float:right; width:760px;}
+/*********Corner Images**********/
+.project_top_left_corner { background:url(project_top_left_corner.png) no-repeat; width:13px; height:13px; position:absolute; margin-left:-15px; margin-top:-4px; }
+.project_top_right_corner{ background:url(project_top_right_corner.png) no-repeat; margin-top:-5px; margin-left:952px; width:13px; height:13px; position:absolute;}
+.project_bottom_left_corner{ background:url(project_btm_left_corner.png) no-repeat; width:13px; height:13px; float:left; margin-top:-9px; margin-left:-15px;}
+.project_bottom_right_corner{ background:url(project_btm_right_corner.png) no-repeat; width:13px; height:13px; float:right;margin-top:-9px; margin-right:5px;  }
+.p_left_corner{ background:url(block_lt_btm.png) no-repeat; width:13px; height:13px;position:absolute/*megha 30.1.15*/; margin:2px 0px 0px -16px/*megha 31.12.14*/;  }
+.p_right_corner{ background:url(block_rt_btm.png) no-repeat; width:13px; height:13px;/*megha 30.1.15*/position:absolute; margin:2px 0px 0px 950px/*megha 30.1.15*/; }
+
+
+/* Progress bar style */
+.progress_bar ,.task_list .progress_bar  { width:80px; float:right; border:1px solid #b2b2b2; background:#FFFFFF; margin:0px 0px 5px 0px /*megha 9.12.14*/; margin-bottom:0px; /*padding-right:2px megha 4.12.14*//*megha 14.03.14*/padding:1px;  }
+.task_list .progress_bar {  padding:1px 1px 1px 1px; height:17px; }
+.progress_bar_disabled {  padding:1px 1px 1px 1px; width:80px; float:right; border:1px solid #b2b2b2; background:#FFFFFF; /*margin:1px 0px 5px 5px;*/  opacity:0.4; filter:alpha(opacity=40);   }
+.projects .content_header_block .progress_bar, .projects .content_header_block .progress_bar_disabled{ margin:4px 25px 0px 15px !important Non-IE; margin-bottom:0px; border:1px solid #b8bfdc;}
+/*22.12.14*/
+.project_header_info .progress_line, .projects .content_header_block .progress_line , .project_view_block .progress_line{ background:url('proj_progress1.png') no-repeat/*megha*/; height:17px; }
+.progress_line , .task_details .progress_line , .tasks .progress_line{ height:17px; background:url('task_progress1.png') no-repeat/*megha 10.03.14*/;}
+
+/*10.12.14*/.project_view_block .progress_bar {  float:right; margin-right:5px; margin-top:2px;}
+.project_view_block .progress_bar_disabled {  float:right; margin-right:5px; margin-top:2px;} /* Abhilash 22.4.15 */
+.project_header_info .progress_bar { margin-top:1px;}
+
+/*added on 6.12.14*/
+.task_delete{  float:right; width:20px; margin-left:3px; margin-right:-2px;}
+.task_delete img{ margin:5px 5px 0px 0px; float:right;}
+.task_id{color:#000000; /*megha 10.03.14*/ float:right; margin-right:25px; /*megha 2.02.15*/ margin-top:4px;}
+.task_priority{ color:#000000; float:right/*megha 31.1.15*/;margin-top:2px/*megha 8.1.15*/; width:70px/*megha 31.1.15*/; margin-right:25px/*megha 31.1.15*/;}
+.task_priority .medium_priority { /*color:#50C801;*/ background:url(medium_priority.png) no-repeat; width:61px; height:18px; position:absolute;}/*megha 8.1.15*/
+.task_priority .high_priority{ /*color:#EE0101;*/ background:url(high_priority.png) no-repeat; width:61px; height:18px; position:absolute; }/*megha 8.1.15*/
+.task_priority .low_priority{ /*color:#027DC4;*/ background:url(low_priority.png) no-repeat; width:61px; height:18px; position:absolute;}/*megha 8.1.15*/
+
+.task_title { float:left; line-height:1.3; width:410px; margin-top:6px; word-break: break-all; word-wrap: break-word;/* IE>=5.5 */}
+.task_title a{ color:#0041B7;}
+
+.project_cont_block .issue_title{ float:left; width:440px/*megha 10.03.14*/; word-break:break-all; word-wrap:break-word; /* IE>=5.5 */}
+.project_cont_block .page_title{ margin-left:0px;} /* megha - added on 26.12.14*/
+.issue_date{ float:right; width:150px/*27.1.15*/; margin-right:20px;margin-top:2px;/*megha 10.03.14*/}
+.issue_delete{  float:right; width:20px;margin-top:1px; }
+.issue_delete img{ margin:5px 5px 0px 0px; float:right;}
+.issue_user{ float:right/*megha 31.1.15*/; margin-left:10px;/*megha 31.1.15*/ width:90px;margin-top:2px; }
+.issue_user img{ cursor:default; margin-top:-1px; margin-right:3px/*megha 5.1.15*/;}
+.issue_id{ float:right/*megha 31.1.15*/; margin-left:5px; color:#000000; margin-right:25px/*megha 31.1.15*/; margin-top:-2px;} 
+.issue_priority{  float:right/*megha 31.1.15*/;margin-top:1px; width:70px/* megha 5.1.15*/; margin-right:15px;}/*megha 10.03.14*/
+.issue_priority .medium_priority{ /*color:#50C801;*/background:url(medium_priority.png) no-repeat; width:61px; height:18px; position:absolute;margin-top:0px;}/*megha 8.1.15*/ 
+.issue_priority .high_priority{ /*color:#EE0101;*/ background:url(high_priority.png) no-repeat; width:61px; height:18px; position:absolute; margin-top:0px;}/*megha 5.01.15*/
+.issue_priority .low_priority{ /*color:#027DC4;*/ background:url(low_priority.png) no-repeat; width:61px; height:18px; position:absolute; margin-top:0px;}/*megha 5.01.15*/
+.issue_list .status_icon{float:left; margin:4px 9px 2px 5px; padding-left:0px;}
+
+/****project-view page******/
+/***new classes**/
+.project_view_header { margin-left:-10px; margin-top:10px; float:left; } /* Abhilash 17.12.14 */
+.content_left_block{ float:left; width:472px; margin-left:-10px; }
+.content_right_block{ float:right; width:472px; margin:0px 10px 0px 25px/*megha 9.12.14*/; }
+
+.project_header{  /*megha 9.12.14*/margin-bottom:20px/*megha 16.12.14*/; margin-top:10px; float:left; font-size:16px; margin-left:-8px;} /* Abhilash 17.12.14 */
+.proj_icon{ /*margin-right:7px;*/ margin:2px 5px 0px 0px; /*margin-left:10px;*/ float:left;cursor:pointer;}
+.proj_title{  font-weight:bold; font-size:16px;  /*float:left;*/ margin-bottom:5px/*megha 16.12.14*/; margin-left:27px;    /*16.12.14*/ margin-right:70px/*megha 7.4.15*/; }
+.edit_project_header{ margin-left:18px/*megha 16.12.14*/; margin-top:3px;  float:left; font-size:14px;}
+.project_header a { color:#0041B7; text-decoration:underline; cursor:pointer; } /* Abhilash 17.12.14 */
+.project_header span{ margin-left:12px; margin-right:12px; color:#3C3C3C;} /* Abhilash 17.12.14 */
+
+.add_desc_txtarea { width:445px; border:1px solid #cccccc;}
+.project_view_block{ margin-bottom:10px; width:472px;}
+
+.header_block{border:1px solid #D0D0D0/*megha*/; background:#EFEFEF/*megha*/; padding:5px 5px 3px 5px; min-height:20px; height:24px !important /*Non-IE*/; line-height:1.3; height:20px;}/*megha 11.03.14*/
+
+.header_block span , .header_block_add_desc{padding-left:5px; color:#888888; font-weight:bold; float:left;margin-top:2px;}
+.header_block span a{ color:#FC8901; float:left; margin-top:0px; margin-left:0px/* megha 5.2.15*/; text-decoration:underline;  }
+.header_block img{margin-top:3px;}
+.header_block .progress_bar { margin-top:1px; }
+.created_date{  float:left; margin:3px 0px 0px 0px/* megha 9.1.15*/;   }
+.created_by{  float:left; margin-top:3px; }
+.status_text{  float:left; margin-top:3px; } /* megha 20.12.14*/
+.header_block .created_by span{ color:#7B454A; font-weight:bold; margin-top:0px;}
+.header_block .created_date span{ color:#7B454A; font-weight:bold; margin-top:0px;}
+.header_block .status_text span{ color:#7B454A; font-weight:bold; margin-top:0px;} /* megha 20.12.14*/
+
+/*.progress_line{background:url('proj_progress.png') no-repeat/*megha; border:1px solid #E6E6E6;height:14px; }
+.progress_bar {padding:1px; width:110px; float:left; border:1px solid #b2b2b2; background:#FFFFFF; margin:2px 0px 5px 5px ; margin-bottom:0px; padding-right:3px/*megha 14.03.14;height:16px;}*/
+.bookmarked{ float:right; margin-right:5px; background:url('pv_bookmarked_1.png') no-repeat /* megha 27.1.15*/; width:22px; height:21px; /*cursor:pointer; megha - 24.1.15*/ }
+
+.project_description_block{padding:0px 10px 10px 10px; border:1px solid #D0D0D0; border-top:1px solid #D8D8D8/*megha 13.03.14*/;  }
+.project_description_block .description{ margin:0px 8px 0px 0px;}
+.project_description_block .description span { color:#0041B7; text-decoration:underline; cursor:pointer;}
+.attachment_list a{color:#0041B7;}
+.issue_track_team{ float:right; margin-top:10px;}
+.issue_track_team span{ font-weight:bold;}
+.issue_track_team a{ color:#0041B7; margin-right:3px; text-decoration:underline;}
+
+
+
+.add_description_block{border:1px solid #D0D0D0;}
+.attachments{ width:460px; padding-top:10px; }
+.attachments .attachment_types{ color:#979797; font-size:11px; margin-top:-20px; margin-left:85px; width:360px; word-break:break-all/*13.12.14*/; }
+.attachment_types span{ }
+.choose_file{ margin:15px 0px 0px 0px;}
+.choose_file a{ color:#0041B7; margin-left:0px; text-decoration:underline; }
+.choose_file span{ font-size:11px;color:#979797; margin-left:4px;}
+.proj_desc{ width:440px; margin:10px 0px 0px 3px; height:200px;}
+.buttons{ margin:12px 0px 10px 165px; }
+.sub_btn{ background:url(submit_button.png) no-repeat; width:73px; height:31px; border:none; color:#FFFFFF; cursor:pointer;}
+.task_status_filter{ float:right/*16.12.14*/; margin-right:35px/*16.12.14*/;color:#888888; font-weight:bold; }
+.task_status_filter select{ /*width:110px; 4.2.15*/ margin-top:1px;}
+.total_records{ float:right/*16.12.14*/; color:#888888; margin-right:5px/*16.12.14*/; margin-top:2px;}
+.list_of_tasks{ border:1px solid #D0D0D0;}
+.tasks_list , .issues_list{ margin:0px 30px 8px 0px;}
+.tasks_list img, .issues_list img{ float:left; margin:2px 5px 5px 7px;}/*megha 11.12.14*/
+.tasks_list .task_desc{ float:left; width:400px; }/*megha 11.12.14*/
+.task_desc a{ color:#0041B7; font-size:14px;}
+.inprogress_status_icon{ float:left; margin:2px 5px 5px 7px; }
+
+.project_message{ background:white/*megha 20.12.14*/; border:1px solid #D0D0D0; border-top:none; float:left/*megha 12.12.14*/; width:470px/*megha 12.12.14*/; }
+.msg_sender_icon{ margin:10px 0px 0px 10px; float:left;}
+.msg_info{ margin-top:20px; float:left; }
+.msg_info .msg_sender_name{ float:left;margin-left:10px;}
+.msg_info span{float:left; margin-left:30px;}
+.projects .bookmark , .msg_bookmark .bookmark , .task_report .bookmark , .export_issues .bookmark{float:right; margin-top:0px; margin-right:5px; background:url('pv_bookmark.png') no-repeat; width:22px; height:21px; cursor:pointer;  } /* abhilash 22.04.15*/
+.delete_msg_icon, .reply_icon{ float:right; margin-right:10px;  margin-top:20px;}
+.msg_content{  margin:10px 5px 10px 10px;}
+.msg_attachments{ float:left/*megha 12.12.14*/;width:438px/*megha 12.12.14*/; color:#7B454A; font-weight:bold; margin:10px 10px 10px 10px; border:1px solid #D0D0D0; padding:5px; }
+/*megha 12.12.14*/.msg_attachments span{ float:left; margin-right:15px/*megha 24.12.14*/;}
+.msg_attachments a{ margin-right:5px; color:#0041B7;}
+.issue_images{margin:5px 0px 0px 95px; }
+.issue_images a {color:#0041B7; margin-left:0px; margin-right:10px;}
+.issue_image_preview{ margin:0px 50px 0px 0px; }
+.alt_user_message{ background-color:#E6FFFB; border:1px solid #D0D0D0; border-top:none;}
+
+.pagination_block{border:1px solid #D0D0D0; border-top:none; padding:10px;}
+.show_pages{ float:right;}
+.pagination_controls{float:right; margin-left:10px;color:#0000FF;}
+.pagination_controls a{color:#0000FF; text-decoration:underline; }
+.pagination_controls span a{ color:#CCCCCC;}
+.show_pages{ color:#603B16;}
+
+/** corner images**/
+.proj_top_rt_corner{ background:url(project_top_right_corner.png) no-repeat; margin-top:-5px; margin-left:465px; width:13px; height:13px; position:absolute;}
+.proj_btm_rt_corner{ background:url(block_rt_btm.png) no-repeat; width:13px; height:13px; margin-left:464px; margin-top:-9px/*megha 11.12.14*/;  position:absolute; }
+.proj_btm_left_corner{ background:url(block_lt_btm.png) no-repeat; width:13px; height:13px; margin-top:-9px /*megha 11.12.14*/; margin-left:-5px;  position:absolute;}
+.msg_btm_left_corner, .alt_msg_btm_left_corner { background:url(block_lt_btm.png) no-repeat; width:13px; height:13px; position:absolute; margin-top:-9px; margin-left:-5px;} /* Abhilash 6.5.2015 */
+.msg_btm_rt_corner, .alt_msg_btm_rt_corner{ background:url(block_rt_btm.png) no-repeat; width:13px; height:13px;margin-left:464px; margin-top:-9px; position:absolute;} /* Abhilash 6.5.2015 */
+.projects .project_top_left_corner{ margin-left:-5px;}
+.projects .project_bottom_left_corner{ margin-left:-5px; z-index:1; }
+.projects .project_bottom_right_corner{ margin-right:-5px;}
+.alt_msg_btm_left_corner { background:url(alt_usr_block_lt_btm.png) no-repeat;} /* Abhilash 6.5.2015 */
+.alt_msg_btm_rt_corner { background:url(alt_usr_block_rt_btm.png) no-repeat; margin-top:-8px; margin-left:463px; } /* Abhilash 6.5.2015 */
+/***9.12.14**/
+/*********************** Edit Block ***************************************/
+
+.edit_block{ border:1px solid #ECECEC; padding:20px; margin:20px 0px 0px 0px; width:925px; } /* Abhilash 17.12.14 */
+
+.edit_block .text_field{ width:920px; border:1px solid #cccccc; margin-top:10px; height:30px; line-height:2.2; /*margin-bottom:10px; megha 10.12.14*/}
+.project_description_block .edit_block { margin-bottom:15px;}
+.project_description_block .edit_block textarea{ width:400px/*megha 10.12.14*/; margin-top:10px; height:200px; } 
+.edit_block .form_info_text{margin-left:0px;}
+.edit_block .blue_btn { margin-right:10px; margin-top:10px;}
+#task_upload_message, #message, #project_upload_message, #validate_project_upload_message, #validate_task_upload_message, #validate_issue_upload_message, #issue_upload_message{display:none;}
+
+.project_description_block .edit_block { width:auto;}
+/*12.12.14*/
+.projects .form_item label{ }
+.projects .form_block{ padding-top:0px; margin-bottom:0px;}
+.projects .form_block .form_item{ padding-left:0px;}
+.blue_btn , .review_blue_btn , .close_blue_btn{ background:url(submit_button.png) no-repeat; width:73px; height:31px; border:none; color:#FFFFFF; cursor:pointer;}
+.review_blue_btn{ background:url(review_submit_button.png) no-repeat; width:120px; }
+/*23.12.14*/.close_blue_btn{ background:url(close_button.png) no-repeat; width:90px; }
+.projects .form_item{  padding-bottom:0px;}
+.attachment_list{ /*float:right;15.12.14*/ width:350px; margin-top:0px/*megha 23.12.14*/; color:red/*megha 23.12.14*/; margin-bottom:0px/*megha 5.2.15*/;}/*megha 12.12.14*/
+
+/*13.12.14*/
+.project_message .bookmarked , .projects .alt_user_message .bookmarked{ margin-top:15px; margin-right:10px;}
+.attachment_list_one { float:left;}
+
+/*15.12.14*/
+.projects .project_message .bookmark , .projects .alt_user_message .bookmark , .search_bookmark_block .bookmark {float:right; margin-top:16px; margin-right:10px; background:url('pv_bookmark.png') no-repeat; width:22px; height:21px;  }
+.msg_attachments .attachment_list{ float:right; width:350px; margin-top:-17px;  }/*megha 12.12.14*/
+
+
+/*** admin projects page-15.12.14**/
+.content_admin .admin_message_block .project_cont_block{ margin-left:-10px; margin-right:10px;}
+.content_admin .admin_message_block .block_title { margin-left:-10px; margin-right:10px; }
+.content_admin .dashboard .project_top_right_corner{ margin-left:952px/*megha 8.1.15*/;}
+.content_admin .project_top_right_corner{ margin-left:952px/*megha 8.1.15*/;}
+.content_admin .taskbar_top_lt_corner2 {  margin-left:-14px;}
+.content_admin .p_right_corner{ }/* megha 1.1.15*/
+/* .content_right_block{ margin:0px 0px 10px 25px;}*/ 
+
+/*16.12.14*/
+.projects .status_icon{ padding-left:0px; }
+.projects .promo_icon{ margin-left:7px;}
+
+
+/*19.12.14*/
+.alt_user_message{ background-color:#E6FFFB; border:1px solid #D0D0D0; border-top:none;}
+.tasks .pagination{ border:1px solid #D0D0D0; border-top:none; padding:10px; float:none; margin:0px; }
+
+/*20.12.14*/
+.issues .proj_title{ font-weight:bold; font-size:16px;  float:none/*megha 23.12.14*/; margin-bottom:5px/*megha 16.12.14*/; margin-left:7px; margin-right:5px; /*megha 19.1.15*/ }
+.issues .project_header{ margin-left:7px/*megha 29.12.14*/; margin-top:0px; }
+.issues .status_icon{ margin-top:3px; padding-left:0px; margin-left:7px; }
+.tasks .status_icon{ margin-top:3px; }
+.tasks .project_header{ margin-left:10px;  }
+
+/*22.12.14*/
+.tasks .project_view_header{ margin-left:-5px; float:none;}
+.tasks .promo_icon{ margin-left:7px;margin-top:4px;}
+.issue_list .promo_icon{ margin-left:5px;margin-top:5px;}
+.issues .promo_icon{ margin-left:7px; margin-top:4px;}
+
+/*23.12.14*/
+.content_admin .dashboard .page_title{ margin-left:-10px;}
+.content_admin .content_right_block{  margin:0px 10px 0px 21px/*megha 23.12.14*/; }
+
+.header_block .project_bottom_left_corner{ margin-top:19px; margin-left:-11px; position:absolute;}
+.header_block .project_bottom_right_corner{ margin-top:19px; margin-left:458px; position:absolute;}
+.header_block .header_block_add_desc{ float:right; margin-right:320px; }
+
+/* reshma 24.12.14 fav page */
+.fav_page { margin-left:-10px; margin-right:10px; }
+
+/*27.12.14*/
+.missing_attachments{ font-weight:normal; color:red; float:left; margin-top:-16px;}
+.projects .missing_attachments{ font-weight:normal; color:red; float:none; margin-top:-16px/*megha 27.12.14*/; margin-left:80px; }
+.tasks .missing_attachments{ float:left; margin-top:0px/*megha 27.12.14*/; margin-left:70px;}
+
+.msg_attachments .missing_attachments{  margin:10px 0 10px 90px; float:left;}
+.attached_doc .missing_attachments{ padding-bottom:10px;}
+
+/*megha - 29.12.14*/
+.msg_bookmark .bookmark { margin-right:0px;}
+.msg_bookmark .bookmarked , .export_issues .bookmarked , .search_bookmark_block .bookmarked{ float:right; margin-right:0px; background:url('pv_bookmarked_1.png') no-repeat; width:22px; height:21px; /*cursor:pointer; megha -24.1.15*/  }
+.attachment_list .attached_docs{  margin:0px 5px 5px 5px;}/* megha 5.2.15*/
+.task_report{ margin-left:-9px; margin-right:10px;}
+.task_report .page_title{ margin-left:-1px;}
+.export_issues .page_title{ margin-left:-1px;}
+.task_report .status_icon{ margin-top:3px; padding-left:0px/*megha 19.1.15*/;}
+.blue_go_btn { border:none; background:url('go_blue_btn.png') no-repeat; width:36px; height:25px; color:white;cursor:pointer;float:right; margin:0px 56px 0px 0px;  }
+.export_issues .blue_go_btn{ margin:0px -9px 0px 0px;}
+.task_report .bookmark , .task_report .bookmarked{ margin-left:5px; margin-right:2px;}
+
+.total_rec{ margin-right:2px;}
+.reports_block .progress_bar{ margin-right:6px;}
+.task_report .promo_icon{ margin-left:0px/*megha 19.1.15*/; margin-top:4px;}
+.export_issues .issue_user{ float:right;}
+.export_issues .bookmarked , .export_issues .bookmark{ margin-right:0px; margin-left:0px;}
+.task_report .error_text, .export_issues .error_text { margin-left:0px; margin-right:2px; }
+.message_board_block .error_text { margin-left:0px; margin-right:0px; }
+.tasks .project_view_header ,.issues .project_view_header { margin-left:-15px; float:none; margin-right:10px;} /* abhilash 3.1.15 */
+.tasks .project_header { margin-left:-8px;}
+.issues .project_header { margin-left}
+
+
+/*2.1.15*/
+.alt_usr_msg_btm_left_corner{ background:url(alt_usr_block_lt_btm.png) no-repeat; width:13px; height:13px; position:absolute; margin-top:-9px; margin-left:-5px;}
+.alt_usr_msg_btm_rt_corner{ background:url(alt_usr_block_rt_btm.png) no-repeat; width:13px; height:13px;margin-left:464px; margin-top:-9px; position:absolute;}
+
+/*5.1.15*/
+.form_item .project_icon{ float:left; margin-bottom:10px; }/* megha 7.4.15*/
+.form_item .msg_sender_icon{ float:none; margin-left:-210px;}
+
+/* 9.1.15*/
+.users_block{ margin-left:-8px; }
+.dashboard .task_priority{ margin-top:11px; margin-left:20px/*megha 10.1.15*/; float:left/* megha 2.2.15*/;}
+
+/* 10.1.15*/
+.users_block .page_title{ margin-left:0px;}
+/* 31.1.15*/
+.reports .task_priority{ float:left;}
+.export_issues .issue_priority { float:left;} 
+
+/*5.2.15 megha - pl. retain class names _asc_ _desc_ as they are!*/
+.sort_asc_block{ background:url(sort_up.png) no-repeat; width:16px; height:9px; float:right; margin:8px -40px 0px 0px/* megha- 6.2.15*/; cursor:pointer;}
+.sort_desc_block{ background:url(sort_down.png) no-repeat; width:16px; height:9px; float:right; margin:8px -40px 0px 0px/* megha- 6.2.15*/; cursor:pointer;}
+.header_block .sort_asc_block{ margin-right:13px;}/*megha - 6.2.15*/
+.header_block .sort_desc_block{ margin-right:13px;}/*megha - 6.2.15*/
+.view_only, .view_only a, .dashboard .task_title .view_only {color:#9A9B9B; } /* Abhilash 22-04-15 */ 
+
+/* megha 2.3.15*/
+.search_bookmark_block .bookmark { margin-top:7px; margin-right:0px;}
+.search_bookmark_block .bookmarked { margin-top:7px; }
+
+.task_details .bookmark{ border:none;}
+.task_details .bookmark1{ border:none;}
+
+/* megha 6.4.15*/
+.login_block p{ font-size:12px;}
+
+/*megha 7.4.15*/
+.hide_projects span{ margin-left:105px;}
+.hide_projects .leftfix{ width:330px; margin-right:15px;}
+.project_view_header .task_priority , .project_view_header .issue_priority{ margin-right:-9px; margin-top:-25px;}
+.dashboard{ margin-right:0px;}
