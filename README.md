@@ -17,7 +17,7 @@ A webserver with PHP support is required; preferably Apache.
 TrackThrough will work on Apache 1.3 or Apache 2.x hosted on unixes or windows or others
 (but not tested).
 
-PHP
+
 PHP of version 5 or higher is required.
 
 MySQL 4.1 or MySQL 5.0
