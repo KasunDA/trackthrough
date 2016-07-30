@@ -27,6 +27,19 @@ SELECT‚ INSERT‚ UPDATE‚ DELETE‚ CREATE‚ DROP‚ INDEX‚ ALTER‚ CREA
 TEMPORARY TABLES‚ LOCK TABLES.
 
 
+TrackThrough version 1.4.4
+- New user interface - completely redone [new]
+- Stats feature in dashboard [new]
+- Priority feature for task and issues [new]
+- Sorting task and issues improved [new]
+- User profiles with avatar [new]
+- Hiding of unwanted projects [new]
+- New filters (priority and date) in reports tab [new]
+- Known issues
+	- Supported in IE8 and latest browsers.
+
+
+
 TrackThrough version 1.4.3
 - Copy issue feature [new]
 - New themes: Lime and Black [new]
@@ -121,3 +134,4 @@ TrackThrough version 1.2
 
 
 Please check manual/trackthrough_manual.pdf for installation instructions and usage.
+
