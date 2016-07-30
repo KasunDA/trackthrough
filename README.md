@@ -10,6 +10,7 @@ Tracking issues
 Progress reporting relating to tasks and issues
 
 System requirements
+
 To install the TrackThrough‚ your system should have the following requirements.
 
 A PHP supported webserver
